@@ -14,7 +14,7 @@ app.use(express.static("client/build"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/whereintheworld", {
   // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+  useUnifiedTopology: true,
   // useCreateIndex: true,
   // useFindAndModify: false,
 });

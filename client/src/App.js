@@ -1,7 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
+import { response } from 'express';
 
 function App() {
+  useEffect(() => {
+    console.log("Make an API call.");
+    axios
+      .get("/api/config")
+      .then((response) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="App">
       <header className="App-header">

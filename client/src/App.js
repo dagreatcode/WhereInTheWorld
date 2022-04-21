@@ -1,7 +1,7 @@
+import {useEffect} from "react";
 import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
-import { response } from 'express';
 
 function App() {
   useEffect(() => {
@@ -9,6 +9,9 @@ function App() {
     axios
       .get("/api/config")
       .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
         console.log(err);
       });
   }, []);
@@ -17,7 +20,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          DaGreat Code LLC.
         </p>
         <a
           className="App-link"

@@ -4,6 +4,7 @@ import "./App.css";
 import axios from "axios";
 import HelloBootstrap from "./components/HelloBootstrap";
 import NavBar from "./components/NavBar/NavBar";
+import Alert from "./components/Alert";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
             Learn React
           </a>
         </header>
+        <Alert type="danger">Toast</Alert>
       </div>
     </>
   );

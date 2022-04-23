@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "name": "",
-        "userName": "",
-        "password": "",
+        "name": "Vincent",
+        "userName": "Kendrick",
+        "password": "password",
         "image": "",
-        "occupation": "",
-        "location": ""
+        "occupation": "Web Developer",
+        "location": "Ellenwood, Ga."
     }
 ]

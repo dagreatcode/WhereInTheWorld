@@ -6,6 +6,7 @@ import HelloBootstrap from "./components/HelloBootstrap";
 import NavBar from "./components/NavBar/NavBar";
 import Alert from "./components/Alert";
 import AllUsers from "./components/AllUsers";
+import Counter from "./containers/Counter";
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
           </a>
         </header>
         <AllUsers />
+        <Counter />
         <Alert type="danger">Toast</Alert>
       </div>
     </>

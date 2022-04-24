@@ -6,6 +6,15 @@
         "password": "password",
         "image": "",
         "occupation": "Web Developer",
-        "location": "Ellenwood, Ga."
+        "location": "Ga."
+    },
+    {
+        "id": 2,
+        "name": "Barbara",
+        "userName": "Kendrick",
+        "password": "password",
+        "image": "",
+        "occupation": "Fashion Designer",
+        "location": "Ga."
     }
 ]

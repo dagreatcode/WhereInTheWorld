@@ -1,11 +1,12 @@
 // rsc
 import React from "react";
+import users from "../db/users.json";
 
 const HelloBootstrap = () => {
   return (
     <div>
       <h1>Hello World</h1>
-      <table class="table table-bordered border-primary table-dark table-hover">
+      <table className="table table-bordered border-primary table-dark table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -29,8 +30,18 @@ const HelloBootstrap = () => {
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td colspan="2">Vaughn the Champion</td>
+            <td colSpan="2">Vaughn the Champion</td>
             <td>@King</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>
+              {users.map((user) => (
+                <div key={user.id}>{user.name}</div>
+              ))}
+            </td>
+            <td>Kendrick</td>
+            <td>@code</td>
           </tr>
         </tbody>
       </table>

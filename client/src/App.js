@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
 import HelloBootstrap from "./components/HelloBootstrap";
@@ -22,21 +21,22 @@ function App() {
       });
   }, []);
 
-const optionsss = {
-  method: 'GET',
-  url: 'https://covid-193.p.rapidapi.com/history',
-  params: {country: 'usa', day: '2020-06-02'},
-  headers: {
-    'X-RapidAPI-Host': 'covid-193.p.rapidapi.com',
-    'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1'
-  }
-};
+// const optionsss = {
+//   method: 'GET',
+//   url: 'https://covid-193.p.rapidapi.com/history',
+//   params: {country: 'usa', day: '2020-06-02'},
+//   headers: {
+//     'X-RapidAPI-Host': 'covid-193.p.rapidapi.com',
+//     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1'
+//   }
+// };
 
-axios.request(optionsss).then(function (response) {
-	console.log(response.data.response);
-}).catch(function (error) {
-	console.error(error);
-});
+// axios.request(optionsss).then(function (response) {
+//   const go = response.data.response;
+// 	console.log(go);
+// }).catch(function (error) {
+// 	console.error(error);
+// });
 
   // const options = {
   //   method: "GET",
@@ -96,17 +96,7 @@ axios.request(optionsss).then(function (response) {
       <NavBar />
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <HelloBootstrap />
-          <p>DaGreat Code LLC.</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <HelloBootstrap />
         </header>
         <AllUsers />
         <Counter />

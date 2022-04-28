@@ -6,7 +6,7 @@ const NavBar = () => {
     <div>
       <nav className="navbar navbar-dark bg-primary">
         <div className="container-fluid">
-          <Link to="/">StaySafe</Link> StaySafe
+          <Link to="/" className="navbar-brand">StaySafe</Link>
           <button
             className="navbar-toggler"
             type="button"

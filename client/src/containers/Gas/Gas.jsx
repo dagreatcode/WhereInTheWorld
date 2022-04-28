@@ -10,7 +10,9 @@ class Gas extends Component {
 //   }
 
   render() {
-    return <div></div>;
+    return <div>
+      <h1>Take Choice and Pull That Data In</h1>
+    </div>;
   }
 }
 

@@ -3,6 +3,17 @@
 ## User Story
 
 ```
+RESTful API
+** 7 Routes **
+View
+* GET /user View all users (R)
+* GET /user/:id Single user (R)
+* GET /user/edit/:id PrePopulated Form of users (R)
+* GET /user/new Empty Form
+API Routes
+* POST /user (C)
+* PUT /user/:id (U)
+* DELETE /user/:id (D)
 
 ```
 

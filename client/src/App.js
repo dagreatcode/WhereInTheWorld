@@ -1,12 +1,17 @@
 import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
-import HelloBootstrap from "./components/HelloBootstrap";
+// import HelloBootstrap from "./components/HelloBootstrap";
 import NavBar from "./components/NavBar/NavBar";
-import Alert from "./components/Alert";
-import AllUsers from "./components/AllUsers";
-import Counter from "./components/Counter";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
+// import Alert from "./components/Alert";
+// import AllUsers from "./components/AllUsers";
+// import Counter from "./components/Counter";
+import Home from "./containers/Home/Home";
+import Login from "./containers/Login/Login";
+import Gas from "./containers/Gas/Gas";
+import Covid from "./containers/Covid/Covid";
+import WhereToGo from "./containers/WhereToGo/WhereToGo";
 
 function App() {
   useEffect(() => {
@@ -21,22 +26,22 @@ function App() {
       });
   }, []);
 
-// const optionsss = {
-//   method: 'GET',
-//   url: 'https://covid-193.p.rapidapi.com/history',
-//   params: {country: 'usa', day: '2020-06-02'},
-//   headers: {
-//     'X-RapidAPI-Host': 'covid-193.p.rapidapi.com',
-//     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1'
-//   }
-// };
+  // const optionsss = {
+  //   method: 'GET',
+  //   url: 'https://covid-193.p.rapidapi.com/history',
+  //   params: {country: 'usa', day: '2020-06-02'},
+  //   headers: {
+  //     'X-RapidAPI-Host': 'covid-193.p.rapidapi.com',
+  //     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1'
+  //   }
+  // };
 
-// axios.request(optionsss).then(function (response) {
-//   const go = response.data.response;
-// 	console.log(go);
-// }).catch(function (error) {
-// 	console.error(error);
-// });
+  // axios.request(optionsss).then(function (response) {
+  //   const go = response.data.response;
+  // 	console.log(go);
+  // }).catch(function (error) {
+  // 	console.error(error);
+  // });
 
   // const options = {
   //   method: "GET",
@@ -92,17 +97,16 @@ function App() {
   // });
 
   return (
-    <>
-      <NavBar />
-      <div className="App">
-        <header className="App-header">
-        <HelloBootstrap />
-        </header>
-        <AllUsers />
-        <Counter />
-        <Alert type="danger">Toast</Alert>
-      </div>
-    </>
+        <Router>
+          <NavBar />
+         <Routes>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Login" component={Login} />
+            <Route exact path="/Gas" component={Gas} />
+            <Route exact path="/Covid" component={Covid} />
+            <Route exact path="/WhereToGo" component={WhereToGo} />
+          </Routes>
+        </Router>
   );
 }
 

@@ -46,7 +46,7 @@ function Covid() {
       .then(function (response) {
         const go = response.data.response[0];
         setCovidNewsState(go);
-        console.log(go);
+        // console.log(go);
       })
       .catch(function (error) {
         console.error(error);
@@ -57,7 +57,7 @@ function Covid() {
     axios
       .request(optionss)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(function (error) {
         console.error(error);
@@ -68,7 +68,7 @@ function Covid() {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {
         console.error(error);

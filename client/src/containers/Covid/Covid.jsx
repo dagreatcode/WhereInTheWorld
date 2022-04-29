@@ -4,18 +4,23 @@ import { Form } from "react-bootstrap";
 
 function Covid() {
   const [covidNewsState, setCovidNewsState] = useState({
-    continent: "",
-    country: "",
-    day: "",
+    continent: "Africa",
+    country: "Algeria",
+    day: "2020-11-02",
     population: 0,
-    cases: 0,
-    deaths: 0,
+    cases: {},
+    tests: {},
+    time: "",
+    deaths: {},
   });
 
+  // countries, history, statistics
+  const historyOrCountries = "history";
+  
   const optionsss = {
     method: "GET",
-    url: "https://covid-193.p.rapidapi.com/history", // countries, history
-    params: { country: "usa", day: "2020-06-02" },
+    url: "https://covid-193.p.rapidapi.com/" + {historyOrCountries},
+    params: { country: covidNewsState.country, day: covidNewsState.day },
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -45,9 +50,9 @@ function Covid() {
     axios
       .request(optionsss)
       .then(function (response) {
-        const go = response.data.response[0];
+        const go = response.data.response;
         setCovidNewsState(go);
-        // console.log(go);
+        console.log(go);
       })
       .catch(function (error) {
         console.error(error);
@@ -58,7 +63,7 @@ function Covid() {
     axios
       .request(optionss)
       .then(function (response) {
-        // console.log(response.data);
+        console.log(response.data);
       })
       .catch(function (error) {
         console.error(error);
@@ -69,7 +74,7 @@ function Covid() {
     axios
       .request(options)
       .then(function (response) {
-        // console.log(response);
+        console.log(response);
       })
       .catch(function (error) {
         console.error(error);
@@ -78,8 +83,6 @@ function Covid() {
 
   return (
     <>
-      <div>Info: {covidNewsState.cases.active}</div>
-
       <div className="container">
         <div className="row">
           <Form.Group className="mb-3">
@@ -87,9 +90,9 @@ function Covid() {
             <Form.Control placeholder="Disabled input" disabled />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Disabled select menu</Form.Label>
+            <Form.Label>Choose A State</Form.Label>
             <Form.Select disabled>
-              <option>Disabled select</option>
+              <option></option>
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">

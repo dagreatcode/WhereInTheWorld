@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Form } from "react-bootstrap";
 
 function Covid() {
   const [covidNewsState, setCovidNewsState] = useState({
@@ -13,7 +14,7 @@ function Covid() {
 
   const optionsss = {
     method: "GET",
-    url: "https://covid-193.p.rapidapi.com/history",
+    url: "https://covid-193.p.rapidapi.com/history", // countries, history
     params: { country: "usa", day: "2020-06-02" },
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
@@ -76,12 +77,30 @@ function Covid() {
   };
 
   return (
-    <div>
+    <>
       <div>Info: {covidNewsState.cases.active}</div>
-      <button onClick={handleSubmit}>go</button>
-      <button onClick={handle2Submit}>go</button>
-      <button onClick={handle3Submit}>go</button>
-    </div>
+
+      <div className="container">
+        <div className="row">
+          <Form.Group className="mb-3">
+            <Form.Label>Disabled input</Form.Label>
+            <Form.Control placeholder="Disabled input" disabled />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Disabled select menu</Form.Label>
+            <Form.Select disabled>
+              <option>Disabled select</option>
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Check type="checkbox" label="Can't check this" disabled />
+          </Form.Group>
+        </div>
+        <button onClick={handleSubmit}>go</button>
+        <button onClick={handle2Submit}>go</button>
+        <button onClick={handle3Submit}>go</button>
+      </div>
+    </>
   );
 }
 

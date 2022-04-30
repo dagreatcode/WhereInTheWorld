@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form } from "react-bootstrap";
+// import { Form } from "react-bootstrap";
 
 function Covid() {
-
   const [covidNewsState, setCovidNewsState] = useState({
     continent: "",
-    country: "usa",
+    country: "all",
     day: "2020-06-02",
     population: 0,
     cases: {},
     tests: {},
     time: "",
-    deaths: {}
+    deaths: {},
+    words: "",
   });
 
   // const [covidState, setCovidState] = useState({
@@ -24,7 +24,7 @@ function Covid() {
   const options = {
     method: "GET",
     url: "https://covid-193.p.rapidapi.com/history",
-    params: { country: covidNewsState.country, day: covidNewsState.day},
+    params: { country: covidNewsState.country, day: covidNewsState.day },
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -75,6 +75,18 @@ function Covid() {
       });
   };
 
+  const handleInputChange = (event) => {
+    setCovidNewsState({
+      ...covidNewsState,
+      words: event.target.value,
+    });
+  };
+
+  // const handleFormChange = (e) => {
+  //   e.preventDefault();
+  //   console.log("ok");
+  // };
+
   const handle2Submit = () => {
     // axios
     //   .request(optionss)
@@ -102,23 +114,20 @@ function Covid() {
     <>
       <div className="container">
         <div className="row">
-          <Form.Group className="mb-3">
-            <Form.Label>Disabled input</Form.Label>
-            <Form.Control placeholder="Disabled input" disabled />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Choose A State</Form.Label>
-            <Form.Select disabled>
-              <option></option>
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Check type="checkbox" label="Can't check this" disabled />
-          </Form.Group>
+          <label>Type Here</label>
+          <input
+            type="text"
+            name="words"
+            value={covidNewsState.words}
+            onChange={handleInputChange}
+            className="words"
+          />
         </div>
-        <h1>Hello: {covidNewsState.population} - {covidNewsState.cases.new} - {covidNewsState.time}
-         - {covidNewsState.tests.total}</h1>
         <button onClick={handleSubmit}>go</button>
+        <h1>
+          Hello: {covidNewsState.population} - {covidNewsState.cases.new} -{" "}
+          {covidNewsState.time}- {covidNewsState.tests.total}
+        </h1>
         <button onClick={handle2Submit}>go</button>
         <button onClick={handle3Submit}>go</button>
       </div>

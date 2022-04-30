@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 // import { Form } from "react-bootstrap";
 
-function Covid() {
+function Covid(props) {
   const [covidNewsState, setCovidNewsState] = useState({
     continent: "",
     country: "all",
@@ -85,7 +85,7 @@ function Covid() {
   // const handleFormChange = (e) => {
   //   e.preventDefault();
   //   console.log("ok");
-  // };
+  // }
 
   const handle2Submit = () => {
     // axios
@@ -114,19 +114,30 @@ function Covid() {
     <>
       <div className="container">
         <div className="row">
-          <label>Type Here</label>
-          <input
-            type="text"
-            name="words"
-            value={covidNewsState.words}
-            onChange={handleInputChange}
-            className="words"
-          />
+          <label>
+            <input
+              type="text"
+              name="words"
+              value={covidNewsState.words}
+              onChange={handleInputChange}
+              className="words"
+            />
+          </label>
         </div>
         <button onClick={handleSubmit}>go</button>
         <h1>
-          Hello: {covidNewsState.population} - {covidNewsState.cases.new} -{" "}
-          {covidNewsState.time}- {covidNewsState.tests.total}
+          continent:{covidNewsState.cases.new} <br/>
+          country: {covidNewsState.cases.new} <br/>
+          population: {covidNewsState.population} <br/>
+          cases: {covidNewsState.cases.new} <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;1M_pop: , active: {covidNewsState.cases.new}, critical: {covidNewsState.cases.new}, n… <br/>
+          deaths: {covidNewsState.cases.new} <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;1M_pop: , new: {covidNewsState.deaths.new}, total: {covidNewsState.cases.new}<br/>
+          tests: {covidNewsState.cases.new}<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;1M_pop: , total: {covidNewsState.tests.total} <br/>
+          day: {covidNewsState.cases.new}<br/>
+          time: {covidNewsState.time}<br/>
+          Hello: {" "}<br/>
         </h1>
         <button onClick={handle2Submit}>go</button>
         <button onClick={handle3Submit}>go</button>
@@ -136,3 +147,12 @@ function Covid() {
 }
 
 export default Covid;
+// handleInputChange = event => {
+//   // Getting the value and name of the input which triggered the change
+//   const { name, value } = event.target;
+
+//   // Updating the input's state
+//   this.setState({
+//     [name]: value
+//   });
+// };

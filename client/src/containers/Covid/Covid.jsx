@@ -282,8 +282,7 @@ function Covid(props) {
           <br />
           TwoLetterSymbol: {covidFullReport.TwoLetterSymbol}
           <br />
-          id: 
-          {covidFullReport.id}
+          id: {covidFullReport.id}
           <br />
           one_Caseevery_X_ppl: {covidFullReport.one_Caseevery_X_ppl}
           <br />

@@ -5,21 +5,50 @@ import axios from "axios";
 function Covid(props) {
   const [covidNewsState, setCovidNewsState] = useState({
     continent: "",
-    country: "all",
-    day: "2020-06-02",
+    country: "usa",
+    day: "2022-03-04",
     population: 0,
     cases: {},
     tests: {},
     time: "",
     deaths: {},
-    words: "",
   });
 
-  // const [covidState, setCovidState] = useState({
-  //   location: {},
-  //   news: [],
-  //   updatedDateTime: ""
-  // })
+  const [covidState, setCovidState] = useState({
+    title: "",
+    excerpt: "",
+    originalUrl: "",
+    // updatedDateTime: "",
+  });
+
+  const [covidFullReport, setReport] = useState({
+    ActiveCases: 0,
+    Case_Fatality_Rate: 0.0,
+    Continent: "",
+    Country: "",
+    Deaths_1M_pop: 0,
+    Infection_Risk: 0.0,
+    NewCases: 0,
+    NewDeaths: 0,
+    NewRecovered: 0,
+    Population: "",
+    Recovery_Proporation: 0,
+    Serious_Critical: 0,
+    Test_Percentage: 0,
+    Tests_1M_Pop: 0,
+    ThreeLetterSymbol: "",
+    TotCases_1M_Pop: 0,
+    TotalCases: 0,
+    TotalDeaths: 0,
+    TotalRecovered: "",
+    TotalTests: "",
+    TwoLetterSymbol: "",
+    id: "",
+    one_Caseevery_X_ppl: 0,
+    one_Deathevery_X_ppl: 0,
+    one_Testevery_X_ppl: 0,
+    rank: 0,
+  });
 
   const options = {
     method: "GET",
@@ -44,24 +73,24 @@ function Covid(props) {
   //   }
   // };
 
-  // const optionss = {
-  //   method: "GET",
-  //   url: "https://coronavirus-smartable.p.rapidapi.com/news/v1/US/",
-  //   headers: {
-  //     "X-RapidAPI-Host": "coronavirus-smartable.p.rapidapi.com",
-  //     "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
-  //   },
-  // };
+  const optionss = {
+    method: "GET",
+    url: "https://coronavirus-smartable.p.rapidapi.com/news/v1/US/",
+    headers: {
+      "X-RapidAPI-Host": "coronavirus-smartable.p.rapidapi.com",
+      "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+    },
+  };
 
-  // const options = {
-  //   method: "GET",
-  //   url: "https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica",
-  //   headers: {
-  //     "X-RapidAPI-Host":
-  //       "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com",
-  //     "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
-  //   },
-  // };
+  const option = {
+    method: "GET",
+    url: "https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica",
+    headers: {
+      "X-RapidAPI-Host":
+        "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com",
+      "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+    },
+  };
 
   const handleSubmit = () => {
     axios
@@ -76,11 +105,28 @@ function Covid(props) {
   };
 
   const handleInputChange = (event) => {
+    const { name, value } = event.target;
     setCovidNewsState({
       ...covidNewsState,
-      words: event.target.value,
+      [name]: value,
     });
   };
+
+  // const handleInput2Change = (event) => {
+  //   const { name, value } = event.target;
+  //   setCovidNewsState({
+  //     ...covidNewsState,
+  //     [name]: value,
+  //   });
+  // };
+
+  // const handleInput3Change = (event) => {
+  //   const { name, value } = event.target;
+  //   setCovidNewsState({
+  //     ...covidNewsState,
+  //     [name]: value,
+  //   });
+  // };
 
   // const handleFormChange = (e) => {
   //   e.preventDefault();
@@ -88,26 +134,27 @@ function Covid(props) {
   // }
 
   const handle2Submit = () => {
-    // axios
-    //   .request(optionss)
-    //   .then(function (response) {
-    //     console.log(response.data);
-    //     setCovidState(response.data)
-    //   })
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   });
+    axios
+      .request(optionss)
+      .then(function (response) {
+        console.log(response.data);
+        setCovidState(response.data.news[0]);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   };
 
   const handle3Submit = () => {
-    // axios
-    //   .request(options)
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   });
+    axios
+      .request(option)
+      .then(function (response) {
+        console.log(response.data[0]);
+        setReport(response.data[0]);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   };
 
   return (
@@ -117,30 +164,136 @@ function Covid(props) {
           <label>
             <input
               type="text"
-              name="words"
-              value={covidNewsState.words}
+              name="day"
+              value={covidNewsState.day}
               onChange={handleInputChange}
-              className="words"
+              className="day"
+              placeholder="2022-04-30"
+            />
+          </label>
+        </div>
+        <h6>Place a Continent here</h6>
+        <div className="row">
+          <label>
+            <input
+              type="text"
+              name="continent"
+              value={covidNewsState.continent}
+              onChange={handleInputChange}
+              className="continent"
+              placeholder="continent"
+            />
+          </label>
+        </div>
+        <h6>Place a Country here</h6>
+        <div className="row">
+          <label>
+            <input
+              type="text"
+              name="country"
+              value={covidNewsState.country}
+              onChange={handleInputChange}
+              className="country"
+              placeholder="USA"
             />
           </label>
         </div>
         <button onClick={handleSubmit}>go</button>
         <h1>
-          continent:{covidNewsState.cases.new} <br/>
-          country: {covidNewsState.cases.new} <br/>
-          population: {covidNewsState.population} <br/>
-          cases: {covidNewsState.cases.new} <br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;1M_pop: , active: {covidNewsState.cases.new}, critical: {covidNewsState.cases.new}, n… <br/>
-          deaths: {covidNewsState.cases.new} <br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;1M_pop: , new: {covidNewsState.deaths.new}, total: {covidNewsState.cases.new}<br/>
-          tests: {covidNewsState.cases.new}<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;1M_pop: , total: {covidNewsState.tests.total} <br/>
-          day: {covidNewsState.cases.new}<br/>
-          time: {covidNewsState.time}<br/>
-          Hello: {" "}<br/>
+          Day:&nbsp; {covidNewsState.day}
+          <br />
+          Time:&nbsp; {covidNewsState.time}
+          <br />
+          Continent:&nbsp; {covidNewsState.continent} <br />
+          Country:&nbsp; {covidNewsState.country} <br />
+          Population:&nbsp; {covidNewsState.population} <br />
+          Cases
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;active: {covidNewsState.cases.active}
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;new: {covidNewsState.cases.new}
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;critical: {covidNewsState.cases.critical}
+          <br />
+          Deaths
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;new: {covidNewsState.deaths.new}
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;total: {covidNewsState.deaths.total}
+          <br />
+          Tests
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;total: {covidNewsState.tests.total} <br />
         </h1>
+        <br />
         <button onClick={handle2Submit}>go</button>
+        <h1>
+          Title: {covidState.title} <br />
+          <br />
+          News: {covidState.excerpt} <br />
+          <br />
+          Link: {covidState.originalUrl} <br />
+          <br />
+          {/* Time: {covidState.updatedDateTime}
+          <br /> */}
+        </h1>
         <button onClick={handle3Submit}>go</button>
+        <h1>
+          <br />
+          ActiveCases: {covidFullReport.ActiveCases}
+          <br />
+          Case_Fatality_Rate:{covidFullReport.Case_Fatality_Rate}
+          <br />
+          Continent:{covidFullReport.Continent}
+          <br />
+          Country: {covidFullReport.Country}
+          <br />
+          Deaths_1M_pop: {covidFullReport.Deaths_1M_pop}
+          <br />
+          Infection_Risk: {covidFullReport.Infection_Risk}
+          <br />
+          NewCases: {covidFullReport.NewCases}
+          <br />
+          NewDeaths: {covidFullReport.NewDeaths}
+          <br />
+          NewRecovered: {covidFullReport.NewRecovered}
+          <br />
+          Population: {covidFullReport.Population}
+          <br />
+          Recovery_Proporation: {covidFullReport.Recovery_Proporation}
+          <br />
+          Serious_Critical: {covidFullReport.Serious_Critical}
+          <br />
+          Test_Percentage: {covidFullReport.Test_Percentage}
+          <br />
+          Tests_1M_Pop: {covidFullReport.Tests_1M_Pop}
+          <br />
+          ThreeLetterSymbol: {covidFullReport.ThreeLetterSymbol}
+          <br />
+          TotCases_1M_Pop: {covidFullReport.TotCases_1M_Pop}
+          <br />
+          TotalCases: {covidFullReport.TotalCases}
+          <br />
+          TotalDeaths: {covidFullReport.TotalDeaths}
+          <br />
+          TotalRecovered: {covidFullReport.TotalRecovered}
+          <br />
+          TotalTests: {covidFullReport.TotalTests}
+          <br />
+          TwoLetterSymbol: {covidFullReport.TwoLetterSymbol}
+          <br />
+          id: 
+          {covidFullReport.id}
+          <br />
+          one_Caseevery_X_ppl: {covidFullReport.one_Caseevery_X_ppl}
+          <br />
+          one_Deathevery_X_ppl: {covidFullReport.one_Deathevery_X_ppl}
+          <br />
+          one_Testevery_X_ppl: {covidFullReport.one_Testevery_X_ppl}
+          <br />
+          rank: {covidFullReport.rank}
+          <br />
+        </h1>
       </div>
     </>
   );

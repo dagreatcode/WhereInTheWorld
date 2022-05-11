@@ -7,7 +7,7 @@ class Gas extends Component {
 
     }
 
-  componentDidMount() {
+  handleSubmit() {
     const options = {
       method: 'GET',
       url: 'https://gas-price.p.rapidapi.com/stateUsaPrice',
@@ -29,7 +29,7 @@ class Gas extends Component {
 
   render() {
     return <div>
-      <h1>Take Choice and Pull That Data In</h1>
+      <h1>Page Is In Construction. Gas API is 5 calls per month.</h1>
     </div>;
   }
 }

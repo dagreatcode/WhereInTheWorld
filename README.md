@@ -1,5 +1,10 @@
 # whereintheworld
 
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+
 ## User Story
 
 ```

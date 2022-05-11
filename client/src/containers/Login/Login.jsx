@@ -12,11 +12,11 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <div className="mt-4">
-        <h2>SignIn</h2>
+        <h2>Login</h2>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='p-4 p-md-5 border rounded-3 bg-light'>
         <div className="container">
           <div className="row">
             <div className="col-12-sm">
@@ -42,7 +42,7 @@ const Login = () => {
               />
             </div>
           </div>
-          <button className="btn btn-success" type="submit">
+          <button className="w-10 btn btn-lg btn-primary" type="submit">
               Submit
           </button>
         </div>

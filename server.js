@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/whereintheworld",
+  process.env.MONGODB_URI || "mongodb://localhost/whereintheworld_db",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -44,7 +44,7 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-app.use("/api/user", UserController);
+app.use(UserController);
 
 app.get("/apiFun", (req, res) => {
   res.send("API FUN");
@@ -53,9 +53,6 @@ app.get("/apiFun", (req, res) => {
   res.end();
 });
 
-// app.get("/api/users", (req, res) => {
-//   return res.json(users);
-// });
 // app.post("/api/users", (req, res) => {
 //   var newUser = req.body;
 //   console.log(newUser);

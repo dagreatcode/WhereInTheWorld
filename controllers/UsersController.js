@@ -44,4 +44,13 @@ router.delete("/api/user/:id", (req, res) => {
   });
 });
 
+//Test
+const users = {
+  username: "Vincent",
+}
+
+router.get("/api/users", (req, res) => {
+  return res.json(users);
+});
+
 module.exports = router;

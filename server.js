@@ -2,8 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const UserController = require("./controllers/UsersController");
 // const ConsoleApp = require("./consoleApp/consoleApp");
-const db = require("./models");
 
 const PORT = process.env.PORT || 3001;
 
@@ -14,8 +14,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("client/build"));
-
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/whereintheworld",
   {
@@ -42,11 +44,7 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-// var users = [
-//   {
-//     username: "Vincent Kendrick",
-//   },
-// ];
+app.use("/api/user", UserController);
 
 app.get("/apiFun", (req, res) => {
   res.send("API FUN");
@@ -69,42 +67,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-// Resource Driven API //
-//////////////////////////////////////////////////////////
-
-app.get("/api/user", (req, res) => {
-  db.User.find({}).then(foundUsers => {
-    res.json(foundUsers);
-  })
-})
-app.get("/api/user/:id", (req, res) => {
-  db.User.find({_id: req.params.id}).then(foundUsers => {
-    res.json(foundUsers);
-  })
-})
-app.post("/api/user", (req, res) => {
-  db.User.create(req.body).then(newUser => {
-    res.json(newUser);
-  })
-})
-// app.put("/api/user/:id", (req, res) => {
-//   db.User.updateOne({_id: req.params.id}, req.body).then(updateUser => {
-//     res.json(updateUser);
-//   })
-// })
-app.put("/api/user/:id", (req, res) => {
-  db.User.findByIdAndUpdate(req.params.id, req.body, {new: true }).then(updateUser => {
-    res.json(updateUser);
-  })
-})
-app.delete("/api/user/:id", (req, res) => {
-  db.User.findByIdAndDelete(req.params.id).then(result => {
-    res.json(result);
-  })
-})
-
-//////////////////////////////////////////////////////////
-
 app.listen(PORT, () => {
-  console.log(`App is running on http://localhost:${PORT}`);
+  console.log(`🌎 App is running on http://localhost:${PORT}`);
 });

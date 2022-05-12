@@ -8,6 +8,7 @@ import Gas from "./containers/Gas/Gas";
 import Covid from "./containers/Covid/Covid";
 import WhereToGo from "./containers/WhereToGo/WhereToGo";
 import NavBar from "./components/NavBar/NavBar";
+import NotFound from "./containers/NotFound/NotFound";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/Gas" element={<Gas/>} />
         <Route exact path="/Covid" element={<Covid/>} />
         <Route exact path="/WhereToGo" element={<WhereToGo/>} />
+        <Route exact component={NotFound} />
       </Routes>
     </Router>
   );

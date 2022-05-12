@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const UserController = require("./controllers/UsersController");
+const AuthController = require("./controllers/authController");
 // const ConsoleApp = require("./consoleApp/consoleApp");
 
 const PORT = process.env.PORT || 3001;
@@ -38,13 +39,15 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
 
+app.use(UserController);
+app.use(AuthController);
+
 app.get("/api/config", (req, res) => {
   res.json({
     success: true,
   });
 });
 
-app.use(UserController);
 
 app.get("/apiFun", (req, res) => {
   res.send("API FUN");

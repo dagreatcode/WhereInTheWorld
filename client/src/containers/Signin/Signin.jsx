@@ -11,7 +11,7 @@ const Signin = () => {
               <p className="col-lg-10 fs-4">
                 For signing up, you will be able to use this site forever, for
                 free. Early sign up is a was to help the developers with bug and
-                updates. We value you opinion and hope to bring great customer
+                updates. We value your opinion and hope to bring great customer
                 service.
               </p>
             </div>

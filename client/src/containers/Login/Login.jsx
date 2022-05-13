@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import {useHistory} from "react-router-dom";
 
 const Login = () => {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // const { email, password } = e.target;
     axios
       .post("/api/user", { email, password })
       .then((response) => {
         console.log(response.data);
+        // history.push("/Home/");
+        // window.location = "/home";
+        // this.props.history.push("/home");
       })
       .catch((err) => {
         console.log(err);
@@ -32,13 +36,14 @@ const Login = () => {
           <div className="row">
             <div className="col-sm-12">
               <input
+                id="email"
                 className="form-control"
                 type="text"
                 placeholder="Email"
                 name="email"
-                value={user.email}
+                value={email}
                 onChange={(e) => {
-                  setUser({ ...user, email: e.target.value });
+                  setEmail(e.target.value);
                 }}
               />
             </div>
@@ -46,18 +51,25 @@ const Login = () => {
           <div className="row form-group">
             <div className="col-sm-12">
               <input
+                id="password"
                 className="form-control"
                 type="password"
                 placeholder="Password"
-                name="password"
-                value={user.password}
+                name={password}
+                value={password}
                 onChange={(e) => {
-                  setUser({ ...user, password: e.target.value });
+                  setPassword(e.target.value);
                 }}
               />
             </div>
           </div>
-          <button className="w-10 btn btn-lg btn-primary" type="submit">
+          <button
+            className="w-10 btn btn-lg btn-primary"
+            type="submit"
+            //onClick={(e) => {
+            //  this.props.history.push("/Home");
+            // }}
+          >
             Submit
           </button>
         </div>

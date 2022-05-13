@@ -9,6 +9,7 @@ import Covid from "./containers/Covid/Covid";
 import WhereToGo from "./containers/WhereToGo/WhereToGo";
 import NavBar from "./components/NavBar/NavBar";
 import NotFound from "./containers/NotFound/NotFound";
+import AdminUsers from "./containers/Admin/AdminUsers";
 
 function App() {
   useEffect(() => {
@@ -24,17 +25,21 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route exact path="/Login" element={<Login/>} />
-        <Route exact path="/Gas" element={<Gas/>} />
-        <Route exact path="/Covid" element={<Covid/>} />
-        <Route exact path="/WhereToGo" element={<WhereToGo/>} />
-        <Route exact component={NotFound} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route exact path="/AdminUsers" element={<AdminUsers />} />
+          <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Gas" element={<Gas />} />
+          <Route exact path="/Covid" element={<Covid />} />
+          <Route exact path="/WhereToGo" element={<WhereToGo />} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          {/* <Route render={() => <h1>Page not found</h1>} /> */}
+        </Routes>
+      </Router>
+    </>
   );
 }
 

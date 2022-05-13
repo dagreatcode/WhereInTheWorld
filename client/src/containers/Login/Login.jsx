@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +15,8 @@ const Login = () => {
       .post("/api/user", { email, password })
       .then((response) => {
         console.log(response.data);
-        // history.push("/Home/");
+        navigate('/')
+        // history.push("/");
         // window.location = "/home";
         // this.props.history.push("/home");
       })
@@ -66,9 +68,7 @@ const Login = () => {
           <button
             className="w-10 btn btn-lg btn-primary"
             type="submit"
-            //onClick={(e) => {
-            //  this.props.history.push("/Home");
-            // }}
+            //onClick={handleSubmit}
           >
             Submit
           </button>

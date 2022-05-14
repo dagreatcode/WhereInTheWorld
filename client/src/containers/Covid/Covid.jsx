@@ -115,6 +115,13 @@ function Covid(props) {
       [name]: value,
     });
   };
+  const handleInput2Change = (event) => {
+    const { name, value } = event.target;
+    setNextState({
+      ...nextState,
+      [name]: value,
+    });
+  };
 
   // const handleInput2Change = (event) => {
   //   const { name, value } = event.target;
@@ -161,7 +168,7 @@ function Covid(props) {
       });
   };
 
-  const arrayOfCountry = ["", "southamerica", "northamerica", "africa"];
+  // const arrayOfCountry = ["", "southamerica", "northamerica", "africa"];
 
   return (
     <>
@@ -244,7 +251,21 @@ function Covid(props) {
           {/* Time: {covidState.updatedDateTime}
           <br /> */}
         </h1>
-        <div className="form-group">
+        <div className="container">
+        <div className="row">
+          <label>
+            <input
+              type="text"
+              name="country2"
+              value={nextState.country2}
+              onChange={handleInput2Change}
+              className="country2"
+              placeholder="northamerica"
+            />
+          </label>
+        </div>
+        </div>
+        {/* <div className="form-group">
           <select
             className="custom-select mb-3"
             value={nextState.country2}
@@ -258,7 +279,7 @@ function Covid(props) {
               <option>{country}</option>
             ))}
           </select>
-        </div>
+        </div> */}
         <button onClick={handle3Submit}>go</button>
         <h1>
           <br />

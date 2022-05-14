@@ -8,7 +8,7 @@ const WhereToGo = () => {
     id: "",
     location: { lat: 0, lng: 0 },
     name: "",
-    phone_number: "",
+    phone_number: 0,
     types: [],
     website: "",
     radius: "150",
@@ -20,8 +20,8 @@ const WhereToGo = () => {
     url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
     params: {
       location: "37.783366,-122.402325",
-      radius: "150",
-      language: "en",
+      radius: toGo.radius,
+      language: toGo.language,
     },
     headers: {
       "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
@@ -37,8 +37,9 @@ const WhereToGo = () => {
         // const info = response.data.results;
         // info.map((place) => console.log(place));
         // setToGo(response.data.results[0]);
-        var allPlaces = response.data.results;
-        console.log(allPlaces);
+        // var allPlaces = response.data.results;
+        // console.log(allPlaces);
+        console.log(response.data);
         setToGo(response.data.results);
       })
       .catch(function (error) {
@@ -62,24 +63,24 @@ const WhereToGo = () => {
       <div className="container">
         <div className="row">
           <label>
-            <h6>Place name</h6>
+            <h6>Radius</h6>
             <input
               type="text"
-              name="name"
-              value={toGo.name}
+              name="Radius"
+              value={toGo.radius}
               onChange={handleInputChange}
-              className="name"
-              placeholder="name"
+              className="radius"
+              placeholder="radius"
             />
           </label>
         </div>
-        <h6>Number to call</h6>
+        <h6>language</h6>
         <input
-          value={toGo.phone_number}
-          name="phone_number"
+          value={toGo.language}
+          name="language"
           onChange={handleInputChange}
           type="text"
-          placeholder="phone number"
+          placeholder="en"
         />
         {/* {info.map((place) => console.log(place))}; 
         {distance},
@@ -148,8 +149,6 @@ const WhereToGo = () => {
                     <th scope="col">Phone Number</th>
                     <th scope="col">Types</th>
                     <th scope="col">Website</th>
-                    <th scope="col">Radius</th>
-                    <th scope="col">Language</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -162,8 +161,6 @@ const WhereToGo = () => {
                           <td>{place.phone_number}</td>
                           <td>{place.types}</td>
                           <td>{place.website}</td>
-                          <td>{place.radius}</td>
-                          <td>{place.language}</td>
                         </tr>
                       );
                     })

@@ -13,11 +13,15 @@ function Covid(props) {
     time: "",
     deaths: {},
   });
+  const [nextState, setNextState] = useState({
+    country2: "US",
+  });
 
   const [covidState, setCovidState] = useState({
     title: "",
     excerpt: "",
     originalUrl: "",
+
     // updatedDateTime: "",
   });
 
@@ -75,7 +79,7 @@ function Covid(props) {
 
   const optionss = {
     method: "GET",
-    url: "https://coronavirus-smartable.p.rapidapi.com/news/v1/US/",
+    url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/${nextState.country2}/`,
     headers: {
       "X-RapidAPI-Host": "coronavirus-smartable.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -168,7 +172,7 @@ function Covid(props) {
               value={covidNewsState.day}
               onChange={handleInputChange}
               className="day"
-              placeholder="2022-04-30"
+              placeholder="2022-04-30 Must Have"
             />
           </label>
         </div>
@@ -194,7 +198,7 @@ function Covid(props) {
               value={covidNewsState.country}
               onChange={handleInputChange}
               className="country"
-              placeholder="USA"
+              placeholder="USA Must Have"
             />
           </label>
         </div>
@@ -226,6 +230,33 @@ function Covid(props) {
           &nbsp;&nbsp;&nbsp;&nbsp;total: {covidNewsState.tests.total} <br />
         </h1>
         <br />
+
+        <div className="custom-select mb-3">
+          <select>
+            <option
+              selected
+              name="nextState"
+              value={nextState}
+              onChange={(e) => {
+                setNextState(e.target.value);
+              }}
+            >
+              US
+            </option>
+            <option value="1">US</option>
+            <option value="2">AF</option>
+            <option value="3">NA</option>
+            {/* <option selected>User</option>
+                    {typeOfUser.map((kind) => {
+                      return (
+                        <option value={kind._id} key={kind._id}>
+                          {kind.typeOfUser}
+                        </option>
+                      );
+                    })} */}
+          </select>
+        </div>
+
         <button onClick={handle2Submit}>go</button>
         <h1>
           Title: {covidState.title} <br />

@@ -11,6 +11,8 @@ const WhereToGo = () => {
     phone_number: "",
     types: [],
     website: "",
+    radius: "150",
+    language: "en",
   });
 
   const options = {

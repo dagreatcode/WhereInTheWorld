@@ -14,7 +14,7 @@ function Covid(props) {
     deaths: {},
   });
   const [nextState, setNextState] = useState({
-    country2: "US",
+    country2: "southamerica",
   });
 
   const [covidState, setCovidState] = useState({
@@ -79,7 +79,7 @@ function Covid(props) {
 
   const optionss = {
     method: "GET",
-    url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/${nextState.country2}/`,
+    url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/US/`,
     headers: {
       "X-RapidAPI-Host": "coronavirus-smartable.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -88,7 +88,7 @@ function Covid(props) {
 
   const option = {
     method: "GET",
-    url: "https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica",
+    url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/${nextState.country2}`,
     headers: {
       "X-RapidAPI-Host":
         "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com",
@@ -161,6 +161,8 @@ function Covid(props) {
       });
   };
 
+  const arrayOfCountry = ["", "southamerica", "northamerica", "africa"];
+
   return (
     <>
       <div className="container">
@@ -231,32 +233,6 @@ function Covid(props) {
         </h1>
         <br />
 
-        <div className="custom-select mb-3">
-          <select>
-            <option
-              selected
-              name="nextState"
-              value={nextState}
-              onChange={(e) => {
-                setNextState(e.target.value);
-              }}
-            >
-              US
-            </option>
-            <option value="1">US</option>
-            <option value="2">AF</option>
-            <option value="3">NA</option>
-            {/* <option selected>User</option>
-                    {typeOfUser.map((kind) => {
-                      return (
-                        <option value={kind._id} key={kind._id}>
-                          {kind.typeOfUser}
-                        </option>
-                      );
-                    })} */}
-          </select>
-        </div>
-
         <button onClick={handle2Submit}>go</button>
         <h1>
           Title: {covidState.title} <br />
@@ -268,6 +244,21 @@ function Covid(props) {
           {/* Time: {covidState.updatedDateTime}
           <br /> */}
         </h1>
+        <div className="form-group">
+          <select
+            className="custom-select mb-3"
+            value={nextState.country2}
+            id="country2"
+            onChange={(e) => {
+              setNextState(e.target.value);
+            }}
+          >
+            <option value="">All</option>
+            {arrayOfCountry.map((country) => (
+              <option>{country}</option>
+            ))}
+          </select>
+        </div>
         <button onClick={handle3Submit}>go</button>
         <h1>
           <br />

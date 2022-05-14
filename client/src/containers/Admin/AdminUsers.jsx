@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AdminUsers = () => {
   const [user, setUser] = useState([]);
@@ -12,6 +13,11 @@ const AdminUsers = () => {
   }, []);
   return (
     <div className="container">
+      <div className="row">
+        <div className="col-sm-12 text-right">
+          <Link to="/AdminNewUser" className="btn btn-primary">New User</Link>
+        </div>
+      </div>
       <div className="row">
         <div className="col-sm-12">
           <table class="table table-success table-striped">

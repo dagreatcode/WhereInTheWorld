@@ -10,6 +10,7 @@ import WhereToGo from "./containers/WhereToGo/WhereToGo";
 import NavBar from "./components/NavBar/NavBar";
 import NotFound from "./containers/NotFound/NotFound";
 import AdminUsers from "./containers/Admin/AdminUsers";
+import AdminNewUser from "./containers/Admin/AdminNewUser";
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route exact path="/AdminUsers" element={<AdminUsers />} />
+          <Route exact path="/AdminNewUser" element={<AdminNewUser />} />
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Gas" element={<Gas />} />
           <Route exact path="/Covid" element={<Covid />} />

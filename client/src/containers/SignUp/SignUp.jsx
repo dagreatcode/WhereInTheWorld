@@ -1,6 +1,9 @@
 import React from "react";
 
-const Signin = () => {
+const SignUp = () => {
+
+  // /api/signup
+
   return (
     <div>
       <div className="container">
@@ -71,4 +74,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default SignUp;

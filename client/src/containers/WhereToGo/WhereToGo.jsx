@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const WhereToGo = () => {
@@ -14,12 +14,30 @@ const WhereToGo = () => {
     radius: "150",
     language: "en",
   });
+  const [where, setWhere] = useState({
+    location: { lat: 0, lng: 0 },
+    latitude: 0,
+    longitude: 0,
+  })
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      // console.log("Latitude is :", position.coords.latitude);
+      // console.log("Longitude is :", position.coords.longitude);
+      // const [latitude, longitude] = position.coords;
+      // const lat = position.coords.latitude;
+      // const lng = position.coords.longitude;
+      setWhere({location: { lat: position.coords.latitude, lng: position.coords.longitude}, latitude: position.coords.latitude, longitude: position.coords.longitude})
+      // setWhere({latitude: position.coords.latitude, longitude: position.coords.longitude});
+    });
+  }, []);
 
   const options = {
     method: "GET",
     url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
     params: {
-      location: "37.783366,-122.402325",
+      location: `37.783366,-122.402325`,
+      // location: "latitude,longitude",
       radius: toGo.radius,
       language: toGo.language,
     },

@@ -103,6 +103,7 @@ SOFTWARE.
 [] Finish the login and sign up authe n autho.
 [] finish the admin side of the site.
 [] fix console app that is connected.
+[] Adding images and music to mongoDB.
 
 [] Maybe match the with some Covid results with webhooks.
 [] find gas prices and compare to see what is the cheapest.

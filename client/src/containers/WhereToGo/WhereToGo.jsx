@@ -15,10 +15,10 @@ const WhereToGo = () => {
     language: "en",
   });
   const [where, setWhere] = useState({
-    location: { lat: 0, lng: 0 },
+    location: {},
     latitude: 0,
     longitude: 0,
-  })
+  });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -27,7 +27,15 @@ const WhereToGo = () => {
       // const [latitude, longitude] = position.coords;
       // const lat = position.coords.latitude;
       // const lng = position.coords.longitude;
-      setWhere({location: { lat: position.coords.latitude, lng: position.coords.longitude}, latitude: position.coords.latitude, longitude: position.coords.longitude})
+      setWhere({
+        location: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        },
+        // location: `position.coords.latitude``position.coords.longitude`,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
       // setWhere({latitude: position.coords.latitude, longitude: position.coords.longitude});
     });
   }, []);
@@ -36,7 +44,9 @@ const WhereToGo = () => {
     method: "GET",
     url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
     params: {
+      // TODO: Add in location from state somehow.
       location: `37.783366,-122.402325`,
+      // location: where.location,
       // location: "latitude,longitude",
       radius: toGo.radius,
       language: toGo.language,

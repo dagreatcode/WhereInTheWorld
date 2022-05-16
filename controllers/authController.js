@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
-
+// TODO: Fix the return password to match. maybe reverse hash to match login password.
 // "Sign Up"
 
 router.post("/api/signup", (req, res) => {

@@ -42,6 +42,8 @@ connection.on("error", (err) => {
 app.use("/api/user",UserController);
 app.use(AuthController);
 
+// TODO: Add console app.
+
 app.get("/api/config", (req, res) => {
   res.json({
     success: true,

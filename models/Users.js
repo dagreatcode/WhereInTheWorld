@@ -5,6 +5,7 @@ const UsersSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, require: true },
   typeOfUser: { type: String, require: false },
+  // TODO: Add image model. 
   date: { type: Date, default: Date.now },
 });
 

@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
+// TODO: Add routes to add images to mongoDB for user after sign in.
+
 // Resource Driven API //
 
 // router.get("/", (req, res) => {

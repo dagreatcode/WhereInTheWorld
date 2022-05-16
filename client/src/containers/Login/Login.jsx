@@ -12,6 +12,24 @@ const Login = () => {
     e.preventDefault();
     // const { email, password } = e.target;
     axios
+    // TODO: change to /api/login
+      .post("/api/user", { email, password })
+      .then((response) => {
+        console.log(response.data);
+        navigate("/");
+        // history.push("/");
+        // window.location = "/home";
+        // this.props.history.push("/home");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handle2Submit = (e) => {
+    e.preventDefault();
+    // const { email, password } = e.target;
+    axios
+    // TODO: change to /api/signup
       .post("/api/user", { email, password })
       .then((response) => {
         console.log(response.data);
@@ -88,7 +106,7 @@ const Login = () => {
             </div>
             <div className="col-md-10 mx-auto col-lg-5">
               <form
-                onSubmit={handleSubmit}
+                onSubmit={handle2Submit}
                 className="p-4 p-md-5 border rounded-3 bg-light"
               >
                 <div className="form-floating mb-3">

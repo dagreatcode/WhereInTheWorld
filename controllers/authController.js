@@ -20,6 +20,12 @@ router.post("/api/signup", (req, res) => {
           password: hashedPassword,
         })
           .then((newUser) => {
+            const token = jwt.sign({ email: newUser.email }, "shhhhh");
+            res.json({
+              err: false,
+              data: token,
+              message: "Successfully signed up in.",
+            });
             res.json(newUser);
           })
           .catch((err) => {
@@ -53,7 +59,7 @@ router.post("/api/login", (req, res) => {
               // TODO: Send a jwt back as data instead.
               // TODO: lock down the token in a time limit
               // TODO: Something needs to be on the back end paying attention
-            const token = jwt.sign({ email: foundUser.email}, "shhhhh");
+              const token = jwt.sign({ email: foundUser.email }, "shhhhh");
               res.json({
                 err: false,
                 data: token,

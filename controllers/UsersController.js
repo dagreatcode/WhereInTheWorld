@@ -37,7 +37,6 @@ router.post("/", (req, res) => {
     res.json(newUser);
   });
 });
-
 // app.put("/api/user/:id", (req, res) => {
 //   db.User.updateOne({_id: req.params.id}, req.body).then(updateUser => {
 //     res.json(updateUser);

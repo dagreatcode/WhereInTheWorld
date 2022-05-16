@@ -170,7 +170,7 @@ const WhereToGo = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-              <table class="table table-success table-striped">
+              <table className="table table-success table-striped">
                 <thead>
                   <tr>
                     <th scope="col">Place</th>
@@ -194,7 +194,9 @@ const WhereToGo = () => {
                       );
                     })
                   ) : (
-                    <h1>Not Found</h1>
+                    <tr>
+                      <th>Not Found Until Summit</th>
+                    </tr>
                   )}
                 </tbody>
               </table>

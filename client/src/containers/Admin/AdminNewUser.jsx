@@ -61,7 +61,7 @@ const AdminNewUser = () => {
                     }}
                   />
                   <div id="norton-idsafe-field-styling-divId"></div>
-                  <label for="floatingInput">Email address</label>
+                  <label htmlFor="floatingInput">Email address</label>
                 </div>
                 <div className="form-floating mb-3">
                   <input
@@ -78,7 +78,7 @@ const AdminNewUser = () => {
                     }}
                   />
                   <div id="norton-idsafe-field-styling-divId"></div>
-                  <label for="floatingPassword">Password</label>
+                  <label htmlFor="floatingPassword">Password</label>
                 </div>
                 <div className="custom-select mb-3">
                   <select>

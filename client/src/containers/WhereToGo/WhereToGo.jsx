@@ -45,6 +45,7 @@ const WhereToGo = () => {
     url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
     params: {
       // TODO: Add in location from state somehow.
+      // This works // params: { country: covidNewsState.country, day: covidNewsState.day },
       location: `37.783366,-122.402325`,
       // location: where.location,
       // location: "latitude,longitude",

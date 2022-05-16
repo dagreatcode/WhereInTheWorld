@@ -17,6 +17,7 @@ function Covid(props) {
     country2: "southamerica",
   });
 
+  // FIXME: Add more then just 1 news, add all with map()
   const [covidState, setCovidState] = useState({
     title: "",
     excerpt: "",
@@ -57,7 +58,7 @@ function Covid(props) {
   const options = {
     method: "GET",
     url: "https://covid-193.p.rapidapi.com/history",
-    params: { country: covidNewsState.country, day: covidNewsState.day },
+    params: { country: covidNewsState.country, day: covidNewsState.day }, //TODO: make sure this works.
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -79,7 +80,7 @@ function Covid(props) {
 
   const optionss = {
     method: "GET",
-    url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/US/`,
+    url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/US/`, // TODO: ass from user
     headers: {
       "X-RapidAPI-Host": "coronavirus-smartable.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -88,7 +89,7 @@ function Covid(props) {
 
   const option = {
     method: "GET",
-    url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/${nextState.country2}`,
+    url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/${nextState.country2}`, // FIXME: not taking in information from state.
     headers: {
       "X-RapidAPI-Host":
         "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com",

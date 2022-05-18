@@ -14,7 +14,15 @@ const UsersSchema = new Schema({
     trim: true,
     required: "Password is required",
   },
-  typeOfUser: { type: String, required: false },
+  typeOfUser: {
+    type: String,
+    lowercase: false,
+    trim: true,
+    required: false,
+    default: "User",
+    // Admin: { type: String, lowercase: false, trim: true, required: false },
+    // Coder: { type: String, lowercase: false, trim: true, required: false },
+  },
   // TODO: Add image model.
   date: { type: Date, default: Date.now },
 });

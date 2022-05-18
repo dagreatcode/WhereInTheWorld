@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 // "Sign Up"
 
 router.post("/api/signup", (req, res) => {
-  const { email, password } = req.body[0]
+  const { email, password, typeOfUser } = req.body[0]
   console.log(req.body[0].email)
   // console.log(req.body.email, req.body.password)
   if (!email.trim() || !password.trim()) {
@@ -21,6 +21,7 @@ router.post("/api/signup", (req, res) => {
         db.User.create({
           email: email,
           password: hashedPassword,
+          typeOfUser: typeOfUser,
         })
           .then((newUser) => {
             const token = jwt.sign({ email: newUser.email }, process.env.SECRET);

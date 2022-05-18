@@ -8,8 +8,8 @@ const jwt = require("jsonwebtoken");
 // "Sign Up"
 
 router.post("/api/signup", (req, res) => {
-  const { email, password, typeOfUser } = req.body[0]
-  console.log(req.body[0].email)
+  const { email, password, typeOfUser } = req.body[0];
+  // console.log(req.body[0].email);
   // console.log(req.body.email, req.body.password)
   if (!email.trim() || !password.trim()) {
     res.status(400);
@@ -17,14 +17,17 @@ router.post("/api/signup", (req, res) => {
     bcrypt
       .hash(password, 10)
       .then((hashedPassword) => {
-        console.log(hashedPassword);
+        // console.log(hashedPassword);
         db.User.create({
           email: email,
           password: hashedPassword,
           typeOfUser: typeOfUser,
         })
           .then((newUser) => {
-            const token = jwt.sign({ email: newUser.email }, process.env.SECRET);
+            const token = jwt.sign(
+              { email: newUser.email },
+              process.env.SECRET
+            );
             res.json({
               err: false,
               data: token,
@@ -33,7 +36,7 @@ router.post("/api/signup", (req, res) => {
             res.json(newUser);
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.status(500).json({
               error: true,
               data: null,
@@ -58,12 +61,15 @@ router.post("/api/login", (req, res) => {
         bcrypt
           .compare(password, foundUser.password)
           .then(function (result) {
-            console.log("The password match: ", result);
+            // console.log("The password match: ", result);
             if (result) {
               // TODO: Send a jwt back as data instead.
               // TODO: lock down the token in a time limit
               // TODO: Something needs to be on the back end paying attention
-              const token = jwt.sign({ email: foundUser.email }, process.env.SECRET);
+              const token = jwt.sign(
+                { email: foundUser.email },
+                process.env.SECRET
+              );
               res.json({
                 err: false,
                 data: token,
@@ -78,7 +84,7 @@ router.post("/api/login", (req, res) => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.status(401).json({
               err: true,
               data: null,
@@ -88,7 +94,7 @@ router.post("/api/login", (req, res) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({
         err: true,
         data: null,

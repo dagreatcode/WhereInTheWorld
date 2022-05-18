@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
@@ -7,8 +8,10 @@ const jwt = require("jsonwebtoken");
 // "Sign Up"
 
 router.post("/api/signup", (req, res) => {
-  const { email, password } = req.body;
-  if (!email.trim || !password.trim) {
+  const { email, password } = req.body[0]
+  console.log(req.body[0].email)
+  // console.log(req.body.email, req.body.password)
+  if (!email.trim() || !password.trim()) {
     res.status(400);
   } else {
     bcrypt
@@ -20,11 +23,11 @@ router.post("/api/signup", (req, res) => {
           password: hashedPassword,
         })
           .then((newUser) => {
-            const token = jwt.sign({ email: newUser.email }, "shhhhh");
+            const token = jwt.sign({ email: newUser.email }, process.env.SECRET);
             res.json({
               err: false,
               data: token,
-              message: "Successfully signed up in.",
+              message: "Successfully signed up.",
             });
             res.json(newUser);
           })
@@ -46,7 +49,7 @@ router.post("/api/signup", (req, res) => {
 // "Login"
 
 router.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body[0];
   db.User.findOne({ email: email })
     .then((foundUser) => {
       if (foundUser) {
@@ -59,7 +62,7 @@ router.post("/api/login", (req, res) => {
               // TODO: Send a jwt back as data instead.
               // TODO: lock down the token in a time limit
               // TODO: Something needs to be on the back end paying attention
-              const token = jwt.sign({ email: foundUser.email }, "shhhhh");
+              const token = jwt.sign({ email: foundUser.email }, process.env.SECRET);
               res.json({
                 err: false,
                 data: token,

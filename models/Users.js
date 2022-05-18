@@ -2,12 +2,26 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // typeOfUser
 const UsersSchema = new Schema({
-  email: { type: String, required: true },
-  password: { type: String, require: true },
-  typeOfUser: { type: String, require: false },
-  // TODO: Add image model. 
+  // email: { type: String, trim: true, required: "email is required" },
+  // password: { type: String, trim: true, required: "password is required" },
+  email: {
+    type: String,
+    trim: true,
+    required: "Email address is required",
+  },
+  password: {
+    type: String,
+    trim: true,
+    required: "Password is required",
+  },
+  typeOfUser: { type: String, required: false },
+  // TODO: Add image model.
   date: { type: Date, default: Date.now },
 });
+
+// UsersSchema.virtual("kindOfUser").get(function () {
+//   return `${this.typeOfUser} ${this.date}`;
+// })
 
 const User = mongoose.model("User", UsersSchema);
 

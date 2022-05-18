@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const path = require("path");
 const UserController = require("./controllers/UsersController");
 const AuthController = require("./controllers/authController");
+// const app.use(bodyParser.json());
 // const ConsoleApp = require("./consoleApp/consoleApp");
-
+// const bodyParser = require("bodyParser")
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -14,6 +15,11 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// // parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
+// // parse application/json
+// app.use(bodyParser.json())
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

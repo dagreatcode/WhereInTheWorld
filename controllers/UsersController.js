@@ -14,18 +14,17 @@ const db = require("../models");
 //     });
 // });
 router.get("/", (req, res) => {
-  db.User.find({})
-    .then((foundUsers) => {
-      res.json(foundUsers);
-    })
-    // .catch((err) => {
-    //   console.log(err);
-    //   res.json({
-    //     error: false,
-    //     data: foundUsers,
-    //     message: "Found Users.",
-    //   });
-    // });
+  db.User.find({}).then((foundUsers) => {
+    res.json(foundUsers);
+  });
+  // .catch((err) => {
+  //   console.log(err);
+  //   res.json({
+  //     error: false,
+  //     data: foundUsers,
+  //     message: "Found Users.",
+  //   });
+  // });
 });
 
 router.get("/:id", (req, res) => {
@@ -39,6 +38,7 @@ router.post("/", (req, res) => {
     res.json(newUser);
   });
 });
+
 // app.put("/api/user/:id", (req, res) => {
 //   db.User.updateOne({_id: req.params.id}, req.body).then(updateUser => {
 //     res.json(updateUser);

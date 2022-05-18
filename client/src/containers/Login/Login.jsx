@@ -13,7 +13,7 @@ const Login = () => {
     // const { email, password } = e.target;
     axios
     // TODO: change to /api/login
-      .post("/api/user", { email, password })
+      .post("/api/login", { email, password })
       .then((response) => {
         console.log(response.data);
         navigate("/");
@@ -30,7 +30,7 @@ const Login = () => {
     // const { email, password } = e.target;
     axios
     // TODO: change to /api/signup
-      .post("/api/user", { email, password })
+      .post("/api/signup", { email, password })
       .then((response) => {
         console.log(response.data);
         navigate("/");

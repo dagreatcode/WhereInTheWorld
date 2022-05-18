@@ -1,5 +1,5 @@
 import React from "react";
-
+// FIXME: Remember. This page is not in use
 const SignUp = () => {
 
   // /api/signup

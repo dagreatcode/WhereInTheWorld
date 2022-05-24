@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-
+const jwt = require("jsonwebtoken");
 // TODO: Add routes to add images to mongoDB for user after sign in.
 
 // Resource Driven API //
@@ -13,20 +13,95 @@ const db = require("../models");
 //       res.json(foundUsers);
 //     });
 // });
+
 router.get("/", (req, res) => {
-  db.User.find({}).then((foundUsers) => {
-    res.json(foundUsers);
+  // console.log(JSON.stringify(req.headers));
+  // const secret = process.env.SECRET;
+  // const headerValue = req.headers["authorization"];
+  // const headerValue = req.headers['authorization'];
+  // const header = { authorization: headerValue };
+  // console.log(req.headers.go);
+  // console.log(req.headers.authorization);
+  if (!req.headers.authorization) {
+    return res.status(401).json({
+      error: true,
+      data: null,
+      message: "Unauthorized.",
+    });
+  }
+  jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
+    if (err) {
+      console.log(req.headers);
+      // console.log(decoded);
+      console.log(err);
+      console.log("error getting token");
+      return res.status(401).json({
+        error: true,
+        data: null,
+        message: "Invalid token.",
+      });
+    } else {
+      console.log(decoded);
+
+      db.User.find({})
+        .then((foundUsers) => {
+          res.json(foundUsers);
+        })
+        .catch((err) => {
+          console.log(err);
+          console.log("error when decoding token");
+          res.status(500).json({
+            error: true,
+            data: null,
+            message: "Failed to retrieve all users.",
+          });
+        });
+    }
   });
-  // .catch((err) => {
-  //   console.log(err);
-  //   res.json({
-  //     error: false,
-  //     data: foundUsers,
-  //     message: "Found Users.",
-  //   });
-  // });
 });
 
+// router.get("/", (req, res) => {
+//   console.log(req.headers);
+//   if (!req.headers.authorization) {
+//     return res.status(401).json({
+//       error: true,
+//       data: null,
+//       message: "Unauthorized.",
+//     });
+//   }
+//   jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
+//     if (err) {
+//       console.log(err);
+//       return res.status(401).json({
+//         error: true,
+//         data: null,
+//         message: "Invalid token.",
+//       });
+//     } else {
+//       console.log(decoded);
+//       db.User.find({})
+//         .then((foundUsers) => {
+//           res.json(foundUsers);
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//           res.status(500).json({
+//             error: true,
+//             data: null,
+//             message: "Failed to retrieve all books.",
+//           });
+//         });
+//       // .catch((err) => {
+//       //   console.log(err);
+//       //   res.json({
+//       //     error: false,
+//       //     data: foundUsers,
+//       //     message: "Found Users.",
+//       //   });
+//       // });
+//     }
+//   });
+// });
 router.get("/:id", (req, res) => {
   db.User.find({ _id: req.params.id }).then((foundUsers) => {
     res.json(foundUsers);

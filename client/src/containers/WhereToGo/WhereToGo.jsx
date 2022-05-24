@@ -14,66 +14,85 @@ const WhereToGo = () => {
     radius: "150",
     language: "en",
   });
-  const [where, setWhere] = useState({
-    location: {},
-    latitude: 0,
-    longitude: 0,
-  });
+  // const [where, setWhere] = useState({
+  //   location: {},
+  //   latitude: 0,
+  //   longitude: 0,
+  // });
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
+  //  navigator.geolocation.getCurrentPosition(function (position) {
       // console.log("Latitude is :", position.coords.latitude);
       // console.log("Longitude is :", position.coords.longitude);
       // const [latitude, longitude] = position.coords;
       // const lat = position.coords.latitude;
       // const lng = position.coords.longitude;
-      setWhere({
-        location: {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        },
-        // location: `position.coords.latitude``position.coords.longitude`,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      });
-      // setWhere({latitude: position.coords.latitude, longitude: position.coords.longitude});
-    });
+    //   setWhere({
+    //     location: {
+    //       latitude: position.coords.latitude,
+    //       longitude: position.coords.longitude,
+    //     },
+    //     // location: `position.coords.latitude``position.coords.longitude`,
+    //     latitude: position.coords.latitude,
+    //     longitude: position.coords.longitude,
+    //   });
+    //   // setWhere({latitude: position.coords.latitude, longitude: position.coords.longitude});
+    // });
   }, []);
-
-  const options = {
-    method: "GET",
-    url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
-    params: {
-      // TODO: Add in location from state somehow.
-      // This works // params: { country: covidNewsState.country, day: covidNewsState.day },
-      location: `37.783366,-122.402325`,
-      // location: where.location,
-      // location: "latitude,longitude",
-      radius: toGo.radius,
-      language: toGo.language,
-    },
-    headers: {
-      "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
-      "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
-    },
-  };
-
+  // const options = {
+  //   method: "GET",
+  //   url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
+  //   params: {
+  //     // TODO: Add in location from state somehow. FIXME:
+  //     // This works // params: { country: covidNewsState.country, day: covidNewsState.day },
+  //     location: `37.783366,-122.402325`,
+  //     // location: where.location,
+  //     // location: "latitude,longitude",
+  //     radius: toGo.radius,
+  //     language: toGo.language,
+  //   },
+  //   headers: {
+  //     "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
+  //     "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+  //   },
+  // };
   const handleSubmit = () => {
-    axios
-      .request(options)
-      .then(function (response) {
-        // console.log(response.data.results);
-        // const info = response.data.results;
-        // info.map((place) => console.log(place));
-        // setToGo(response.data.results[0]);
-        // var allPlaces = response.data.results;
-        // console.log(allPlaces);
-        console.log(response.data);
-        setToGo(response.data.results);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      axios
+        .request({
+          method: "GET",
+          url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
+          params: {
+            // TODO: Add in location from state somehow. FIXME:
+            // This works // params: { country: covidNewsState.country, day: covidNewsState.day },
+            location: `${lat},${lng}`,
+            // location: where.location,
+            // location: "latitude,longitude",
+            radius: toGo.radius,
+            language: toGo.language,
+          },
+          headers: {
+            "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
+            "X-RapidAPI-Key":
+              "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+          },
+        })
+        .then(function (response) {
+          // console.log(response.data.results);
+          // const info = response.data.results;
+          // info.map((place) => console.log(place));
+          // setToGo(response.data.results[0]);
+          // var allPlaces = response.data.results;
+          // console.log(allPlaces);
+          console.log(response.data);
+          setToGo(response.data.results);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    });
   };
 
   const handleInputChange = (event) => {

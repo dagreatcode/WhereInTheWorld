@@ -25,6 +25,10 @@ class Gas extends Component {
     });
   }
 
+  componentDidMount(){
+    
+  }
+
 
 
   render() {

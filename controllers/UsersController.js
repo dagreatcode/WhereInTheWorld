@@ -1,64 +1,71 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-const jwt = require("jsonwebtoken");
+// const jwt = require('jsonwebtoken');
 // TODO: Add routes to add images to mongoDB for user after sign in.
 
 // Resource Driven API //
 
-// router.get("/", (req, res) => {
-//   db.User.find({})
-//     .populate("user")
-//     .then((foundUsers) => {
-//       res.json(foundUsers);
-//     });
-// });
-
 router.get("/", (req, res) => {
-  // console.log(JSON.stringify(req.headers));
-  // const secret = process.env.SECRET;
-  // const headerValue = req.headers["authorization"];
-  // const headerValue = req.headers['authorization'];
-  // const header = { authorization: headerValue };
-  // console.log(req.headers.go);
-  // console.log(req.headers.authorization);
-  if (!req.headers.authorization) {
-    return res.status(401).json({
-      error: true,
-      data: null,
-      message: "Unauthorized.",
+  db.User.find({})
+    // .populate("user")
+    .then((foundUsers) => {
+      res.json(foundUsers);
     });
-  }
-  jwt.verify(req.headers.authorization, process.env.SECRET, (err, decoded) => {
-    if (err) {
-      console.log(req.headers);
-      // console.log(decoded);
-      console.log(err);
-      console.log("error getting token");
-      return res.status(401).json({
-        error: true,
-        data: null,
-        message: "Invalid token.",
-      });
-    } else {
-      console.log(decoded);
-
-      db.User.find({})
-        .then((foundUsers) => {
-          res.json(foundUsers);
-        })
-        .catch((err) => {
-          console.log(err);
-          console.log("error when decoding token");
-          res.status(500).json({
-            error: true,
-            data: null,
-            message: "Failed to retrieve all users.",
-          });
-        });
-    }
-  });
 });
+
+
+// TODO:  Get this route working as soon as you finish the last thing.. // FIXME: Dont waste time on this anymore. The err is sonWebTokenError: invalid token  // TODO:
+// router.get("/", (req, res) => {
+//   // console.log(JSON.stringify(req.headers));
+//   // const secret = process.env.SECRET;
+//   // const headerValue = req.headers["authorization"];
+//   // const headerValue = req.headers['authorization'];
+//   // const header = { authorization: headerValue };
+//   // console.log(req.headers.go);
+//   // console.log(req.headers.authorization);
+//   if (!req.headers.authorization) {
+//     return res.status(401).json({
+//       error: true,
+//       data: null,
+//       message: "Unauthorized.",
+//     });
+//   }
+//   // const token = jwt.verify(
+//   //   ' authorization: req.headers.authorization ',
+//   //   process.env.SECRET
+//   // );
+//   // console.log(token);
+//   jwt.verify(' authorization: req.headers.authorization ', process.env.SECRET, (err, decoded) => {
+//     if (err) {
+//       // console.log(req.headers);
+//       // console.log(decoded);
+//       console.log(err);
+//       console.log("error getting token");
+//       return res.status(401).json({
+//         error: true,
+//         data: null,
+//         message: "Invalid token.",
+//       });
+//     } else {
+//       console.log(decoded);
+
+//       db.User.find({})
+//         .then((foundUsers) => {
+//           res.json(foundUsers);
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//           console.log("error when decoding token");
+//           res.status(500).json({
+//             error: true,
+//             data: null,
+//             message: "Failed to retrieve all users.",
+//           });
+//         });
+//     }
+//   });
+// });
 
 // router.get("/", (req, res) => {
 //   console.log(req.headers);
@@ -103,7 +110,7 @@ router.get("/", (req, res) => {
 //   });
 // });
 router.get("/:id", (req, res) => {
-  db.User.find({ _id: req.params.id }).then((foundUsers) => {
+  db.User.findOne({ _id: req.params.id }).then((foundUsers) => {
     res.json(foundUsers);
   });
 });

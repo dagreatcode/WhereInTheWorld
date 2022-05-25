@@ -58,7 +58,7 @@ function Covid(props) {
   const options = {
     method: "GET",
     url: "https://covid-193.p.rapidapi.com/history",
-    params: { country: covidNewsState.country, day: covidNewsState.day }, //TODO: make sure this works.
+    params: { country: covidNewsState.country, day: covidNewsState.day },//FIXME: Seems like its fixed from using ${}from state //TODO: make sure this works.
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",

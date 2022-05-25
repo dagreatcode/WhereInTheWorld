@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const WhereToGo = () => {
+
+  const [radiusState] = useState({
+    radius: 1000,
+  })
+
   const [toGo, setToGo] = useState({
     address: "",
     distance: 0,
@@ -11,7 +16,7 @@ const WhereToGo = () => {
     phone_number: 0,
     types: [],
     website: "",
-    radius: "150",
+    // radius: 800,
     language: "en",
   });
   // const [where, setWhere] = useState({
@@ -70,7 +75,7 @@ const WhereToGo = () => {
             location: `${lat},${lng}`,
             // location: where.location,
             // location: "latitude,longitude",
-            radius: toGo.radius,
+            radius: radiusState.radius,
             language: toGo.language,
           },
           headers: {
@@ -102,6 +107,13 @@ const WhereToGo = () => {
       [name]: value,
     });
   };
+  // const handleInput2Change = (event) => {
+  //   const { name, value } = event.target;
+  //   setRadiusState({
+  //     ...radiusState,
+  //     [name]: value,
+  //   });
+  // };
 
   return (
     <>
@@ -109,19 +121,20 @@ const WhereToGo = () => {
                 <option>{places}</option>
               ))} */}
       <div className="container">
-        <div className="row">
+        {/* <div className="row">
           <label>
             <h6>Radius</h6>
             <input
               type="text"
               name="Radius"
-              value={toGo.radius}
-              onChange={handleInputChange}
+              value={radiusState.radius}
+              onChange={handleInput2Change}
               className="radius"
               placeholder="radius"
             />
           </label>
-        </div>
+        </div> */}
+        <h1>If you want to get information from a near by place you are as of now, use this page to access websites and phone number...</h1>
         <h6>language</h6>
         <input
           value={toGo.language}

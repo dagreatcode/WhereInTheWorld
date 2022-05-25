@@ -4,7 +4,7 @@ import axios from "axios";
 const WhereToGo = () => {
 
   const [radiusState] = useState({
-    radius: 1000,
+    radius: 10000,
   })
 
   const [toGo, setToGo] = useState({
@@ -70,6 +70,7 @@ const WhereToGo = () => {
           method: "GET",
           url: "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
           params: {
+            // type: 'cafe',
             // TODO: Add in location from state somehow. FIXME:
             // This works // params: { country: covidNewsState.country, day: covidNewsState.day },
             location: `${lat},${lng}`,

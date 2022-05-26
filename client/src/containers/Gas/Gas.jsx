@@ -24,6 +24,9 @@ class Gas extends Component {
       console.error(error);
     });
   }
+  
+  // https://rapidapi.com/apiasahobby-_viBbiGVh6v/api/fuel-prices2/
+  // https://rapidapi.com/collectapi/api/gas-price/
 
   componentDidMount(){
     

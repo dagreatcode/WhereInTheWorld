@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 // import { Form } from "react-bootstrap";
+import Input from "./Input";
 
 function Covid(props) {
   const [covidNewsState, setCovidNewsState] = useState({
@@ -195,8 +196,15 @@ function Covid(props) {
     <>
       <br />
       <div className="container">
-        <h6>Place a date here</h6>
         <div className="row">
+          <Input
+            label="Place a date here"
+            name="day"
+            value={covidNewsState.day}
+            onChange={handleInputChange}
+            placeholder="2022-04-30 Must Have"
+          />
+          {/* <h6>Place a date here</h6>
           <label>
             <input
               type="text"
@@ -206,14 +214,19 @@ function Covid(props) {
               className="day"
               placeholder="2022-04-30 Must Have"
             />
-          </label>
+          </label> */}
         </div>
         <br />
-        <br />
-        <br />
-        <h6>Place a Continent here</h6>
+        {/* <h6>Place a Continent here</h6> */}
         <div className="row">
-          <label>
+        <Input
+            label="Place a Continent here"
+            name="continent"
+            value={covidNewsState.continent}
+            onChange={handleInputChange}
+            placeholder="continent"
+          />
+          {/* <label>
             <input
               type="text"
               name="continent"
@@ -222,14 +235,19 @@ function Covid(props) {
               className="continent"
               placeholder="continent"
             />
-          </label>
+          </label> */}
         </div>
         <br />
-        <br />
-        <br />
-        <h6>Place a Country here</h6>
+        {/* <h6>Place a Country here</h6> */}
         <div className="row">
-          <label>
+        <Input
+            label="Place a Country here"
+            name="country"
+            value={covidNewsState.country}
+            onChange={handleInputChange}
+            placeholder="country"
+          />
+          {/* <label>
             <input
               type="text"
               name="country"
@@ -238,7 +256,7 @@ function Covid(props) {
               className="country"
               placeholder="USA Must Have"
             />
-          </label>
+          </label> */}
         </div>
         <button onClick={handleSubmit}>go</button>
         <br />

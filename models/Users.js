@@ -27,9 +27,9 @@ const UsersSchema = new Schema({
   date: { type: Date, default: Date.now },
 });
 
-// UsersSchema.virtual("kindOfUser").get(function () {
-//   return `${this.typeOfUser} ${this.date}`;
-// })
+UsersSchema.virtual("kindOfUser").get(function () {
+  return `${this.typeOfUser} ${this.date}`;
+})
 
 const User = mongoose.model("User", UsersSchema);
 

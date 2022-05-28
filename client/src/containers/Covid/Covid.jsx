@@ -4,7 +4,7 @@ import axios from "axios";
 
 function Covid(props) {
   const [covidNewsState, setCovidNewsState] = useState({
-    continent: "",
+    continent: "North-America",
     country: "usa",
     day: "2022-03-04",
     population: 0,
@@ -55,31 +55,30 @@ function Covid(props) {
     rank: 0,
   });
 
-  const axios = require("axios");
-// TODO: https://rapidapi.com/vaccovidlive-vaccovidlive-default/api/vaccovid-coronavirus-vaccine-and-treatment-tracker/
+  // TODO: https://rapidapi.com/vaccovidlive-vaccovidlive-default/api/vaccovid-coronavirus-vaccine-and-treatment-tracker/
 
-// https://rapidapi.com/KishCom/api/covid-19-coronavirus-statistics/
+  // https://rapidapi.com/KishCom/api/covid-19-coronavirus-statistics/
 
-// const options = {
-//   method: 'GET',
-//   url: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats',
-//   params: {country: 'Canada'},
-//   headers: {
-//     'X-RapidAPI-Host': 'covid-19-coronavirus-statistics.p.rapidapi.com',
-//     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1'
-//   }
-// };
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats',
+  //   params: {country: 'Canada'},
+  //   headers: {
+  //     'X-RapidAPI-Host': 'covid-19-coronavirus-statistics.p.rapidapi.com',
+  //     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1'
+  //   }
+  // };
 
-// axios.request(options).then(function (response) {
-// 	console.log(response.data);
-// }).catch(function (error) {
-// 	console.error(error);
-// });
+  // axios.request(options).then(function (response) {
+  // 	console.log(response.data);
+  // }).catch(function (error) {
+  // 	console.error(error);
+  // });
 
   const options = {
     method: "GET",
     url: "https://covid-193.p.rapidapi.com/history",
-    params: { country: covidNewsState.country, day: covidNewsState.day },//FIXME: Seems like its fixed from using ${}from state //TODO: make sure this works.
+    params: { country: covidNewsState.country, day: covidNewsState.day }, //FIXME: Seems like its fixed from using ${}from state //TODO: make sure this works.
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -194,7 +193,9 @@ function Covid(props) {
 
   return (
     <>
+      <br />
       <div className="container">
+        <h6>Place a date here</h6>
         <div className="row">
           <label>
             <input
@@ -207,6 +208,9 @@ function Covid(props) {
             />
           </label>
         </div>
+        <br />
+        <br />
+        <br />
         <h6>Place a Continent here</h6>
         <div className="row">
           <label>
@@ -220,6 +224,9 @@ function Covid(props) {
             />
           </label>
         </div>
+        <br />
+        <br />
+        <br />
         <h6>Place a Country here</h6>
         <div className="row">
           <label>
@@ -234,6 +241,9 @@ function Covid(props) {
           </label>
         </div>
         <button onClick={handleSubmit}>go</button>
+        <br />
+        <br />
+        <br />
         <h1>
           Day:&nbsp; {covidNewsState.day}
           <br />
@@ -274,18 +284,18 @@ function Covid(props) {
           <br /> */}
         </h1>
         <div className="container">
-        <div className="row">
-          <label>
-            <input
-              type="text"
-              name="country2"
-              value={nextState.country2}
-              onChange={handleInput2Change}
-              className="country2"
-              placeholder="northamerica"
-            />
-          </label>
-        </div>
+          <div className="row">
+            <label>
+              <input
+                type="text"
+                name="country2"
+                value={nextState.country2}
+                onChange={handleInput2Change}
+                className="country2"
+                placeholder="northamerica"
+              />
+            </label>
+          </div>
         </div>
         {/* <div className="form-group">
           <select

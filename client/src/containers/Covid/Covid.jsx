@@ -5,14 +5,24 @@ import Input from "./Input";
 
 function Covid(props) {
   const [covidNewsState, setCovidNewsState] = useState({
-    continent: "North-America",
-    country: "usa",
-    day: "2022-03-04",
+    // continent: "South-America",
+    // country: "usa",
+    // day: "2022-03-04",
     population: 0,
     cases: {},
     tests: {},
     time: "",
     deaths: {},
+  });
+
+  const [continentState, setContState] = useState({
+    continent: "North-America",
+  });
+  const [countryState, setCounState] = useState({
+    country: "usa",
+  });
+  const [dayState, setDayState] = useState({
+    day: "2022-03-04",
   });
   const [nextState, setNextState] = useState({
     country2: "southamerica",
@@ -79,7 +89,7 @@ function Covid(props) {
   const options = {
     method: "GET",
     url: "https://covid-193.p.rapidapi.com/history",
-    params: { country: covidNewsState.country, day: covidNewsState.day }, //FIXME: Seems like its fixed from using ${}from state //TODO: make sure this works.
+    params: { country: countryState.country, day: dayState.day }, //FIXME: Seems like its fixed from using ${}from state //TODO: make sure this works.
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
@@ -118,25 +128,29 @@ function Covid(props) {
     },
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .request(options)
       .then(function (response) {
         console.log(response.data.response);
         setCovidNewsState(response.data.response[0]);
+        // setContState(response.data.response[0].continent);
+        // setCounState(response.data.response[0].country);
+        // setDayState(dayState.day);
       })
       .catch(function (error) {
         console.error(error);
       });
   };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setCovidNewsState({
-      ...covidNewsState,
-      [name]: value,
-    });
-  };
+  // 1
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setCovidNewsState({
+  //     ...covidNewsState,
+  //     [name]: value,
+  //   });
+  // };
   const handleInput2Change = (event) => {
     const { name, value } = event.target;
     setNextState({
@@ -199,9 +213,11 @@ function Covid(props) {
         <div className="row">
           <Input
             label="Place a date here"
+            value={dayState.day}
+            handleInputChange={(e) => {
+              setDayState({day: e.target.value});
+            }}
             name="day"
-            value={covidNewsState.day}
-            onChange={handleInputChange}
             placeholder="2022-04-30 Must Have"
           />
           {/* <h6>Place a date here</h6>
@@ -219,11 +235,13 @@ function Covid(props) {
         <br />
         {/* <h6>Place a Continent here</h6> */}
         <div className="row">
-        <Input
+          <Input
             label="Place a Continent here"
             name="continent"
-            value={covidNewsState.continent}
-            onChange={handleInputChange}
+            value={continentState.continent}
+            handleInputChange={(e) => {
+              setContState({continent: e.target.value});
+            }}
             placeholder="continent"
           />
           {/* <label>
@@ -240,11 +258,13 @@ function Covid(props) {
         <br />
         {/* <h6>Place a Country here</h6> */}
         <div className="row">
-        <Input
+          <Input
             label="Place a Country here"
             name="country"
-            value={covidNewsState.country}
-            onChange={handleInputChange}
+            value={countryState.country}
+            handleInputChange={(e) => {
+              setCounState({country: e.target.value});
+            }}
             placeholder="country"
           />
           {/* <label>
@@ -263,12 +283,12 @@ function Covid(props) {
         <br />
         <br />
         <h1>
-          Day:&nbsp; {covidNewsState.day}
+          Day:&nbsp; {dayState.day}
           <br />
           Time:&nbsp; {covidNewsState.time}
           <br />
-          Continent:&nbsp; {covidNewsState.continent} <br />
-          Country:&nbsp; {covidNewsState.country} <br />
+          Continent:&nbsp; {continentState.continent} <br />
+          Country:&nbsp; {countryState.country} <br />
           Population:&nbsp; {covidNewsState.population} <br />
           Cases
           <br />

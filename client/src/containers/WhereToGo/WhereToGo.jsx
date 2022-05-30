@@ -261,7 +261,7 @@ const WhereToGo = () => {
         <Modal.Body>
           <form>
             {/* <div className="form-group"> */}
-            <WTGInput
+            {/* <WTGInput
               label="Type Of Places"
               id="places"
               value={typeState}
@@ -270,7 +270,7 @@ const WhereToGo = () => {
               handleChange={(e) => {
                 setTypesState(e.target.value.toLowerCase().replace(" ", "_"));
               }}
-            />
+            /> */}
             {/* <WTGSelect
               name="type"
               id="places"
@@ -279,13 +279,13 @@ const WhereToGo = () => {
                 setTypesState(e.target.value);
               }}
             /> */}
-            {/* <label htmlFor="places">{label}</label> */}
+            <label htmlFor="places">Type Of Place</label><br/>
             <select
               name="type"
               className="custom-select"
               id="places"
               value={typeState}
-              handleChange={(e) => {
+              onChange={(e) => {
                 setTypesState(e.target.value);
               }}
             >
@@ -294,9 +294,9 @@ const WhereToGo = () => {
                 <option>
                   { place }
                 </option>
-              
                   ))}
             </select>
+            <br/>
             {/* <label htmlFor="places">Type Of Places</label>
               <input
                 type="text"

@@ -1,14 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const WTGInput = ({
-  label,
-  id,
-  value,
-  name,
-  placeholder,
-  handleChange,
-}) => {
+const WTGInput = ({ label, id, value, name, placeholder, handleChange }) => {
   return (
     <div className="form-group">
       <label htmlFor="places">{label}</label>
@@ -21,6 +14,11 @@ const WTGInput = ({
         placeholder={placeholder}
         onChange={handleChange}
       />
+      {/* <label htmlFor="places">{label}</label>
+      <select className="custom-select" value={typeOfPlaces}>
+        <option>Select...</option>
+        {typeOfPlaces.map((place) => ({ place }))}
+      </select> */}
     </div>
   );
 };

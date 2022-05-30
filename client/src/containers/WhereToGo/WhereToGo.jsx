@@ -32,96 +32,96 @@ const WhereToGo = () => {
     // language: "en",
   });
 
-  // const typeOfPlaces = [
-  //   airport,
-  //   amusement_park,
-  //   aquarium,
-  //   art_gallery,
-  //   atm,
-  //   bakery,
-  //   bank,
-  //   bar,
-  //   beauty_salon,
-  //   bicycle_store,
-  //   book_store,
-  //   bowling,
-  //   bus_station,
-  //   cafe,
-  //   campground,
-  //   car_dealer,
-  //   car_rental,
-  //   car_repair,
-  //   car_wash,
-  //   casino,
-  //   cemetery,
-  //   church,
-  //   cinema,
-  //   city_hall,
-  //   clothing_store,
-  //   convenience_store,
-  //   courthouse,
-  //   dentist,
-  //   department_store,
-  //   doctor,
-  //   electrician,
-  //   electronics_store,
-  //   embassy,
-  //   fire_station,
-  //   flowers_store,
-  //   funeral_service,
-  //   furniture_store,
-  //   gas_station,
-  //   government_office,
-  //   grocery_store,
-  //   gym,
-  //   hairdressing_salon,
-  //   hardware_store,
-  //   home_goods_store,
-  //   hospital,
-  //   insurance_agency,
-  //   jewelry_store,
-  //   laundry,
-  //   lawyer,
-  //   library,
-  //   liquor_store,
-  //   locksmith,
-  //   lodging,
-  //   mosque,
-  //   museum,
-  //   night_club,
-  //   park,
-  //   parking,
-  //   pet_store,
-  //   pharmacy,
-  //   plumber,
-  //   police_station,
-  //   post_office,
-  //   primary_school,
-  //   rail_station,
-  //   real_estate_agency,
-  //   restaurant,
-  //   rv_park,
-  //   school,
-  //   secondary_school,
-  //   shoe_store,
-  //   shopping_center,
-  //   spa,
-  //   stadium,
-  //   storage,
-  //   store,
-  //   subway_station,
-  //   supermarket,
-  //   synagogue,
-  //   taxi_stand,
-  //   temple,
-  //   tourist_attraction,
-  //   train_station,
-  //   transit_station,
-  //   travel_agency,
-  //   university,
-  //   veterinarian,
-  //   zoo
-  // ];
+  const typeOfPlaces = [
+    "airport",
+    "amusement_park",
+    "aquarium",
+    "art_gallery",
+    "atm",
+    "bakery",
+    "bank",
+    "bar",
+    "beauty_salon",
+    "bicycle_store",
+    "book_store",
+    "bowling",
+    "bus_station",
+    "cafe",
+    "campground",
+    "car_dealer",
+    "car_rental",
+    "car_repair",
+    "car_wash",
+    "casino",
+    "cemetery",
+    "church",
+    "cinema",
+    "city_hall",
+    "clothing_store",
+    "convenience_store",
+    "courthouse",
+    "dentist",
+    "department_store",
+    "doctor",
+    "electrician",
+    "electronics_store",
+    "embassy",
+    "fire_station",
+    "flowers_store",
+    "funeral_service",
+    "furniture_store",
+    "gas_station",
+    "government_office",
+    "grocery_store",
+    "gym",
+    "hairdressing_salon",
+    "hardware_store",
+    "home_goods_store",
+    "hospital",
+    "insurance_agency",
+    "jewelry_store",
+    "laundry",
+    "lawyer",
+    "library",
+    "liquor_store",
+    "locksmith",
+    "lodging",
+    "mosque",
+    "museum",
+    "night_club",
+    "park",
+    "parking",
+    "pet_store",
+    "pharmacy",
+    "plumber",
+    "police_station",
+    "post_office",
+    "primary_school",
+    "rail_station",
+    "real_estate_agency",
+    "restaurant",
+    "rv_park",
+    "school",
+    "secondary_school",
+    "shoe_store",
+    "shopping_center",
+    "spa",
+    "stadium",
+    "storage",
+    "store",
+    "subway_station",
+    "supermarket",
+    "synagogue",
+    "taxi_stand",
+    "temple",
+    "tourist_attraction",
+    "train_station",
+    "transit_station",
+    "travel_agency",
+    "university",
+    "veterinarian",
+    "zoo",
+  ];
 
   // https://rapidapi.com/trueway/api/trueway-places/
 
@@ -187,49 +187,72 @@ const WhereToGo = () => {
       {/* {toGo.map((places) => (
                 <option>{places}</option>
               ))} */}
-        <div className="container">
-          <br />
-          <h1>Directory</h1>
-          <br />
-          <button onClick={handleOpen}>Search</button>
-          <div className="row">
-            <div className="col-sm-12">
-              <table className="table table-success table-striped">
-                <thead>
+      <div className="container">
+        <br />
+        <h1>Near By Places Directory</h1>
+        <br />
+        <button onClick={handleOpen}>Search</button>
+        <div className="row">
+          <div className="col-sm-12">
+            <table className="table table-success table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Distance</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Place</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Types</th>
+                  <th scope="col">Website</th>
+                </tr>
+              </thead>
+              <tbody>
+                {toGo.length ? (
+                  toGo.map((place) => {
+                    return (
+                      <tr key={place._id}>
+                        <td>{place.distance}</td>
+                        <td>{place.address}</td>
+                        <td>{place.name}</td>
+                        <td>{place.phone_number}</td>
+                        <td>{place.types}</td>
+                        <td>{place.website}</td>
+                      </tr>
+                    );
+                  })
+                ) : (
                   <tr>
-                    <th scope="col">Distance</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Place</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Types</th>
-                    <th scope="col">Website</th>
+                    <th>
+                      <h6>Not Found Until you search something....</h6>
+                      {/* airport, amusement_park, aquarium, art_gallery, atm,
+                      bakery, bank, bar, beauty_salon, bicycle_store,
+                      book_store, bowling, bus_station, cafe, campground,
+                      car_dealer, car_rental, car_repair, car_wash, casino,
+                      cemetery, church, cinema, city_hall, clothing_store,
+                      convenience_store, courthouse, dentist, department_store,
+                      doctor, electrician, electronics_store, embassy,
+                      fire_station, flowers_store, funeral_service,
+                      furniture_store, gas_station, government_office,
+                      grocery_store, gym, hairdressing_salon, hardware_store,
+                      home_goods_store, hospital, insurance_agency,
+                      jewelry_store, laundry, lawyer, library, liquor_store,
+                      locksmith, lodging, mosque, museum, night_club, park,
+                      parking, pet_store, pharmacy, plumber, police_station,
+                      post_office, primary_school, rail_station,
+                      real_estate_agency, restaurant, rv_park, school,
+                      secondary_school, shoe_store, shopping_center, spa,
+                      stadium, storage, store, subway_station, supermarket,
+                      synagogue, taxi_stand, temple, tourist_attraction,
+                      train_station, transit_station, travel_agency, university,
+                      veterinarian, zoo */}
+                    </th>
                   </tr>
-                </thead>
-                <tbody>
-                  {toGo.length ? (
-                    toGo.map((place) => {
-                      return (
-                        <tr key={place._id}>
-                          <td>{place.distance}</td>
-                          <td>{place.address}</td>
-                          <td>{place.name}</td>
-                          <td>{place.phone_number}</td>
-                          <td>{place.types}</td>
-                          <td>{place.website}</td>
-                        </tr>
-                      );
-                    })
-                  ) : (
-                    <tr>
-                      <th>Not Found Until Summit</th>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
- 
+      </div>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>What Type Of Place?</Modal.Title>
@@ -244,9 +267,27 @@ const WhereToGo = () => {
               name="type"
               placeholder="Leave blank to search all places..."
               handleChange={(e) => {
-                setTypesState(e.target.value);
+                setTypesState(e.target.value.toLowerCase().replace(" ", "_"));
               }}
             />
+            {/* <label htmlFor="places">{label}</label> */}
+            <select
+              name="type"
+              className="custom-select"
+              id="places"
+              value={typeState}
+              handleChange={(e) => {
+                setTypesState(e.target.value);
+              }}
+            >
+              <option value="" >Select...</option>
+              {typeOfPlaces.map((place) => (
+                <option>
+                  { place }
+                </option>
+              
+                  ))}
+            </select>
             {/* <label htmlFor="places">Type Of Places</label>
               <input
                 type="text"

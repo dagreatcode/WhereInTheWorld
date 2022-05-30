@@ -214,11 +214,11 @@ function Covid(props) {
           <Input
             label="Place a date here"
             value={dayState.day}
+            name="day"
+            placeholder="2022-04-30 Must Have"
             handleInputChange={(e) => {
               setDayState({day: e.target.value});
             }}
-            name="day"
-            placeholder="2022-04-30 Must Have"
           />
           {/* <h6>Place a date here</h6>
           <label>

@@ -14,11 +14,6 @@ const WTGInput = ({ label, id, value, name, placeholder, handleChange }) => {
         placeholder={placeholder}
         onChange={handleChange}
       />
-      {/* <label htmlFor="places">{label}</label>
-      <select className="custom-select" value={typeOfPlaces}>
-        <option>Select...</option>
-        {typeOfPlaces.map((place) => ({ place }))}
-      </select> */}
     </div>
   );
 };

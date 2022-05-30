@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import WTGInput from "./WTGInput";
+// import WTGSelect from "./WTGSelect";
 
 const WhereToGo = () => {
   const [radiusState] = useState({
@@ -270,6 +271,14 @@ const WhereToGo = () => {
                 setTypesState(e.target.value.toLowerCase().replace(" ", "_"));
               }}
             />
+            {/* <WTGSelect
+              name="type"
+              id="places"
+              value={typeState}
+              handleChange={(e) => {
+                setTypesState(e.target.value);
+              }}
+            /> */}
             {/* <label htmlFor="places">{label}</label> */}
             <select
               name="type"

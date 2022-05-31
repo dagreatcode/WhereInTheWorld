@@ -356,51 +356,51 @@ function Covid(props) {
         <Button onClick={handle3Submit}>go</Button>
         <p>
           <br />
-          ActiveCases: {covidFullReport.ActiveCases}
+          Active Cases: {covidFullReport.ActiveCases}
           <br />
-          Case_Fatality_Rate:{covidFullReport.Case_Fatality_Rate}
+          Case Fatality Rate:{covidFullReport.Case_Fatality_Rate}
           <br />
           Continent:{covidFullReport.Continent}
           <br />
           Country: {covidFullReport.Country}
           <br />
-          Deaths_1M_pop: {covidFullReport.Deaths_1M_pop}
+          Deaths 1M population: {covidFullReport.Deaths_1M_pop}
           <br />
-          Infection_Risk: {covidFullReport.Infection_Risk}
+          Infection Risk: {covidFullReport.Infection_Risk}
           <br />
-          NewCases: {covidFullReport.NewCases}
+          New Cases: {covidFullReport.NewCases}
           <br />
-          NewDeaths: {covidFullReport.NewDeaths}
+          New Deaths: {covidFullReport.NewDeaths}
           <br />
-          NewRecovered: {covidFullReport.NewRecovered}
+          New Recovered: {covidFullReport.NewRecovered}
           <br />
           Population: {covidFullReport.Population}
           <br />
-          Recovery_Proporation: {covidFullReport.Recovery_Proporation}
+          Recovery Proporation: {covidFullReport.Recovery_Proporation}
           <br />
-          Serious_Critical: {covidFullReport.Serious_Critical}
+          Serious Critical: {covidFullReport.Serious_Critical}
           <br />
-          Test_Percentage: {covidFullReport.Test_Percentage}
+          Test Percentage: {covidFullReport.Test_Percentage}
           <br />
-          Tests_1M_Pop: {covidFullReport.Tests_1M_Pop}
+          Tests 1M Pop: {covidFullReport.Tests_1M_Pop}
           <br />
-          ThreeLetterSymbol: {covidFullReport.ThreeLetterSymbol}
+          Three Letter Symbol: {covidFullReport.ThreeLetterSymbol}
           <br />
-          TotCases_1M_Pop: {covidFullReport.TotCases_1M_Pop}
+          TotCases 1M Population: {covidFullReport.TotCases_1M_Pop}
           <br />
-          TotalCases: {covidFullReport.TotalCases}
+          Total Cases: {covidFullReport.TotalCases}
           <br />
-          TotalDeaths: {covidFullReport.TotalDeaths}
+          Total Deaths: {covidFullReport.TotalDeaths}
           <br />
-          TotalRecovered: {covidFullReport.TotalRecovered}
+          Total Recovered: {covidFullReport.TotalRecovered}
           <br />
-          TotalTests: {covidFullReport.TotalTests}
+          Total Tests: {covidFullReport.TotalTests}
           <br />
-          TwoLetterSymbol: {covidFullReport.TwoLetterSymbol}
+          Two Letter Symbol: {covidFullReport.TwoLetterSymbol}
           <br />
-          id: {covidFullReport.id}
+          ID: {covidFullReport.id}
           <br />
-          one_Caseevery_X_ppl: {covidFullReport.one_Caseevery_X_ppl}
+          One Caseevery X ppl: {covidFullReport.one_Caseevery_X_ppl}
           <br />
           One death every X ppl: {covidFullReport.one_Deathevery_X_ppl}
           <br />

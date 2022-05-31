@@ -3,6 +3,8 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import WTGInput from "./WTGInput";
+// import { Link } from 'react-router-dom';
+
 // import WTGSelect from "./WTGSelect";
 
 const WhereToGo = () => {
@@ -214,9 +216,15 @@ const WhereToGo = () => {
                         <td>{place.distance}</td>
                         <td>{place.address}</td>
                         <td>{place.name}</td>
-                        <td>{place.phone_number}</td>
+                        {/* <td type="tel">{place.phone_number}</td> */}
+                        <td>
+                          <a href="tel: place.phone_number"> {place.phone_number} </a>
+                        </td>
                         <td>{place.types}</td>
-                        <td>{place.website}</td>
+                        {/* <td>{place.website}</td> */}
+                        <td>
+                          <a href={place.website}> {place.website} </a>
+                        </td>
                       </tr>
                     );
                   })
@@ -279,7 +287,8 @@ const WhereToGo = () => {
                 setTypesState(e.target.value);
               }}
             /> */}
-            <label htmlFor="places">Type Of Place</label><br/>
+            <label htmlFor="places">Type Of Place</label>
+            <br />
             <select
               name="type"
               className="custom-select"
@@ -289,14 +298,12 @@ const WhereToGo = () => {
                 setTypesState(e.target.value);
               }}
             >
-              <option value="" >Select...</option>
+              <option value="">Select...</option>
               {typeOfPlaces.map((place) => (
-                <option>
-                  { place }
-                </option>
-                  ))}
+                <option>{place}</option>
+              ))}
             </select>
-            <br/>
+            <br />
             {/* <label htmlFor="places">Type Of Places</label>
               <input
                 type="text"

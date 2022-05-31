@@ -13,7 +13,7 @@ const WhereToGo = () => {
   });
   const [languageState, setLangState] = useState("en");
   const [typeState, setTypesState] = useState("");
-  const [phoneState, setPhoneState] = useState("");
+  // const [phoneState, setPhoneState] = useState("");
   const [show, setsShow] = useState(false);
   const handleClose = () => {
     setsShow(!show);
@@ -215,7 +215,10 @@ const WhereToGo = () => {
                     return (
                       <tr key={place._id}>
                         <td>{place.distance}</td>
-                        <td>{place.address}</td>
+                        {/* <td>{place.address}</td> */}
+                        <td>
+                          <address>{place.address}</address>
+                        </td>
                         <td>{place.name}</td>
                         {/* <td type="tel">{place.phone_number}</td> */}
                         <td>
@@ -296,12 +299,12 @@ const WhereToGo = () => {
               id="places"
               value={typeState}
               onChange={(e) => {
-                setTypesState(e.target.value);
+                setTypesState(e.target.value.toLowerCase().replace(" ", "_"));
               }}
             >
               <option value="">Select...</option>
               {typeOfPlaces.map((place) => (
-                <option>{place}</option>
+                <option>{place.replace("_", " ")}</option>
               ))}
             </select>
             <br />

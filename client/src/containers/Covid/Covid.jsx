@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import Input from "./Input";
 
 function Covid(props) {
@@ -217,7 +217,7 @@ function Covid(props) {
             name="day"
             placeholder="2022-04-30 Must Have"
             handleInputChange={(e) => {
-              setDayState({day: e.target.value});
+              setDayState({ day: e.target.value });
             }}
           />
           {/* <h6>Place a date here</h6>
@@ -240,7 +240,7 @@ function Covid(props) {
             name="continent"
             value={continentState.continent}
             handleInputChange={(e) => {
-              setContState({continent: e.target.value});
+              setContState({ continent: e.target.value });
             }}
             placeholder="continent"
           />
@@ -263,7 +263,7 @@ function Covid(props) {
             name="country"
             value={countryState.country}
             handleInputChange={(e) => {
-              setCounState({country: e.target.value});
+              setCounState({ country: e.target.value });
             }}
             placeholder="country"
           />
@@ -278,11 +278,11 @@ function Covid(props) {
             />
           </label> */}
         </div>
-        <button onClick={handleSubmit}>go</button>
+        <Button onClick={handleSubmit}>go</Button>
         <br />
         <br />
         <br />
-        <h1>
+        <p>
           Day:&nbsp; {dayState.day}
           <br />
           Time:&nbsp; {covidNewsState.time}
@@ -307,11 +307,12 @@ function Covid(props) {
           Tests
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;total: {covidNewsState.tests.total} <br />
-        </h1>
+        </p>
         <br />
-
-        <button onClick={handle2Submit}>go</button>
-        <h1>
+        <h1>Covid-19 News</h1>
+        <Button onClick={handle2Submit}>go</Button>
+        <br />
+        <p>
           Title: {covidState.title} <br />
           <br />
           News: {covidState.excerpt} <br />
@@ -320,9 +321,11 @@ function Covid(props) {
           <br />
           {/* Time: {covidState.updatedDateTime}
           <br /> */}
-        </h1>
+        </p>
+        <h1>Covid-19 Stats</h1>
         <div className="container">
           <div className="row">
+          <h6>Place continent here</h6>
             <label>
               <input
                 type="text"
@@ -350,8 +353,8 @@ function Covid(props) {
             ))}
           </select>
         </div> */}
-        <button onClick={handle3Submit}>go</button>
-        <h1>
+        <Button onClick={handle3Submit}>go</Button>
+        <p>
           <br />
           ActiveCases: {covidFullReport.ActiveCases}
           <br />
@@ -399,13 +402,13 @@ function Covid(props) {
           <br />
           one_Caseevery_X_ppl: {covidFullReport.one_Caseevery_X_ppl}
           <br />
-          one_Deathevery_X_ppl: {covidFullReport.one_Deathevery_X_ppl}
+          One death every X ppl: {covidFullReport.one_Deathevery_X_ppl}
           <br />
-          one_Testevery_X_ppl: {covidFullReport.one_Testevery_X_ppl}
+          One test every X ppl: {covidFullReport.one_Testevery_X_ppl}
           <br />
-          rank: {covidFullReport.rank}
+          Rank: {covidFullReport.rank}
           <br />
-        </h1>
+        </p>
       </div>
     </>
   );

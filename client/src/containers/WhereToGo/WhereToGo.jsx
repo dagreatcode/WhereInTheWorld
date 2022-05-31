@@ -13,6 +13,7 @@ const WhereToGo = () => {
   });
   const [languageState, setLangState] = useState("en");
   const [typeState, setTypesState] = useState("");
+  const [phoneState, setPhoneState] = useState("");
   const [show, setsShow] = useState(false);
   const handleClose = () => {
     setsShow(!show);
@@ -218,7 +219,7 @@ const WhereToGo = () => {
                         <td>{place.name}</td>
                         {/* <td type="tel">{place.phone_number}</td> */}
                         <td>
-                          <a href="tel: {place.phone_number}"> {place.phone_number} </a>
+                          <a href={"tel:" + place.phone_number}> {place.phone_number} </a>
                         </td>
                         <td>{place.types}</td>
                         {/* <td>{place.website}</td> */}

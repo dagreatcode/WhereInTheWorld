@@ -2,39 +2,12 @@
   "short_name": "Covid-Safe",
   "name": "Low Gas No Covid",
   "description": "Covid news, stats, and places to go",
-  "manifest_version": 2,
-  "version": "0.1",
   "icons": [
 
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-    },
-    {
-      "src": "logo72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "logo96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "logo128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "logo144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "logo152.png",
-      "sizes": "152x152",
-      "type": "image/png"
     },
     {
       "src": "android-chrome-192x192.png",
@@ -45,16 +18,23 @@
       "src": "android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-    },
-    {
-      "src": "logo384.png",
-      "sizes": "384x384",
-      "type": "image/png"
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display": "minimal-ui",
   "orientation": "portrait",
   "background_color": "#f0f2f5",
-  "theme_color": "#96f2d7"
+  "theme_color": "#96f2d7",
+  "screenshots": [
+    {
+      "src": "/images/screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x720"
+    },
+    {
+      "src": "/images/screenshot2.jpg",
+      "type": "image/jpg",
+      "sizes": "540x720"
+    }
+  ]
 }

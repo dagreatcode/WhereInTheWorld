@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import WTGInput from "./WTGInput";
+import Container from "react-bootstrap/Container";
 // import { Link } from 'react-router-dom';
 
 // import WTGSelect from "./WTGSelect";
@@ -191,7 +192,7 @@ const WhereToGo = () => {
       {/* {toGo.map((places) => (
                 <option>{places}</option>
               ))} */}
-      <div className="container">
+      <Container>
         <br />
         <h1>Near By Places Directory</h1>
         <br />
@@ -222,7 +223,10 @@ const WhereToGo = () => {
                         <td>{place.name}</td>
                         {/* <td type="tel">{place.phone_number}</td> */}
                         <td>
-                          <a href={"tel:" + place.phone_number}> {place.phone_number} </a>
+                          <a href={"tel:" + place.phone_number}>
+                            {" "}
+                            {place.phone_number}{" "}
+                          </a>
                         </td>
                         <td>{place.types}</td>
                         {/* <td>{place.website}</td> */}
@@ -264,7 +268,7 @@ const WhereToGo = () => {
             </table>
           </div>
         </div>
-      </div>
+      </Container>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

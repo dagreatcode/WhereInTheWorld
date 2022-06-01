@@ -31,6 +31,7 @@
     "if-env": "^1.0.4",
     "inquirer": "^8.2.4",
     "jsonwebtoken": "^8.5.1",
+    "mdb-react-ui-kit": "^3.0.0",
     "mongoose": "^6.3.0",
     "path": "^0.12.7"
   },

@@ -113,6 +113,7 @@ SOFTWARE.
 [] Adding images and music to mongoDB.
 [] Add alert Context API
 [] Add JWT Header ContextApi
+[] Add a spin wheel.
 
 [] Maybe match the with some Covid results with webhooks.
 [] find gas prices and compare to see what is the cheapest.

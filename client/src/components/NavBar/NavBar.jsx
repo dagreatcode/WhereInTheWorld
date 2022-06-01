@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.css";
 import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
@@ -6,7 +7,9 @@ const NavBar = () => {
     <div>
       <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand">StaySafe</Link>
+          <Link to="/" className="navbar-brand">
+            StaySafe
+          </Link>
           <button
             className="navbar-toggler"
             type="button"

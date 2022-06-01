@@ -67,12 +67,12 @@
   "theme_color": "#96f2d7",
   "screenshots": [
     {
-      "src": "/images/screenshot1-540x720.png",
+      "src": "/screenshot1-540x720.png",
       "type": "image/png",
       "sizes": "540x720"
     },
     {
-      "src": "/images/screenshot2.jpg",
+      "src": "/screenshot2-540x720.jpg",
       "type": "image/jpg",
       "sizes": "540x720"
     }

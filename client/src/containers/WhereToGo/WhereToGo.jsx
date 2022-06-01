@@ -161,12 +161,12 @@ const WhereToGo = () => {
           // setToGo(response.data.results[0]);
           // var allPlaces = response.data.results;
           // console.log(allPlaces);
-          console.log(response.data);
+          // console.log(response.data);
           setToGo(response.data.results);
           handleClose();
         })
         .catch(function (error) {
-          console.error(error);
+          // console.error(error);
         });
     });
   };

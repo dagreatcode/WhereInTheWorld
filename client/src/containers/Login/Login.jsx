@@ -15,14 +15,14 @@ const Login = () => {
     // TODO: change to /api/login
       .post("/api/login", { email, password })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         navigate("/");
         // history.push("/");
         // window.location = "/home";
         // this.props.history.push("/home");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
   const handle2Submit = (e) => {
@@ -32,14 +32,14 @@ const Login = () => {
     // TODO: change to /api/signup
       .post("/api/signup", { email, password })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         navigate("/");
         // history.push("/");
         // window.location = "/home";
         // this.props.history.push("/home");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

@@ -23,7 +23,7 @@ const AdminNewUser = () => {
     axios
       .post("/api/user", { email, password, typeOfUser })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         navigate("/AdminUsers");
       })
       .catch((err) => {

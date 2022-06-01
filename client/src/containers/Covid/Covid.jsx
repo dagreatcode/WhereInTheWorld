@@ -133,14 +133,14 @@ function Covid(props) {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data.response);
+        // console.log(response.data.response);
         setCovidNewsState(response.data.response[0]);
         // setContState(response.data.response[0].continent);
         // setCounState(response.data.response[0].country);
         // setDayState(dayState.day);
       })
       .catch(function (error) {
-        console.error(error);
+        // console.error(error);
       });
   };
   // 1
@@ -184,11 +184,11 @@ function Covid(props) {
     axios
       .request(optionss)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setCovidState(response.data.news[0]);
       })
       .catch(function (error) {
-        console.error(error);
+        // console.error(error);
       });
   };
 
@@ -196,11 +196,11 @@ function Covid(props) {
     axios
       .request(option)
       .then(function (response) {
-        console.log(response.data[0]);
+        // console.log(response.data[0]);
         setReport(response.data[0]);
       })
       .catch(function (error) {
-        console.error(error);
+        // console.error(error);
       });
   };
 

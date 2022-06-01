@@ -14,6 +14,8 @@ const UsersSchema = new Schema({
     trim: true,
     required: "Password is required",
   },
+  image: { type: String, required: false },
+  description: { type: String, required: false },
   typeOfUser: {
     type: String,
     lowercase: false,

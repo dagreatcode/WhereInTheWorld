@@ -104,11 +104,11 @@ SOFTWARE.
 [] Making the View look worth looking at.
 [] on the covid page, make the first feed in look good.
 [] on the covid page, fix the news feed in.
-[] on the covid page, make the last feed in look better.
+[x] on the covid page, make the last feed in look better.
 [] Fix gas page to work as a class component.
-[] Fix the lad n lng on the where go to page.
+[x] Fix the lad n lng on the where go to page.
 [] Finish the login and sign up authe n autho.
-[] finish the admin side of the site.
+[] finish the admin side of the site, delete, and edit.
 [] fix console app that is connected.
 [] Adding images and music to mongoDB.
 [] Add alert Context API

@@ -213,7 +213,7 @@ const WhereToGo = () => {
                 {toGo.length ? (
                   toGo.map((place) => {
                     return (
-                      <tr key={place._id}>
+                      <tr key={place.id}>
                         <td>{place.distance}</td>
                         {/* <td>{place.address}</td> */}
                         <td>
@@ -304,7 +304,7 @@ const WhereToGo = () => {
             >
               <option value="">Select...</option>
               {typeOfPlaces.map((place) => (
-                <option>{place.replace("_", " ")}</option>
+                <option key={place}>{place.replace("_", " ")}</option>
               ))}
             </select>
             <br />

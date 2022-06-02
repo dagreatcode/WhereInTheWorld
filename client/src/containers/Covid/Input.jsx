@@ -20,7 +20,7 @@ const Input = ({ label, value, handleInputChange, placeholder, name }) => {
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.string,
+  onChange: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired
 };

@@ -1,7 +1,7 @@
 .tableContainer {
     height: 500px;
     overflow: scroll;
-    width: 1100px;
+    width: 900px;
 }
 .table {
     position: sticky;

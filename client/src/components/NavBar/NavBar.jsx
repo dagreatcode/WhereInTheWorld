@@ -5,21 +5,22 @@ import { Link, NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
     <div>
-      <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
+            Let's Go
             {/* <img width="130px" height="70px"src="{% static "series/images/logo.png"%}" style="position:relative;top:-10px">
           <img width="130px" height="70px"src="{% static "series/images/logo.png"%}" />
           <img width="130px" height="70px"src="{% static "series/images/logo.png"%}"/> */}
             {/* <!-- Logo Image --> */}
-            <img
+            {/* <img
               src="./favicon-32x32.png"
               width="45"
               alt="Stay Safe Logo"
               class="d-inline-block align-middle mr-2"
-            />
+            /> */}
             {/* <!-- Logo Text --> */}
-            <span class="text-uppercase font-weight-bold">Travel Safe</span>
+            {/* <span class="text-uppercase font-weight-bold">Travel Safe</span> */}
           </Link>
           <button
             className="navbar-toggler"
@@ -44,11 +45,6 @@ const NavBar = () => {
                   Login
                 </NavLink>
               </li>
-              {/* <li className="nav-item">
-                <NavLink to="/Gas" className="nav-link">
-                  Gas
-                </NavLink>
-              </li> */}
               <li className="nav-item">
                 <NavLink to="/Covid" className="nav-link">
                   Covid
@@ -59,6 +55,11 @@ const NavBar = () => {
                   WhereToGo
                 </NavLink>
               </li>
+              {/* <li className="nav-item">
+                <NavLink to="/Gas" className="nav-link">
+                  Gas
+                </NavLink>
+              </li> */}
             </ul>
           </div>
         </div>

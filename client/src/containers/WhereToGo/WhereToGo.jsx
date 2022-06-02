@@ -244,10 +244,10 @@ const WhereToGo = () => {
         <br />
         <button onClick={handleOpen}>Search</button>
         <div className="row">
-          <div className="col-sm-12 tableContainer">
-            <table className="table table-success table-striped">
+          <div className="col-sm-12 table-responsive">
+            <table className="table">
               <thead>
-                <tr>
+                <tr class="table-primary">
                   <th scope="col">Distance</th>
                   <th scope="col">Address</th>
                   <th scope="col">Place</th>

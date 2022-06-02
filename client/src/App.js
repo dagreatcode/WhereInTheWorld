@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/Home/">
+    <Router>
         <NavBar />
         <Routes>
           <Route exact path="/AdminUsers" element={<AdminUsers />} />

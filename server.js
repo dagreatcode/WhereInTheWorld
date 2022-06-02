@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const UserController = require("./controllers/UsersController");
 const AuthController = require("./controllers/authController");
-const { createProxyMiddleware } = require('http-proxy-middleware');
+// const { createProxyMiddleware } = require("http-proxy-middleware");
+// const proxy = require('http-proxy-middleware');
 // const app.use(bodyParser.json());
 // const ConsoleApp = require("./consoleApp/consoleApp");
 // const bodyParser = require("bodyParser")
@@ -12,7 +13,6 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 // const con = ConsoleApp.test();
-
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -46,7 +46,7 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
 
-app.use("/api/user",UserController);
+app.use("/api/user", UserController);
 app.use(AuthController);
 
 // TODO: Add console app.
@@ -57,7 +57,6 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-
 app.get("/apiFun", (req, res) => {
   res.send("API FUN");
   var adminUser = req.params.apiFun;
@@ -65,13 +64,14 @@ app.get("/apiFun", (req, res) => {
   res.end();
 });
 
-app.use(
-  '/api',
-  createProxyMiddleware({
-    target: 'http://localhost:3001',
-    changeOrigin: true,
-  })
-);
+// app.use(
+//   "/api",
+//   createProxyMiddleware({
+//     target: "http://localhost:3001",
+//     changeOrigin: true,
+//   })
+// );
+// app.use(proxy("/api/test", { target: "http://localhost:3001/" }));
 // app.post("/api/users", (req, res) => {
 //   var newUser = req.body;
 //   console.log(newUser);

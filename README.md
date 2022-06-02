@@ -107,7 +107,7 @@ SOFTWARE.
 [x] on the covid page, make the last feed in look better.
 [] Fix gas page to work as a class component.
 [x] Fix the lad n lng on the where go to page.
-[] Finish the login and sign up authe n autho.
+[] Finish the login and sign up authentication n authorize.
 [] finish the admin side of the site, delete, and edit.
 [] fix console app that is connected.
 [] Adding images and music to mongoDB.

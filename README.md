@@ -114,6 +114,7 @@ SOFTWARE.
 [] Add alert Context API
 [] Add JWT Header ContextApi
 [] Add a spin wheel.
+[] Fix favicon size. missing the favicon 4 sizes. and its the wring size.
 
 [] Maybe match the with some Covid results with webhooks.
 [] find gas prices and compare to see what is the cheapest.

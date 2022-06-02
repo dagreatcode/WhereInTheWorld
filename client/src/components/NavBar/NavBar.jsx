@@ -15,7 +15,7 @@ const NavBar = () => {
             <img
               src="./favicon-32x32.png"
               width="45"
-              alt=""
+              alt="Stay Safe Logo"
               class="d-inline-block align-middle mr-2"
             />
             {/* <!-- Logo Text --> */}

@@ -14,7 +14,7 @@ const NavBar = () => {
       {/* <!-- Logo Image --> */}
       <img src="./logo.png" width="45" alt="" class="d-inline-block align-middle mr-2" />
       {/* <!-- Logo Text --> */}
-      <span class="text-uppercase font-weight-bold">Stay Safe</span>
+      <span class="text-uppercase font-weight-bold">Travel Safe</span>
 
 
           </Link>

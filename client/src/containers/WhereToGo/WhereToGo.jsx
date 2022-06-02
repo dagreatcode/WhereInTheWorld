@@ -27,7 +27,7 @@ const WhereToGo = () => {
     address: "",
     distance: 0,
     id: "",
-    location: { lat: 0, lng: 0 },
+    location: { lat: 43.850830, lng: -71.640427 },
     name: "",
     phone_number: 0,
     types: [],
@@ -284,7 +284,7 @@ const WhereToGo = () => {
                 ) : (
                   <tr>
                     <th>
-                      <h6>Not Found Until you search something....</h6>
+                      <h6>Not Found Until you <strong><u>turn on your location</u></strong>.<p>Where To Go?</p><p>If This is a private Browser, the GEO Location for this page will not work.</p></h6>
                       {/* airport, amusement_park, aquarium, art_gallery, atm,
                       bakery, bank, bar, beauty_salon, bicycle_store,
                       book_store, bowling, bus_station, cafe, campground,

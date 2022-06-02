@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/dagreatcode/whereintheworld/issues"
   },
-  "homepage": "https://github.com/dagreatcode/whereintheworld#readme",
+  "homepage": "https://whereintheworld34.herokuapp.com/",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",

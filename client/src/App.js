@@ -27,7 +27,6 @@ function App() {
 
   return (
     <Router>
-      <div>
         <NavBar />
         <Routes>
           <Route exact path="/AdminUsers" element={<AdminUsers />} />
@@ -40,7 +39,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
           {/* <Route render={() => <h1>Page not found</h1>} /> */}
         </Routes>
-      </div>
     </Router>
   );
 }

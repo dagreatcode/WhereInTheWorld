@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const UserController = require("./controllers/UsersController");
 const AuthController = require("./controllers/authController");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 // const app.use(bodyParser.json());
 // const ConsoleApp = require("./consoleApp/consoleApp");
 // const bodyParser = require("bodyParser")
@@ -64,6 +65,13 @@ app.get("/apiFun", (req, res) => {
   res.end();
 });
 
+app.use(
+  '/api',
+  createProxyMiddleware({
+    target: 'http://localhost:3001',
+    changeOrigin: true,
+  })
+);
 // app.post("/api/users", (req, res) => {
 //   var newUser = req.body;
 //   console.log(newUser);

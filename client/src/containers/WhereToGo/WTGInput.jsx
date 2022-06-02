@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const WTGInput = ({ label, id, value, name, placeholder, handleChange }) => {
+const WTGInput = ({ label, id, value, name, placeholder, onChange }) => {
   return (
     <div className="form-group">
       <label htmlFor="places">{label}</label>
@@ -12,7 +12,7 @@ const WTGInput = ({ label, id, value, name, placeholder, handleChange }) => {
         id={id}
         name={name}
         placeholder={placeholder}
-        onChange={handleChange}
+        onChange={onChange}
       />
     </div>
   );

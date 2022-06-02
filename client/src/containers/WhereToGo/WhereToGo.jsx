@@ -4,10 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import WTGInput from "./WTGInput";
 import Container from "react-bootstrap/Container";
-import "./WTG.css"
+import "./WTG.css";
 // import { Link } from 'react-router-dom';
-// import { MDBDataTable } from "mdbreact";
-
 // import WTGSelect from "./WTGSelect";
 
 const WhereToGo = () => {
@@ -24,7 +22,6 @@ const WhereToGo = () => {
   const handleOpen = () => {
     setsShow(true);
   };
-  // const handleShow = () => {};
 
   const [toGo, setToGo] = useState({
     address: "",
@@ -33,7 +30,7 @@ const WhereToGo = () => {
     location: { lat: 0, lng: 0 },
     name: "",
     phone_number: 0,
-    // types: [],
+    types: [],
     website: "",
     // radius: 800,
     // language: "en",
@@ -241,18 +238,14 @@ const WhereToGo = () => {
 
   return (
     <>
-      {/* {toGo.map((places) => (
-                <option>{places}</option>
-              ))} */}
       <Container>
         <br />
         <h1>Near By Places Directory</h1>
         <br />
         <button onClick={handleOpen}>Search</button>
         <div className="row">
-          <div className="col-sm-12 tableContainer" >
-            {/*  style="overflow-x:auto;"> */}
-            <table className="table table-success table-striped" >
+          <div className="col-sm-12 tableContainer">
+            <table className="table table-success table-striped">
               <thead>
                 <tr>
                   <th scope="col">Distance</th>
@@ -277,14 +270,13 @@ const WhereToGo = () => {
                         {/* <td type="tel">{place.phone_number}</td> */}
                         <td>
                           <a href={"tel:" + place.phone_number}>
-                            {" "}
-                            {place.phone_number}{" "}
+                            {place.phone_number}
                           </a>
                         </td>
                         <td>{place.types}</td>
                         {/* <td>{place.website}</td> */}
                         <td>
-                          <a href={place.website}> {place.website} </a>
+                          <a href={place.website}>{place.website}</a>
                         </td>
                       </tr>
                     );

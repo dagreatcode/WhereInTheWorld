@@ -4,7 +4,9 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import WTGInput from "./WTGInput";
 import Container from "react-bootstrap/Container";
+import "./WTG.css"
 // import { Link } from 'react-router-dom';
+// import { MDBDataTable } from "mdbreact";
 
 // import WTGSelect from "./WTGSelect";
 
@@ -127,7 +129,57 @@ const WhereToGo = () => {
     "veterinarian",
     "zoo",
   ];
-
+  // const row = toGo.map(({ location }) => location );
+  // const data = {
+  //   columns: [
+  //     {
+  //       label: "Distance",
+  //       field: "distance",
+  //       sort: "asc",
+  //       width: 150,
+  //     },
+  //     {
+  //       label: "Address",
+  //       field: "address",
+  //       sort: "asc",
+  //       width: 270,
+  //     },
+  //     {
+  //       label: "Place",
+  //       field: "place",
+  //       sort: "asc",
+  //       width: 200,
+  //     },
+  //     {
+  //       label: "Phone Number",
+  //       field: "phoneNumber",
+  //       sort: "asc",
+  //       width: 100,
+  //     },
+  //     {
+  //       label: "Types",
+  //       field: "types",
+  //       sort: "asc",
+  //       width: 150,
+  //     },
+  //     {
+  //       label: "Website",
+  //       field: "website",
+  //       sort: "asc",
+  //       width: 100,
+  //     },
+  //   ],
+  //   rows: [
+  //     {
+  //       distance: `${toGo.distance}`,
+  //       address: `${toGo.address}`,
+  //       place: `${toGo.place}`,
+  //       phoneNumber: `${toGo.phone_number}`,
+  //       types: `${toGo.types}`,
+  //       website: `${toGo.website}`,
+  //     },
+  //   ],
+  // };
   // https://rapidapi.com/trueway/api/trueway-places/
 
   const handleSubmit = (e) => {
@@ -198,8 +250,9 @@ const WhereToGo = () => {
         <br />
         <button onClick={handleOpen}>Search</button>
         <div className="row">
-          <div className="col-sm-12">
-            <table className="table table-success table-striped">
+          <div className="col-sm-12 tableContainer" >
+            {/*  style="overflow-x:auto;"> */}
+            <table className="table table-success table-striped" >
               <thead>
                 <tr>
                   <th scope="col">Distance</th>
@@ -268,6 +321,14 @@ const WhereToGo = () => {
             </table>
           </div>
         </div>
+        {/* <MDBDataTable
+          scrollY
+          maxHeight="200px"
+          striped
+          bordered
+          small
+          data={data}
+        /> */}
       </Container>
 
       <Modal show={show} onHide={handleClose}>

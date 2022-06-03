@@ -269,7 +269,7 @@ const WhereToGo = () => {
           <div className="col-sm-12 table-responsive">
             <table className="table">
               <thead>
-                <tr class="table-primary">
+                <tr className="table-primary">
                   <th scope="col">Distance</th>
                   <th scope="col">Address</th>
                   <th scope="col">Place</th>

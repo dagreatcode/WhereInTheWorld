@@ -27,7 +27,7 @@ const WhereToGo = () => {
     address: "",
     distance: 0,
     id: "",
-    location: { lat: 43.850830, lng: -71.640427 },
+    location: { lat: 0, lng: 0 },
     name: "",
     phone_number: 0,
     types: [],

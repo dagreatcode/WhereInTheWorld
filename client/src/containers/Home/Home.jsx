@@ -5,74 +5,35 @@ import React, { Component } from "react";
 class Home extends Component {
   render() {
     return (
-      <><div className="jumbotron">Hello Guest</div>
-        <div id="carouselId" className="carousel slide" data-ride="carousel">
-          <ol className="carousel-indicators">
-            <li
-              data-target="#carouselId"
-              data-slide-to="0"
-              className="active"
-            ></li>
-            <li data-target="#carouselId" data-slide-to="1"></li>
-            <li data-target="#carouselId" data-slide-to="2"></li>
-          </ol>
-          <div className="carousel-inner" role="listbox">
-            <div className="carousel-item active">
-              <img
-                data-src="holder.js/900x500/auto/#777:#555/text:First slide"
-                alt="Coming Soon"
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h3>Title</h3>
-                <p>Description</p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                data-src="holder.js/900x500/auto/#666:#444/text:Second slide"
-                alt="Second slide"
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h3>Title</h3>
-                <p>Description</p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                data-src="holder.js/900x500/auto/#666:#444/text:Third slide"
-                alt="Third slide"
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h3>Title</h3>
-                <p>Description</p>
-              </div>
-            </div>
-          </div>
-          <a
-            className="carousel-control-prev"
-            href="#carouselId"
-            role="button"
-            data-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a
-            className="carousel-control-next"
-            href="#carouselId"
-            role="button"
-            data-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Next</span>
-          </a>
+      <>
+        <div className="jumbotron text-center">
+          <h1 className="display-3">Welcome To The Page</h1>
+          <p className="lead">Hope you feel at home</p>
+          <hr className="my-2" />
+          <p>More info</p>
+          <p className="lead">
+            <a
+              className="btn btn-primary btn-lg"
+              href="Jumbo action link"
+              role="button"
+            >
+              Let's Get Started
+            </a>
+          </p>
         </div>
+        <blockquote class="blockquote text-right">
+        <p class="mb-0"></p>
+        <footer class="blockquote-footer"> <cite title="Source Title">Source Title</cite></footer>
+      </blockquote>
+      <blockquote class="blockquote text-right">
+        <p class="mb-0"></p>
+        <footer class="blockquote-footer"> <cite title="Source Title">Source Title</cite></footer>
+      </blockquote>
+      <blockquote class="blockquote text-right">
+        <p class="mb-0"></p>
+        <footer class="blockquote-footer"> <cite title="Source Title">Source Title</cite></footer>
+      </blockquote>
+      {/* <img src="" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="placeholder"/> */}
         {/* <div className="card text-left">
           <img className="card-img-top" src="holder.js/100px180/" alt="" />
           <div className="card-body">

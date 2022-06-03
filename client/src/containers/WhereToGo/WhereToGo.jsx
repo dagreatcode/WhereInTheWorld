@@ -14,7 +14,7 @@ const WhereToGo = () => {
   });
   const [languageState, setLangState] = useState("en");
   const [typeState, setTypesState] = useState("");
-  // const [phoneState, setPhoneState] = useState("");
+  // const [findPlaceByText, setPlaceByText] = useState({text: "Children's Creativity Museum"}); 
   const [show, setsShow] = useState(false);
   const handleClose = () => {
     setsShow(!show);
@@ -179,6 +179,28 @@ const WhereToGo = () => {
   // };
   // https://rapidapi.com/trueway/api/trueway-places/
 
+  // const handleSubmit2 = (e) => {
+
+  //   const options = {
+  //     method: "GET",
+  //     url: "https://trueway-places.p.rapidapi.com/FindPlaceByText",
+  //     params: { text: findPlaceByText.text, language: "en" },
+  //     headers: {
+  //       "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
+  //       "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+  //     },
+  //   };
+
+  //   axios
+  //     .request(options)
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -284,7 +306,19 @@ const WhereToGo = () => {
                 ) : (
                   <tr>
                     <th>
-                      <h6>Not Found Until you <strong><u>turn on your location</u></strong>.<p>Where To Go?</p><p>If This is a private Browser, the GEO Location for this page will not work.</p>A Geolocation request can only be fulfilled in a secure context.<p></p></h6>
+                      <h6>
+                        Not Found Until you{" "}
+                        <strong>
+                          <u>turn on your location</u>
+                        </strong>
+                        .<p>Where To Go?</p>
+                        <p>
+                          If This is a private Browser, the GEO Location for
+                          this page will not work.
+                        </p>
+                        A Geolocation request can only be fulfilled in a secure
+                        context.<p></p>
+                      </h6>
                       {/* airport, amusement_park, aquarium, art_gallery, atm,
                       bakery, bank, bar, beauty_salon, bicycle_store,
                       book_store, bowling, bus_station, cafe, campground,

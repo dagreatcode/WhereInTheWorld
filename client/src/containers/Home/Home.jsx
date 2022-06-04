@@ -12,7 +12,9 @@ class Home extends Component {
       <>
         <div className="jumbotron text-center">
           <h1 className="display-3">It's The Covid Way</h1>
-          <p className="lead">Search from Covid-19 new to Covid stats, and near by places to go.</p>
+          <p className="lead">
+            Search from Covid-19 new to Covid stats, and near by places to go.
+          </p>
           <hr className="my-2" />
           <p>Stay Safe</p>
           <p className="lead">
@@ -38,7 +40,13 @@ class Home extends Component {
                     </div>
                   </div>
                   <div className="col-sm-6">
-                    <img className="card-img-top" src={Image} alt="Covid button" />
+                    <Link to="/Covid">
+                      <img
+                        className="card-img-top"
+                        src={Image}
+                        alt="Covid button"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -55,7 +63,9 @@ class Home extends Component {
             <div className="card">
               <div className="row">
                 <div className="col-sm-6">
-                  <img className="card-img-top" src={Image2} alt="a map" />
+                  <Link to="/WhereToGo">
+                    <img className="card-img-top" src={Image2} alt="a map" />
+                  </Link>
                 </div>
                 <div className="col-sm-6">
                   <div className="card-body">
@@ -85,7 +95,13 @@ class Home extends Component {
                   </div>
                 </div>
                 <div className="col-sm-6">
-                  <img className="card-img-top" src={Image3} alt="Stay safe smiley face" />
+                  <Link to="/Gas">
+                    <img
+                      className="card-img-top"
+                      src={Image3}
+                      alt="Stay safe smiley face"
+                    />
+                  </Link>
                 </div>
               </div>
             </div>

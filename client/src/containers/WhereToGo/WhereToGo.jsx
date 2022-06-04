@@ -14,7 +14,7 @@ const WhereToGo = () => {
   });
   const [languageState, setLangState] = useState("en");
   const [typeState, setTypesState] = useState("");
-  // const [findPlaceByText, setPlaceByText] = useState({text: "Children's Creativity Museum"}); 
+  // const [findPlaceByText, setPlaceByText] = useState({text: "Children's Creativity Museum"});
   const [show, setsShow] = useState(false);
   const handleClose = () => {
     setsShow(!show);
@@ -262,9 +262,11 @@ const WhereToGo = () => {
     <>
       <Container>
         <br />
-        <h1>Near By Places Directory</h1>
+        <div className="Jumbotron text-center">
+          <h1 className="display-5">Near By Places Directory</h1>
+        </div>
         <br />
-        <button onClick={handleOpen}>Search</button>
+        <Button onClick={handleOpen}>Search</Button>
         <div className="row">
           <div className="col-sm-12 table-responsive">
             <table className="table">

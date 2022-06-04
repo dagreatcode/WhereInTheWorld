@@ -209,7 +209,16 @@ function Covid(props) {
   return (
     <>
       <br />
+      <div className="Jumbotron text-center">
+        <h1 className="display-3">Covid History, Stats, & News</h1>
+      </div>
+      <br />
       <div className="container">
+      <br />
+        <div className="Jumbotron">
+          <h1 className="display-6">Covid-19 History</h1>
+        </div>
+        <br />
         <div className="row">
           <Input
             label="Place a date here"
@@ -309,7 +318,11 @@ function Covid(props) {
           &nbsp;&nbsp;&nbsp;&nbsp;total: {covidNewsState.tests.total} <br />
         </p>
         <br />
-        <h1>Covid-19 News</h1>
+        <br />
+        <div className="Jumbotron">
+          <h1 className="display-6">Covid-19 News</h1>
+        </div>
+        <br />
         <Button onClick={handle2Submit}>go</Button>
         <br />
         <p>
@@ -322,10 +335,14 @@ function Covid(props) {
           {/* Time: {covidState.updatedDateTime}
           <br /> */}
         </p>
-        <h1>Covid-19 Stats</h1>
+        <br />
+        <div className="Jumbotron">
+          <h1 className="display-6">Covid-19 Stats</h1>
+        </div>
+        <br />
         <div className="container">
           <div className="row">
-          <h6>Place continent here</h6>
+            <h6>Place continent here</h6>
             <label>
               <input
                 type="text"

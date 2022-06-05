@@ -17,13 +17,13 @@
     "type": "git",
     "url": "git+https://github.com/dagreatcode/whereintheworld.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["Covid", "Safety"],
+  "author": "Vincent Kendrick",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dagreatcode/whereintheworld/issues"
   },
-  "homepage": "https://whereintheworld34.herokuapp.com/",
+  "homepage": "https://www.covid-way.com/",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",

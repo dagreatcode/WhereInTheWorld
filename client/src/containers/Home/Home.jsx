@@ -13,7 +13,7 @@ class Home extends Component {
         <div className="jumbotron text-center">
           <h1 className="display-3">It's The Covid Way</h1>
           <p className="lead">
-            Search from Covid-19 new to Covid stats, and near by places to go.
+            Search from Covid-19 News to Covid Stats, and near by Places to go.
           </p>
           <hr className="my-2" />
           <p>Stay Safe</p>

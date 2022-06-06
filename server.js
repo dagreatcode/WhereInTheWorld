@@ -36,6 +36,8 @@ mongoose.connect(
   }
 );
 
+console.log("github Actions");
+
 const connection = mongoose.connection;
 
 connection.on("connected", () => {

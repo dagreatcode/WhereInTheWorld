@@ -16,6 +16,8 @@ Acceptance Criteria
 
 ## Badges
 
+![commits](https://img.shields.io/github/commit-activity/y/dagreatcode/whereintheworld)
+
 ![issues](https://img.shields.io/github/issues-pr-raw/dagreatcode/whereintheworld?style=plastic)
 
 ![whereintheworld](https://img.shields.io/github/languages/top/dagreatcode/whereintheworld)

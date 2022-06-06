@@ -14,6 +14,17 @@
 
 Acceptance Criteria
 
+## Badges
+
+![issues](https://img.shields.io/github/issues-pr-raw/dagreatcode/whereintheworld?style=plastic)
+
+![whereintheworld](https://img.shields.io/github/languages/top/dagreatcode/whereintheworld)
+
+![](https://img.shields.io/static/v1?label=www.&message=covid-way&color=green)
+
+![ok](https://img.shields.io/github/license/dagreatcode/whereintheworld)
+
+
 ## Installation
 
 ```

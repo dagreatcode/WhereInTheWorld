@@ -26,6 +26,9 @@ Acceptance Criteria
 
 ![ok](https://img.shields.io/github/license/dagreatcode/whereintheworld)
 
+![](https://img.shields.io/github/repo-size/dagreatcode/whereintheworld)
+
+![](https://img.shields.io/tokei/lines/github/dagreatcode/whereintheworld)
 
 ## Installation
 

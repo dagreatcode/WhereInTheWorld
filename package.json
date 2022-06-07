@@ -27,7 +27,10 @@
     "type": "git",
     "url": "git+https://github.com/dagreatcode/whereintheworld.git"
   },
-  "keywords": ["Covid", "Safety"],
+  "keywords": [
+    "Covid",
+    "Safety"
+  ],
   "author": "Vincent Kendrick",
   "license": "MIT",
   "bugs": {
@@ -47,9 +50,10 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "concurrently": "^7.1.0",
-    "eslint": "^7.28.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.30.0",
     "mocha": "^9.0.1",
     "newman": "^5.2.4",
     "nodemon": "^2.0.15",

@@ -36,7 +36,7 @@ router.post("/api/signup", (req, res) => {
             res.json(newUser);
           })
           .catch((err) => {
-            // console.log(err);
+            console.log(err);
             res.status(500).json({
               error: true,
               data: null,
@@ -45,7 +45,12 @@ router.post("/api/signup", (req, res) => {
           });
       })
       .catch((err) => {
-        res.status(500);
+        console.log(err);
+        res.status(500).json({
+        error: true,
+        data: null,
+        message: "Password?",
+        });
       });
   }
 });
@@ -84,7 +89,7 @@ router.post("/api/login", (req, res) => {
             }
           })
           .catch((err) => {
-            // console.log(err);
+            console.log(err);
             res.status(401).json({
               err: true,
               data: null,
@@ -94,7 +99,7 @@ router.post("/api/login", (req, res) => {
       }
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
       res.status(500).json({
         err: true,
         data: null,
@@ -103,4 +108,4 @@ router.post("/api/login", (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

@@ -149,4 +149,4 @@ router.delete("/:id", (req, res) => {
 //   return res.json(users);
 // });
 
-module.exports = router;
+export default router;

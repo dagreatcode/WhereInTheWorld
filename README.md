@@ -22,11 +22,11 @@ Acceptance Criteria
 
 ![whereintheworld](https://img.shields.io/github/languages/top/dagreatcode/whereintheworld)
 
-![](https://img.shields.io/static/v1?label=www.&message=covid-way&color=green)
+![www.covid-way.com](https://img.shields.io/static/v1?label=www.&message=covid-way&color=green)
 
-![ok](https://img.shields.io/github/license/dagreatcode/whereintheworld)
+![MIT](https://img.shields.io/github/license/dagreatcode/whereintheworld)
 
-![](https://img.shields.io/github/repo-size/dagreatcode/whereintheworld)
+![repo-size](https://img.shields.io/github/repo-size/dagreatcode/whereintheworld)
 
 ![](https://img.shields.io/tokei/lines/github/dagreatcode/whereintheworld)
 

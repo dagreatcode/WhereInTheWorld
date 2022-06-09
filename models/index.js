@@ -1,5 +1,5 @@
 // Exporting an object containing all of our models
 
-export default {
+module.exports = {
     User: require("./Users"),
   };

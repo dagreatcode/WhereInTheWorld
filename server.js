@@ -33,6 +33,8 @@ mongoose.connect(
     useUnifiedTopology: true,
     // useCreateIndex: true,
     // useFindAndModify: false,
+    // onAfterSetupMiddleware: true,
+    // onBeforeSetupMiddleware: true,
   }
 );
 

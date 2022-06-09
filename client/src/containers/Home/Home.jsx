@@ -19,7 +19,7 @@ class Home extends Component {
           <p>Stay Safe</p>
           <p className="lead">
             <Link className="btn btn-primary btn-lg" to="/Login" role="button">
-              Let's Get Started
+              Let's Get Started.
             </Link>
           </p>
         </div>

@@ -35,4 +35,4 @@ UsersSchema.virtual("kindOfUser").get(function () {
 
 const User = mongoose.model("User", UsersSchema);
 
-export default User;
+module.exports = User;

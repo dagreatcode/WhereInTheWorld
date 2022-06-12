@@ -8,10 +8,12 @@ const jwt = require("jsonwebtoken");
 // "Sign Up"
 
 router.post("/api/signup", (req, res) => {
-  const { email, password, typeOfUser } = req.body;
+  const { email, password } = req.body[0];
   // console.log(req.body[0].email);
-  // console.log(req.body.email, req.body.password)
-  if (!email.trim() || !password.trim()) {
+  // console.log(req.body[0].password)
+  // console.log(req.body)
+
+  if (!email || !password) {
     res.status(400);
   } else {
     bcrypt
@@ -21,7 +23,6 @@ router.post("/api/signup", (req, res) => {
         db.User.create({
           email: email,
           password: hashedPassword,
-          typeOfUser: typeOfUser,
         })
           .then((newUser) => {
             const token = jwt.sign(
@@ -58,7 +59,7 @@ router.post("/api/signup", (req, res) => {
 // "Login"
 
 router.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body[0];
   db.User.findOne({ email: email })
     .then((foundUser) => {
       if (foundUser) {
@@ -66,15 +67,19 @@ router.post("/api/login", (req, res) => {
         bcrypt
           .compare(password, foundUser.password)
           .then(function (result) {
-            // console.log("The password match: ", result);
+            console.log("The password match: ", result);
             if (result) {
-              // TODO: Send a jwt back as data instead.
-              // TODO: lock down the token in a time limit
-              // TODO: Something needs to be on the back end paying attention
+              // // TODO: Send a jwt back as data instead.
+              // // TODO: lock down the token in a time limit
+              // // TODO: Something needs to be on the back end paying attention
               const token = jwt.sign(
                 { email: foundUser.email },
                 process.env.SECRET
               );
+              // const token = jwt.sign(
+              //   { foo: 'bar' },
+              //   'shhhhh'
+              // );
               res.json({
                 err: false,
                 data: token,

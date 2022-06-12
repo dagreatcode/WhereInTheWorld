@@ -3,17 +3,19 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const db = require("../models");
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 // TODO: Fix the return password to match. maybe reverse hash to match login password.
 // "Sign Up"
 
 
 
 router.post("/api/signup", (req, res) => {
-  const { email, password } = req.body;
-  // console.log(req.body[0].email);
-  // console.log(req.body.email, req.body.password)
-  if (!email.trim() || !password.trim()) {
+  const { email, password } = req.body[0];
+  console.log(req.body[0].email);
+  console.log(req.body[0].password)
+  console.log(req.body)
+
+  if (!email || !password) {
     res.status(400);
   } else {
     bcrypt
@@ -25,15 +27,15 @@ router.post("/api/signup", (req, res) => {
           password: hashedPassword,
         })
           .then((newUser) => {
-            // const token = jwt.sign(
-            //   { email: newUser.email },
-            //   process.env.SECRET
-            // );
-            // res.json({
-            //   err: false,
-            //   data: token,
-            //   message: "Successfully signed up.",
-            // });
+            const token = jwt.sign(
+              { email: newUser.email },
+              process.env.SECRET
+            );
+            res.json({
+              err: false,
+              data: token,
+              message: "Successfully signed up.",
+            });
             res.json(newUser);
           })
           .catch((err) => {
@@ -67,7 +69,7 @@ router.post("/api/login", (req, res) => {
         bcrypt
           .compare(password, foundUser.password)
           .then(function (result) {
-            // console.log("The password match: ", result);
+            console.log("The password match: ", result);
             if (result) {
               // // TODO: Send a jwt back as data instead.
               // // TODO: lock down the token in a time limit
@@ -76,9 +78,13 @@ router.post("/api/login", (req, res) => {
               //   { email: foundUser.email },
               //   process.env.SECRET
               // );
+              const token = jwt.sign(
+                { foo: 'bar' },
+                'shhhhh'
+              );
               res.json({
                 err: false,
-                data: null,
+                data: token,
                 message: "Successfully logged in.",
               });
             } else {

@@ -32,14 +32,16 @@ router.get("/", (req, res) => {
 
 // TODO:  Get this route working as soon as you finish the last thing.. // FIXME: Dont waste time on this anymore. The err is sonWebTokenError: invalid token  // TODO:
 router.get("/admin", (req, res) => {
-  // console.log(JSON.stringify(req.headers));
+  console.log(JSON.stringify(req.headers));
+  const authorization = req.headers;
   // const secret = process.env.SECRET;
   // const headerValue = req.headers["authorization"];
   // const headerValue = req.headers['authorization'];
   // const header = { authorization: headerValue };
-  // console.log(req.headers.go);
+  // const header = JSON.stringify(req.headers)
+  console.log(req.headers);
   // console.log(req.headers.authorization);
-  if (!req.headers.authorization) {
+  if (!authorization) {
     return res.status(401).json({
       error: true,
       data: null,
@@ -51,10 +53,10 @@ router.get("/admin", (req, res) => {
   //   process.env.SECRET
   // );
   // console.log(token);
-  jwt.verify(' authorization: req.headers.authorization ', process.env.SECRET, (err, decoded) => {
+  jwt.verify(authorization, process.env.SECRET, (err, decoded) => {
     if (err) {
       // console.log(req.headers);
-      // console.log(decoded);
+      console.log(decoded);
       console.log(err);
       console.log("error getting token");
       return res.status(401).json({

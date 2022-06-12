@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AuthContext from "../../utils/ContextAPI/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const history = useHistory();
+  const {setJwt} = useContext(AuthContext)
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -27,12 +29,14 @@ const Login = () => {
   };
   const handle2Submit = (e) => {
     e.preventDefault();
-    // const { email, password } = e.target;
+    // const email  = e.target.email;
+    // const password  = e.target.password;
     axios
     // TODO: change to /api/signup
       .post("/api/signup", { email, password })
       .then((response) => {
         // console.log(response.data);
+        setJwt(response.data.data)
         navigate("/");
         // history.push("/");
         // window.location = "/home";

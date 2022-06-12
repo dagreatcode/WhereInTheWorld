@@ -10,14 +10,14 @@ const Login = () => {
   const {setJwt} = useContext(AuthContext)
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, email, password) => {
     e.preventDefault();
     // const { email, password } = e.target;
     axios
     // TODO: change to /api/login
       .post("/api/login", { email, password })
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         navigate("/");
         // history.push("/");
         // window.location = "/home";
@@ -27,7 +27,7 @@ const Login = () => {
         // console.log(err);
       });
   };
-  const handle2Submit = (e) => {
+  const handle2Submit = (e, email, password) => {
     e.preventDefault();
     // const email  = e.target.email;
     // const password  = e.target.password;

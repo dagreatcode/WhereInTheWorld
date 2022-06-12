@@ -7,13 +7,11 @@ const jwt = require("jsonwebtoken");
 // TODO: Fix the return password to match. maybe reverse hash to match login password.
 // "Sign Up"
 
-
-
 router.post("/api/signup", (req, res) => {
   const { email, password } = req.body[0];
-  console.log(req.body[0].email);
-  console.log(req.body[0].password)
-  console.log(req.body)
+  // console.log(req.body[0].email);
+  // console.log(req.body[0].password)
+  // console.log(req.body)
 
   if (!email || !password) {
     res.status(400);
@@ -61,7 +59,7 @@ router.post("/api/signup", (req, res) => {
 // "Login"
 
 router.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body[0];
   db.User.findOne({ email: email })
     .then((foundUser) => {
       if (foundUser) {
@@ -74,14 +72,14 @@ router.post("/api/login", (req, res) => {
               // // TODO: Send a jwt back as data instead.
               // // TODO: lock down the token in a time limit
               // // TODO: Something needs to be on the back end paying attention
-              // const token = jwt.sign(
-              //   { email: foundUser.email },
-              //   process.env.SECRET
-              // );
               const token = jwt.sign(
-                { foo: 'bar' },
-                'shhhhh'
+                { email: foundUser.email },
+                process.env.SECRET
               );
+              // const token = jwt.sign(
+              //   { foo: 'bar' },
+              //   'shhhhh'
+              // );
               res.json({
                 err: false,
                 data: token,

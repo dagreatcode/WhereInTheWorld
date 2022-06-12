@@ -8,10 +8,12 @@ const jwt = require("jsonwebtoken");
 // "Sign Up"
 
 router.post("/api/signup", (req, res) => {
-  const { email, password } = req.body[0];
+  // const { email, password } = req.body;
   // console.log(req.body[0].email);
   // console.log(req.body[0].password)
   // console.log(req.body)
+  const password = req.body[0].password;
+  const email = req.body[0].email;
 
   if (!email || !password) {
     res.status(400);
@@ -19,7 +21,7 @@ router.post("/api/signup", (req, res) => {
     bcrypt
       .hash(password, 10)
       .then((hashedPassword) => {
-        // console.log(hashedPassword);
+        console.log(hashedPassword);
         db.User.create({
           email: email,
           password: hashedPassword,
@@ -59,8 +61,8 @@ router.post("/api/signup", (req, res) => {
 // "Login"
 
 router.post("/api/login", (req, res) => {
-  const { email, password } = req.body[0];
-  db.User.findOne({ email: email })
+  const password = req.body[0].password;
+  const email = req.body[0].email;  db.User.findOne({ email: email })
     .then((foundUser) => {
       if (foundUser) {
         // TODO: if too many failed attempts to login.

@@ -11,6 +11,14 @@ router.get("/force", (req, res) => {
     // .populate("user")
     .then((foundUsers) => {
       res.json(foundUsers);
+    }).catch((err) => {
+      console.log(err);
+      console.log("error when retrieving all");
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "Failed to retrieve all users.",
+      });
     });
 });
 

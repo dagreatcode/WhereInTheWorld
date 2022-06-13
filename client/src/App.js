@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 import Home from "./containers/Home/Home";
@@ -13,9 +13,24 @@ import AdminUsers from "./containers/Admin/AdminUsers";
 import AdminNewUser from "./containers/Admin/AdminNewUser";
 import AuthContext from "./utils/ContextAPI/AuthContext";
 import {setAxiosDefault} from "./utils/axiosDefault/axiosDefault"
-
+// import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+// import ProtectedRoute from 'react-protected-route-component'
 function App() {
   const [jwt, setJwt] = useState("");
+
+  const [isLoggedIn, setisLoggedIn] = useState(null);
+  const logIn = () => {
+    setisLoggedIn(true);
+  };
+  const logOut = () => {
+    setisLoggedIn(false);
+  };
+  const Protected = ({ isLoggedIn, children }) => {
+    if (!isLoggedIn) {
+    return <Navigate to="/" replace />;
+    }
+    return children;
+   };
 
   useEffect(() => {
     console.log("Make an API call.");
@@ -39,8 +54,14 @@ if (jwt){
     <Router>
       <AuthContext.Provider value={{jwt,setJwt}}>
         <NavBar />
+          {isLoggedIn ? (
+            <button onClick={logOut}>Logout</button>
+            ) : (
+            <button onClick={logIn}>Login</button>
+          )}
         <Routes>
           <Route exact path="/AdminUsers" element={<AdminUsers />} />
+          {/* <ProtectedRoute path="/AdminUsers" element={<AdminUsers />} /> */}
           <Route exact path="/AdminNewUser" element={<AdminNewUser />} />
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Gas" element={<Gas />} />
@@ -49,6 +70,27 @@ if (jwt){
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           {/* <Route render={() => <h1>Page not found</h1>} /> */}
+          <Route path='/profile'
+            element={
+            <Protected isLoggedIn={isLoggedIn}>
+            <Gas />
+            </Protected>
+            }
+          />
+          {/* <ProtectedRoute
+          path="/protected"
+          redirectRoute="/"
+          guardFunction={() => {
+            const token = localStorage.getItem('authToken');
+            if(token){
+              return true;
+            }else{
+              return false;
+            }
+          }}
+          component={() => <h1>Protected Route</h1>}
+          exact
+        /> */}
         </Routes>
         </AuthContext.Provider>
     </Router>

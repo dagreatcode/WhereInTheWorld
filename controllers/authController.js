@@ -14,27 +14,29 @@ router.post("/api/signup", (req, res) => {
   // console.log(req.body)
    const password = req.body[0].password;
    const email = req.body[0].email;
+  //  const {test} = req.body;
+  //  console.log({test}.email)
 
-  //  const pass = toString(password)
-  //  const em = toString(email)
+  //  const em = email.toString()
 
    console.log(password)
    console.log(email)
-  if (!req.body.email || !req.body.password) {
+  if (!email || !password) {
     res.status(400);
   } else {
     bcrypt
-      .hash(password.toString(), 10)
+      .hash(password, 10)
       .then((hashedPassword) => {
-        const ema = email[0]
+        // const ema = email[0]
         console.log(hashedPassword);
-        console.log(ema)
+        // console.log(ema)
         db.User.create({
-          email: ema,
+          email: email.toString(),
           password: hashedPassword,
         })
           .then((newUser) => {
             console.log(newUser)
+            console.log(newUser.email)
             const token = jwt.sign(
               { email: newUser.email },
               process.env.SECRET

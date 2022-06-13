@@ -8,8 +8,11 @@ const jwt = require("jsonwebtoken");
 // "Login"
 
 router.post("/api/login", (req, res) => {
-  const password = req.body;
-  const email = req.body; 
+  // const password = req.body;
+  // const email = req.body; 
+  const data = req.body
+  const email = data.email
+  const password = data.password
   console.log(email)
   console.log(password) 
   db.User.findOne({ email: email.toString() })

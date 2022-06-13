@@ -17,6 +17,7 @@ const Login = () => {
     // TODO: change to /api/login
       .post("/api/login", { email, password })
       .then((response) => {
+        setJwt(response.data.data)
         console.log(response.data);
         navigate("/");
         // history.push("/");
@@ -24,7 +25,7 @@ const Login = () => {
         // this.props.history.push("/home");
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   };
   const handle2Submit = (e, email, password) => {

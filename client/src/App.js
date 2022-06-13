@@ -64,19 +64,19 @@ if (jwt){
           {/* <ProtectedRoute path="/AdminUsers" element={<AdminUsers />} /> */}
           <Route exact path="/AdminNewUser" element={<AdminNewUser />} />
           <Route exact path="/Login" element={<Login />} />
-          <Route exact path="/Gas" element={<Gas />} />
-          <Route exact path="/Covid" element={<Covid />} />
-          <Route exact path="/WhereToGo" element={<WhereToGo />} />
-          <Route exact path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          {/* <Route render={() => <h1>Page not found</h1>} /> */}
-          <Route path='/profile'
+          {/* <Route exact path="/Gas" element={<Gas />} /> */}
+          <Route path='/Gas'
             element={
             <Protected isLoggedIn={isLoggedIn}>
             <Gas />
             </Protected>
             }
           />
+          <Route exact path="/Covid" element={<Covid />} />
+          <Route exact path="/WhereToGo" element={<WhereToGo />} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          {/* <Route render={() => <h1>Page not found</h1>} /> */}
           {/* <ProtectedRoute
           path="/protected"
           redirectRoute="/"

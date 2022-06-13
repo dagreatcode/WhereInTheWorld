@@ -6,29 +6,13 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [email2, setEmail2] = useState("");
+  const [password2, setPassword2] = useState("");
   // const history = useHistory();
   const {setJwt} = useContext(AuthContext)
   const navigate = useNavigate();
 
-  const handleSubmit = (e, email, password) => {
-    e.preventDefault();
-    // const { email, password } = e.target;
-    axios
-    // TODO: change to /api/login
-      .post("/api/login", { email, password })
-      .then((response) => {
-        setJwt(response.data.data)
-        console.log(response.data);
-        navigate("/");
-        // history.push("/");
-        // window.location = "/home";
-        // this.props.history.push("/home");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const handle2Submit = (e, email, password) => {
+  const handle2Submit = (e) => {
     e.preventDefault();
     // const email  = e.target.email;
     // const password  = e.target.password;
@@ -44,7 +28,26 @@ const Login = () => {
         // this.props.history.push("/home");
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
+      });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // const { email, password } = e.target;
+    axios
+    // TODO: change to /api/login
+      .post("/api/login", { email, password })
+      .then((response) => {
+        setJwt(response.data.data)
+        console.log(response.data);
+        navigate("/");
+        // history.push("/");
+        // window.location = "/home";
+        // this.props.history.push("/home");
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -123,9 +126,9 @@ const Login = () => {
                     data-nlok-ref-guid="45d30697-7fd3-457b-fb20-fd168951d258"
                     control-id="ControlID-1"
                     name="email"
-                    value={email}
+                    value={email2}
                     onChange={(e) => {
-                      setEmail(e.target.value);
+                      setEmail2(e.target.value);
                     }}
                   />
                   <div id="norton-idsafe-field-styling-divId"></div>
@@ -140,9 +143,9 @@ const Login = () => {
                     data-nlok-ref-guid="133f212d-f672-4c6f-e332-4bc651dd15a2"
                     control-id="ControlID-2"
                     name="password"
-                    value={password}
+                    value={password2}
                     onChange={(e) => {
-                      setPassword(e.target.value);
+                      setPassword2(e.target.value);
                     }}
                   />
                   <div id="norton-idsafe-field-styling-divId"></div>

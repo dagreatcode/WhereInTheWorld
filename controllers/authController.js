@@ -12,18 +12,18 @@ router.post("/api/signup", (req, res) => {
   // console.log(req.body[0].email);
   // console.log(req.body[0].password)
   // console.log(req.body)
-  const password = req.body[0].password;
-  const email = req.body[0].email;
-
+  const email = req.body;
+  const password = req.body;
+ 
   if (!email || !password) {
     res.status(400);
   } else {
     bcrypt
-      .hash(password, 10)
+      .hash(password.toString(), 10)
       .then((hashedPassword) => {
         console.log(hashedPassword);
         db.User.create({
-          email: email,
+          email: email.toString(),
           password: hashedPassword,
         })
           .then((newUser) => {
@@ -61,13 +61,16 @@ router.post("/api/signup", (req, res) => {
 // "Login"
 
 router.post("/api/login", (req, res) => {
-  const password = req.body[0].password;
-  const email = req.body[0].email;  db.User.findOne({ email: email })
+  const password = req.body;
+  const email = req.body; 
+  console.log(email)
+  console.log(password) 
+  db.User.findOne({ email: email.toString() })
     .then((foundUser) => {
       if (foundUser) {
         // TODO: if too many failed attempts to login.
         bcrypt
-          .compare(password, foundUser.password)
+          .compare(password.toString(), foundUser.password)
           .then(function (result) {
             console.log("The password match: ", result);
             if (result) {
@@ -91,7 +94,7 @@ router.post("/api/login", (req, res) => {
               res.status(401).json({
                 err: true,
                 data: null,
-                message: "Failed to sign in",
+                message: "Failed to sign in 3",
               });
             }
           })
@@ -100,7 +103,7 @@ router.post("/api/login", (req, res) => {
             res.status(401).json({
               err: true,
               data: null,
-              message: "Failed to sign in",
+              message: "Failed to sign in 2",
             });
           });
       }
@@ -110,7 +113,7 @@ router.post("/api/login", (req, res) => {
       res.status(500).json({
         err: true,
         data: null,
-        message: "Failed to sign in",
+        message: "Failed to sign in 1",
       });
     });
 });

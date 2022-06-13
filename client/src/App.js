@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -11,8 +11,12 @@ import NavBar from "./components/NavBar/NavBar";
 import NotFound from "./containers/NotFound/NotFound";
 import AdminUsers from "./containers/Admin/AdminUsers";
 import AdminNewUser from "./containers/Admin/AdminNewUser";
+import AuthContext from "./utils/ContextAPI/AuthContext";
+import {setAxiosDefault} from "./utils/axiosDefault/axiosDefault"
 
 function App() {
+  const [jwt, setJwt] = useState("");
+
   useEffect(() => {
     console.log("Make an API call.");
     axios
@@ -25,8 +29,15 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+if (jwt){
+  setAxiosDefault(jwt)
+}
+  },[jwt])
+
   return (
     <Router>
+      <AuthContext.Provider value={{jwt,setJwt}}>
         <NavBar />
         <Routes>
           <Route exact path="/AdminUsers" element={<AdminUsers />} />
@@ -39,6 +50,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           {/* <Route render={() => <h1>Page not found</h1>} /> */}
         </Routes>
+        </AuthContext.Provider>
     </Router>
   );
 }

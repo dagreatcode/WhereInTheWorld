@@ -12,8 +12,8 @@ router.post("/api/signup", (req, res) => {
   // console.log(req.body[0].email);
   // console.log(req.body[0].password)
   // console.log(req.body)
-  const email = req.body;
-  const password = req.body;
+  const email = req.body.toString();
+  const password = req.body[0].password;
  
   if (!email || !password) {
     res.status(400);
@@ -21,12 +21,16 @@ router.post("/api/signup", (req, res) => {
     bcrypt
       .hash(password.toString(), 10)
       .then((hashedPassword) => {
+        const ema = req.body[0].email
         console.log(hashedPassword);
+        console.log(password);
+        console.log(req.body[0].email)
         db.User.create({
-          email: email.toString(),
+          email: ema,
           password: hashedPassword,
         })
           .then((newUser) => {
+            console.log(newUser)
             const token = jwt.sign(
               { email: newUser.email },
               process.env.SECRET

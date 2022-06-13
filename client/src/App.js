@@ -19,18 +19,25 @@ function App() {
   const [jwt, setJwt] = useState("");
 
   const [isLoggedIn, setisLoggedIn] = useState(null);
-  const logIn = () => {
-    setisLoggedIn(true);
-  };
+  // const logIn = () => {
+  // };
   const logOut = () => {
     setisLoggedIn(false);
   };
   const Protected = ({ isLoggedIn, children }) => {
     if (!isLoggedIn) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
     }
+    
     return children;
    };
+
+   useEffect(() => {
+    if (jwt){
+      setAxiosDefault(jwt)
+      setisLoggedIn(true);
+    }
+      },[jwt])
 
   useEffect(() => {
     console.log("Make an API call.");
@@ -44,12 +51,6 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-if (jwt){
-  setAxiosDefault(jwt)
-}
-  },[jwt])
-
   return (
     <Router>
       <AuthContext.Provider value={{jwt,setJwt}}>
@@ -57,7 +58,7 @@ if (jwt){
           {isLoggedIn ? (
             <button onClick={logOut}>Logout</button>
             ) : (
-            <button onClick={logIn}>Login</button>
+            <button>Please Login</button>
           )}
         <Routes>
           {/* <Route exact path="/AdminUsers" element={<AdminUsers />} /> */}

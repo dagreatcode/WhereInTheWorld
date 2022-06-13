@@ -36,7 +36,7 @@ router.post("/api/signup", (req, res) => {
               data: token,
               message: "Successfully signed up.",
             });
-            res.json(newUser);
+            // res.json(newUser);
           })
           .catch((err) => {
             console.log(err);

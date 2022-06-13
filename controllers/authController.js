@@ -12,19 +12,23 @@ router.post("/api/signup", (req, res) => {
   // console.log(req.body[0].email);
   // console.log(req.body[0].password)
   // console.log(req.body)
-  const email = req.body.toString();
-  const password = req.body[0].password;
- 
-  if (!email || !password) {
+   const password = req.body[0].password;
+   const email = req.body[0].email;
+
+  //  const pass = toString(password)
+  //  const em = toString(email)
+
+   console.log(password)
+   console.log(email)
+  if (!req.body.email || !req.body.password) {
     res.status(400);
   } else {
     bcrypt
       .hash(password.toString(), 10)
       .then((hashedPassword) => {
-        const ema = req.body[0].email
+        const ema = email[0]
         console.log(hashedPassword);
-        console.log(password);
-        console.log(req.body[0].email)
+        console.log(ema)
         db.User.create({
           email: ema,
           password: hashedPassword,

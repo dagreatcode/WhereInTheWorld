@@ -79,23 +79,23 @@ function App() {
             <button>Please Login</button>
           )}
         <Routes>
-          {/* <Route exact path="/AdminUsers" element={<AdminUsers />} /> */}
+          <Route exact path="/AdminUsers" element={<AdminUsers />} />
           {/* <ProtectedRoute.Protected path="/AdminUsers" element={<AdminUsers />} /> */}
-          <Route path='/AdminUsers'
+          {/* <Route path='/AdminUsers'
             element={
             <Protected isLoggedIn={isLoggedIn}>
             <AdminUsers />
             </Protected>
             }
-          />
-          <Route exact path="/AdminNewUser" element={<AdminNewUser />} />
-          {/* <Route path='/AdminNewUser'
+          /> */}
+          {/* <Route exact path="/AdminNewUser" element={<AdminNewUser />} /> */}
+          <Route path='/AdminNewUser'
             element={
             <Protected isLoggedIn={isLoggedIn}>
             <AdminNewUser />
             </Protected>
             }
-          /> */}
+          />
           <Route exact path="/Login" element={<Login />} />
           {/* <Route exact path="/Gas" element={<Gas />} /> */}
           <Route path='/Gas'

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AlertContext from "./utils/ContextAPI/AlertContext";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -13,6 +14,7 @@ import AdminUsers from "./containers/Admin/AdminUsers";
 import AdminNewUser from "./containers/Admin/AdminNewUser";
 import AuthContext from "./utils/ContextAPI/AuthContext";
 import {setAxiosDefault} from "./utils/axiosDefault/axiosDefault"
+import Alert from "./components/Alert";
 // import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import ProtectedRoute from 'react-protected-route-component'
 function App() {
@@ -32,12 +34,25 @@ function App() {
     return children;
    };
 
-   useEffect(() => {
-    if (jwt){
-      setAxiosDefault(jwt)
-      setisLoggedIn(true);
-    }
-      },[jwt])
+   const [alert, setAlert] = useState({
+    message: "Welcome",
+    type: "success"
+   })
+
+      useEffect(()=>{
+        const localJwt = localStorage.getItem("jwt")
+        if (localJwt){
+          setJwt(localJwt)
+        }
+      },[])
+
+      useEffect(() => {
+        if (jwt){
+          setAxiosDefault(jwt)
+          setisLoggedIn(true);
+          localStorage.setItem("jwt",jwt)
+        }
+          },[jwt])
 
   useEffect(() => {
     console.log("Make an API call.");
@@ -54,30 +69,33 @@ function App() {
   return (
     <Router>
       <AuthContext.Provider value={{jwt,setJwt}}>
+      <AlertContext.Provider value={{...alert, setAlert:setAlert}}>
+
         <NavBar />
+        <Alert />
           {isLoggedIn ? (
             <button onClick={logOut}>Logout</button>
             ) : (
             <button>Please Login</button>
           )}
         <Routes>
-          {/* <Route exact path="/AdminUsers" element={<AdminUsers />} /> */}
-          {/* <ProtectedRoute path="/AdminUsers" element={<AdminUsers />} /> */}
-          <Route path='/AdminUsers'
+          <Route exact path="/AdminUsers" element={<AdminUsers />} />
+          {/* <ProtectedRoute.Protected path="/AdminUsers" element={<AdminUsers />} /> */}
+          {/* <Route path='/AdminUsers'
             element={
             <Protected isLoggedIn={isLoggedIn}>
             <AdminUsers />
             </Protected>
             }
-          />
-          <Route exact path="/AdminNewUser" element={<AdminNewUser />} />
-          {/* <Route path='/AdminNewUser'
+          /> */}
+          {/* <Route exact path="/AdminNewUser" element={<AdminNewUser />} /> */}
+          <Route path='/AdminNewUser'
             element={
             <Protected isLoggedIn={isLoggedIn}>
             <AdminNewUser />
             </Protected>
             }
-          /> */}
+          />
           <Route exact path="/Login" element={<Login />} />
           {/* <Route exact path="/Gas" element={<Gas />} /> */}
           <Route path='/Gas'
@@ -87,8 +105,22 @@ function App() {
             </Protected>
             }
           />
-          <Route exact path="/Covid" element={<Covid />} />
-          <Route exact path="/WhereToGo" element={<WhereToGo />} />
+          <Route path='/Covid'
+            element={
+            <Protected isLoggedIn={isLoggedIn}>
+            <Covid />
+            </Protected>
+            }
+          />
+          <Route path='/WhereToGo'
+            element={
+            <Protected isLoggedIn={isLoggedIn}>
+            <WhereToGo />
+            </Protected>
+            }
+          />
+          {/* <Route exact path="/Covid" element={<Covid />} /> */}
+          {/* <Route exact path="/WhereToGo" element={<WhereToGo />} /> */}
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           {/* <Route render={() => <h1>Page not found</h1>} /> */}
@@ -107,6 +139,7 @@ function App() {
           exact
         /> */}
         </Routes>
+        </AlertContext.Provider>
         </AuthContext.Provider>
     </Router>
   );

@@ -105,7 +105,7 @@ function App() {
             </Protected>
             }
           />
-          <Route path='/Covid'
+          {/* <Route path='/Covid'
             element={
             <Protected isLoggedIn={isLoggedIn}>
             <Covid />
@@ -118,9 +118,9 @@ function App() {
             <WhereToGo />
             </Protected>
             }
-          />
-          {/* <Route exact path="/Covid" element={<Covid />} /> */}
-          {/* <Route exact path="/WhereToGo" element={<WhereToGo />} /> */}
+          /> */}
+          <Route exact path="/Covid" element={<Covid />} />
+          <Route exact path="/WhereToGo" element={<WhereToGo />} />
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           {/* <Route render={() => <h1>Page not found</h1>} /> */}

@@ -61,14 +61,15 @@ function App() {
   return (
     <Router>
       <AuthContext.Provider value={{jwt,setJwt}}>
+      <AlertContext.Provider value={{...alert, setAlert:setAlert}}>
+
         <NavBar />
-        <Alert {...alert} />
+        <Alert />
           {isLoggedIn ? (
             <button onClick={logOut}>Logout</button>
             ) : (
             <button>Please Login</button>
           )}
-        <AlertContext.Provider value={{...alert, setAlert:setAlert}}>
         <Routes>
           {/* <Route exact path="/AdminUsers" element={<AdminUsers />} /> */}
           {/* <ProtectedRoute.Protected path="/AdminUsers" element={<AdminUsers />} /> */}

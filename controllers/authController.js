@@ -4,69 +4,15 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
-// TODO: Fix the return password to match. maybe reverse hash to match login password.
-// "Sign Up"
-
-router.post("/api/signup", (req, res) => {
-  // const { email, password } = req.body;
-  // console.log(req.body[0].email);
-  // console.log(req.body[0].password)
-  // console.log(req.body)
-  const email = req.body.toString();
-  const password = req.body[0].password;
- 
-  if (!email || !password) {
-    res.status(400);
-  } else {
-    bcrypt
-      .hash(password.toString(), 10)
-      .then((hashedPassword) => {
-        const ema = req.body[0].email
-        console.log(hashedPassword);
-        console.log(password);
-        console.log(req.body[0].email)
-        db.User.create({
-          email: ema,
-          password: hashedPassword,
-        })
-          .then((newUser) => {
-            console.log(newUser)
-            const token = jwt.sign(
-              { email: newUser.email },
-              process.env.SECRET
-            );
-            res.json({
-              err: false,
-              data: token,
-              message: "Successfully signed up.",
-            });
-            // res.json(newUser);
-          })
-          .catch((err) => {
-            console.log(err);
-            res.status(500).json({
-              error: true,
-              data: null,
-              message: "Unable to signup.",
-            });
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({
-        error: true,
-        data: null,
-        message: "Password?",
-        });
-      });
-  }
-});
 
 // "Login"
 
 router.post("/api/login", (req, res) => {
-  const password = req.body;
-  const email = req.body; 
+  // const password = req.body;
+  // const email = req.body; 
+  const data = req.body
+  const email = data.email
+  const password = data.password
   console.log(email)
   console.log(password) 
   db.User.findOne({ email: email.toString() })
@@ -120,6 +66,72 @@ router.post("/api/login", (req, res) => {
         message: "Failed to sign in 1",
       });
     });
+});
+
+// TODO: Fix the return password to match. maybe reverse hash to match login password.
+// "Sign Up"
+
+router.post("/api/signup", (req, res) => {
+  // const { email, password } = req.body;
+  // console.log(req.body[0].email);
+  // console.log(req.body[0].password)
+  // console.log(req.body)
+  const data = req.body
+  //  const password = req.body[0]?.password;
+  //  const email = req.body[0]?.email && req.body[0];
+  //  const {test} = req.body;
+   console.log(data.email)
+  const email = data.email
+  const password = data.password
+  //  const em = email.toString()
+
+   console.log(password)
+   console.log(email)
+  if (!email || !password) {
+    res.status(400);
+  } else {
+    bcrypt
+      .hash(password, 10)
+      .then((hashedPassword) => {
+        // const ema = email[0]
+        console.log(hashedPassword);
+        // console.log(ema)
+        db.User.create({
+          email: email.toString(),
+          password: hashedPassword,
+        })
+          .then((newUser) => {
+            console.log(newUser)
+            console.log(newUser.email)
+            const token = jwt.sign(
+              {_id: newUser._id,  email: newUser.email, typeOfUser: newUser.typeOfUser },
+              process.env.SECRET
+            );
+            res.json({
+              err: false,
+              data: token,
+              message: "Successfully signed up.",
+            });
+            // res.json(newUser);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+              error: true,
+              data: null,
+              message: "Unable to signup.",
+            });
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+        error: true,
+        data: null,
+        message: "Password?",
+        });
+      });
+  }
 });
 
 module.exports = router;

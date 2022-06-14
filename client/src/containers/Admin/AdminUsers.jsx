@@ -13,7 +13,7 @@ const AdminUsers = () => {
     }).catch(err => {
       setAlert({message: "Failed to retrieve users", type: "danger"})
     })
-  }, );
+  }, []);
   return (
     <div className="container">
       <div className="row">

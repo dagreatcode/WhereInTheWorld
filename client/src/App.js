@@ -39,12 +39,20 @@ function App() {
     type: "success"
    })
 
-   useEffect(() => {
-    if (jwt){
-      setAxiosDefault(jwt)
-      setisLoggedIn(true);
-    }
-      },[jwt])
+      useEffect(()=>{
+        const localJwt = localStorage.getItem("jwt")
+        if (localJwt){
+          setJwt(localJwt)
+        }
+      },[])
+
+      useEffect(() => {
+        if (jwt){
+          setAxiosDefault(jwt)
+          setisLoggedIn(true);
+          localStorage.setItem("jwt",jwt)
+        }
+          },[jwt])
 
   useEffect(() => {
     console.log("Make an API call.");

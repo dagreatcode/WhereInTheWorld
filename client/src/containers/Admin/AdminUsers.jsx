@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
+import AlertContext from "../../utils/ContextAPI/AlertContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const AdminUsers = () => {
   const [user, setUser] = useState([]);
-
+  const {setAlert} = useContext(AlertContext)
   useEffect(() => {
-    axios.get("/api/user").then((response) => {
+    axios.get("/api/user/admin").then((response) => {
       // console.log(response.data);
       setUser(response.data);
-    });
-  }, []);
+    }).catch(err => {
+      setAlert({message: "Failed to retrieve users", type: "danger"})
+    })
+  }, [setAlert]);
   return (
     <div className="container">
       <div className="row">

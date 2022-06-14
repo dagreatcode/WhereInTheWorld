@@ -1,14 +1,24 @@
 // rsf
 
-import React from "react";
+import React, {useContext} from "react";
+import AlertContext from "../utils/ContextAPI/AlertContext";
 
 function Alert(props) {
-  console.log(props);
+  const {message, type, setAlert} = useContext(AlertContext)
 
   return (
-    <div className={`alert alert-${props.type || "success"}`} role="alert">
-      {props.children}
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-12">
+          {message && (
+            <div className={`alert alert-${type || "primary"}`} role="alert">
+              {message}<span style={{float:"right"}} onClick={setAlert({ message: "", type: ""})}>x</span>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
+
   );
 }
 

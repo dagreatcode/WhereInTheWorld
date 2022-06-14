@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AlertContext from "./utils/ContextAPI/AlertContext";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -13,6 +14,7 @@ import AdminUsers from "./containers/Admin/AdminUsers";
 import AdminNewUser from "./containers/Admin/AdminNewUser";
 import AuthContext from "./utils/ContextAPI/AuthContext";
 import {setAxiosDefault} from "./utils/axiosDefault/axiosDefault"
+import Alert from "./components/Alert";
 // import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import ProtectedRoute from 'react-protected-route-component'
 function App() {
@@ -31,6 +33,11 @@ function App() {
     
     return children;
    };
+
+   const [alert, setAlert] = useState({
+    message: "Welcome",
+    type: "success"
+   })
 
    useEffect(() => {
     if (jwt){
@@ -55,14 +62,16 @@ function App() {
     <Router>
       <AuthContext.Provider value={{jwt,setJwt}}>
         <NavBar />
+        <Alert {...alert} />
           {isLoggedIn ? (
             <button onClick={logOut}>Logout</button>
             ) : (
             <button>Please Login</button>
           )}
+        <AlertContext.Provider value={{...alert, setAlert:setAlert}}>
         <Routes>
           {/* <Route exact path="/AdminUsers" element={<AdminUsers />} /> */}
-          {/* <ProtectedRoute path="/AdminUsers" element={<AdminUsers />} /> */}
+          {/* <ProtectedRoute.Protected path="/AdminUsers" element={<AdminUsers />} /> */}
           <Route path='/AdminUsers'
             element={
             <Protected isLoggedIn={isLoggedIn}>
@@ -87,8 +96,22 @@ function App() {
             </Protected>
             }
           />
-          <Route exact path="/Covid" element={<Covid />} />
-          <Route exact path="/WhereToGo" element={<WhereToGo />} />
+          <Route path='/Covid'
+            element={
+            <Protected isLoggedIn={isLoggedIn}>
+            <Covid />
+            </Protected>
+            }
+          />
+          <Route path='/WhereToGo'
+            element={
+            <Protected isLoggedIn={isLoggedIn}>
+            <WhereToGo />
+            </Protected>
+            }
+          />
+          {/* <Route exact path="/Covid" element={<Covid />} /> */}
+          {/* <Route exact path="/WhereToGo" element={<WhereToGo />} /> */}
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           {/* <Route render={() => <h1>Page not found</h1>} /> */}
@@ -107,6 +130,7 @@ function App() {
           exact
         /> */}
         </Routes>
+        </AlertContext.Provider>
         </AuthContext.Provider>
     </Router>
   );

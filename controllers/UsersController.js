@@ -49,7 +49,7 @@ function authenticateToken(req, res, next) {
 }
 
 // TODO:  Get this route working as soon as you finish the last thing.. // FIXME: Dont waste time on this anymore. The err is sonWebTokenError: invalid token  // TODO:
-router.get("/admin", (req, res) => {
+router.get("/test", (req, res) => {
   const authorization = req.headers.authorization;
   // const BEAR = req.headers.authorization
   // if(BEAR == null) return res.sendStatus(401)

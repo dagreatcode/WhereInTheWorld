@@ -17,8 +17,8 @@ const Login = () => {
     // const email  = e.target.email;
     // const password  = e.target.password;
     axios
-    // TODO: change to /api/signup
-      .post("/api/signup", { email, password })
+    // FIXME: After creating an account, it pushes on local but it do not push to the home page/ login in Production
+      .post("/api/signUp", { email, password })
       .then((response) => {
         // console.log(response.data);
         setJwt(response.data.data)

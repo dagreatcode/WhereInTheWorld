@@ -18,7 +18,7 @@ import Alert from "./components/Alert";
 // import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import ProtectedRoute from 'react-protected-route-component'
 function App() {
-  
+
   const [jwt, setJwt] = useState("");
 
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -27,6 +27,8 @@ function App() {
   const logOut = () => {
     setIsLoggedIn(false);
   };
+
+  // Make Sure This Works. Children...
   const Protected = ({ isLoggedIn, children }) => {
     if (!isLoggedIn) {
     return <Navigate to="/login" replace />;
@@ -74,6 +76,7 @@ function App() {
 
         <NavBar />
         <Alert />
+        {/* FIX THIS: Its not showing loggedIn in production. also, the login and create user do not work */}
           {isLoggedIn ? (
             <button onClick={logOut}>Logout</button>
             ) : (

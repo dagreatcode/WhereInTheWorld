@@ -21,7 +21,8 @@ const AdminNewUser = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/signup", { email, password, typeOfUser })
+    // FIXME: After creating an account, it pushes on local but it do not push to the home page/ login in Production
+      .post("/api/signUp", { email, password, typeOfUser })
       .then((response) => {
         // console.log(response.data);
         navigate("/AdminUsers");

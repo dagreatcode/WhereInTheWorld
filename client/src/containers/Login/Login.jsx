@@ -4,10 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  // TODO: Fix the state, signin and login is twisted together somehow.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailLi, setEmailLi] = useState("");
-  const [passwordLi, setPasswordLi] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   // const history = useHistory();
   const {setJwt} = useContext(AuthContext)
   const navigate = useNavigate();
@@ -70,10 +71,10 @@ const Login = () => {
                 className="form-control"
                 type="text"
                 placeholder="Email"
-                name="emailLi"
-                value={emailLi}
+                name="email"
+                value={email}
                 onChange={(e) => {
-                  setEmailLi(e.target.value);
+                  setEmail(e.target.value);
                 }}
               />
             </div>
@@ -85,10 +86,10 @@ const Login = () => {
                 className="form-control"
                 type="password"
                 placeholder="Password"
-                name="passwordLi"
-                value={passwordLi}
+                name="password"
+                value={password}
                 onChange={(e) => {
-                  setPasswordLi(e.target.value);
+                  setPassword(e.target.value);
                 }}
               />
             </div>

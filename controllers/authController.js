@@ -112,7 +112,7 @@ router.post("/api/signUp", (req, res) => {
             console.log(newUser)
             // console.log(newUser.email)
             const token = jwt.sign(
-              {email: newUser.email},
+              {_email: newUser.email },
               process.env.SECRET
             );
             res.json({

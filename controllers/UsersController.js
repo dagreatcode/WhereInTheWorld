@@ -50,7 +50,7 @@ function authenticateToken(req, res, next) {
 
 // TODO:  Get this route working as soon as you finish the last thing.. // FIXME: Dont waste time on this anymore. The err is sonWebTokenError: invalid token  // TODO:
 router.get("/test", (req, res) => {
-  const authorization = req.headers.authorization;
+  const authorization = req.headers['authorization'];
   // const BEAR = req.headers.authorization
   // if(BEAR == null) return res.sendStatus(401)
   // const secret = process.env.SECRET;
@@ -58,10 +58,11 @@ router.get("/test", (req, res) => {
   // const headerValue = req.headers['authorization'];
   // const header = { authorization: headerValue };
   // const header = JSON.stringify(req.headers)
-  const head = JSON.stringify(req.headers.authorization);
-
+  // const head = JSON.stringify(req.headers.authorization);
+  const token = authorization && authorization.split(' ')[0]
+  // console.log(token)
   // console.log(JSON.stringify(req.headers.authorization));
-  console.log(req.headers.authorization);
+  // console.log(req.headers['authorization']);
   // console.log(authorization[0]);
   // console.log(req.headers.split(' ')[1]);
   // console.log(JSON.stringify(BEAR));
@@ -81,7 +82,7 @@ router.get("/test", (req, res) => {
   // );
   // console.log(token);
 
-  jwt.verify(head, process.env.SECRET, (err, decoded) => {
+  jwt.verify(token, process.env.SECRET, (err, decoded) => {
     if (err) {
       // console.log(req.headers);
       console.log(decoded);

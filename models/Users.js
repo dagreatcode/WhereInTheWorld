@@ -25,6 +25,8 @@ const UsersSchema = new Schema({
     // Admin: { type: String, lowercase: false, trim: true, required: false },
     // Coder: { type: String, lowercase: false, trim: true, required: false },
   },
+  authorization: { type: String, required: false },
+
   // TODO: Add image model.
   date: { type: Date, default: Date.now },
 });

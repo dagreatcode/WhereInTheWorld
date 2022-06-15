@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [email2, setEmail2] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [emailLi, setEmailLi] = useState("");
+  const [passwordLi, setPasswordLi] = useState("");
   // const history = useHistory();
   const {setJwt} = useContext(AuthContext)
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Login = () => {
     // FIXME: After creating an account, it pushes on local but it do not push to the home page/ login in Production
       .post("/api/signUp", { email, password })
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setJwt(response.data.data)
         navigate("/");
         // history.push("/");
@@ -68,10 +68,10 @@ const Login = () => {
                 className="form-control"
                 type="text"
                 placeholder="Email"
-                name="email"
-                value={email}
+                name="emailLi"
+                value={emailLi}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setEmailLi(e.target.value);
                 }}
               />
             </div>
@@ -83,10 +83,10 @@ const Login = () => {
                 className="form-control"
                 type="password"
                 placeholder="Password"
-                name={password}
-                value={password}
+                name="passwordLi"
+                value={passwordLi}
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setPasswordLi(e.target.value);
                 }}
               />
             </div>
@@ -126,9 +126,9 @@ const Login = () => {
                     data-nlok-ref-guid="45d30697-7fd3-457b-fb20-fd168951d258"
                     control-id="ControlID-1"
                     name="email"
-                    value={email2}
+                    value={email}
                     onChange={(e) => {
-                      setEmail2(e.target.value);
+                      setEmail(e.target.value);
                     }}
                   />
                   <div id="norton-idsafe-field-styling-divId"></div>
@@ -143,9 +143,9 @@ const Login = () => {
                     data-nlok-ref-guid="133f212d-f672-4c6f-e332-4bc651dd15a2"
                     control-id="ControlID-2"
                     name="password"
-                    value={password2}
+                    value={password}
                     onChange={(e) => {
-                      setPassword2(e.target.value);
+                      setPassword(e.target.value);
                     }}
                   />
                   <div id="norton-idsafe-field-styling-divId"></div>

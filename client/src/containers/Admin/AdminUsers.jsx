@@ -8,12 +8,12 @@ const AdminUsers = () => {
   const {setAlert} = useContext(AlertContext)
   useEffect(() => {
     axios.get("/api/user/admin").then((response) => {
-      // console.log(response.data);
+      console.log(response.data);
       setUser(response.data);
     }).catch(err => {
       setAlert({message: "Failed to retrieve users", type: "danger"})
     })
-  }, []);
+  }, [setAlert]);
   return (
     <div className="container">
       <div className="row">

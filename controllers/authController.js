@@ -13,14 +13,19 @@ router.post("/api/login", (req, res) => {
   const data = req.body
   const email = data.email
   const password = data.password
+  // const typeOfUser = data.typeOfUser
+
   console.log(email)
   console.log(password) 
-  db.User.findOne({ email: email.toString() })
+  // console.log(typeOfUser) 
+  console.log(data) 
+  db.User.findOne({ email: email })
     .then((foundUser) => {
+      console.log(foundUser);
       if (foundUser) {
         // TODO: if too many failed attempts to login.
         bcrypt
-          .compare(password.toString(), foundUser.password)
+          .compare(password, foundUser.password)
           .then(function (result) {
             console.log("The password match: ", result);
             if (result) {
@@ -101,6 +106,7 @@ router.post("/api/signup", (req, res) => {
           password: hashedPassword,
         })
           .then((newUser) => {
+            console.log(newUser._id)
             console.log(newUser)
             console.log(newUser.email)
             const token = jwt.sign(

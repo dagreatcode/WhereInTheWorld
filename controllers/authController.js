@@ -36,10 +36,6 @@ router.post("/api/login", (req, res) => {
                 { email: foundUser.email },
                 process.env.SECRET
               );
-              // const token = jwt.sign(
-              //   { foo: 'bar' },
-              //   'shhhhh'
-              // );
               res.json({
                 err: false,
                 data: token,
@@ -76,7 +72,7 @@ router.post("/api/login", (req, res) => {
 // TODO: Fix the return password to match. maybe reverse hash to match login password.
 // "Sign Up"
 
-router.post("/api/signup", (req, res) => {
+router.post("/api/signUp", (req, res) => {
   // const { email, password } = req.body;
   // console.log(req.body[0].email);
   // console.log(req.body[0].password)
@@ -125,7 +121,7 @@ router.post("/api/signup", (req, res) => {
             res.status(500).json({
               error: true,
               data: null,
-              message: "Unable to signup.",
+              message: "Unable to signUp.",
             });
           });
       })

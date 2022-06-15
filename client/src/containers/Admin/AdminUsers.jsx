@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const AdminUsers = () => {
   const [user, setUser] = useState([]);
   const {setAlert} = useContext(AlertContext)
+
+  // FIXME: setAlert may not work in the empty array.
   useEffect(() => {
     axios.get("/api/user/admin").then((response) => {
       console.log(response.data);

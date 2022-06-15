@@ -8,10 +8,13 @@ const PORT2 = process.env.PORT || 3002;
 
 const app = http.createServer();
 
-app.listen(PORT2, () => {
+function consoleApp() {
+  app.listen(PORT2, () => {
     console.log(`App is running on http://localhost:${PORT2}`);
     handleRequest();
 });
+}
+
 
 function handleRequest() {
   console.log("Hello Console App");
@@ -42,6 +45,7 @@ function handleRequest() {
   });
 }
 
+module.exports = consoleApp;
 
 
 // module.exports = {

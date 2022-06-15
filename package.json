@@ -7,6 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run prod || npm run dev",
     "prod": "node server.js",
+    "consoleApp": "cd consoleApp && node consoleApp.js",
+    "me": "(node server.js) & cd consoleApp && node consoleApp.js",
     "dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",

@@ -39,7 +39,9 @@ const Login = () => {
     // TODO: change to /api/login
       .post("/api/login", { email, password })
       .then((response) => {
+
         setJwt(response.data.data)
+        console.log(response.data.data)
         console.log(response.data);
         navigate("/");
         // history.push("/");

@@ -31,7 +31,7 @@ router.post("/api/login", (req, res) => {
           .then(function (result) {
             console.log("password:", password)
             console.log("Found User Password:", foundUser.password)
-            console.log("The password match: ", result);
+            console.log("The password match result: ", result);
             if (result) {
               // // TODO: Send a jwt back as data instead.
               // // TODO: lock down the token in a time limit
@@ -40,6 +40,7 @@ router.post("/api/login", (req, res) => {
                 { email: foundUser.email },
                 process.env.SECRET
               );
+              console.log("Token:", token)
               res.json({
                 err: false,
                 data: token,

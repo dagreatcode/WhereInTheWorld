@@ -36,10 +36,6 @@ router.post("/api/login", (req, res) => {
                 { email: foundUser.email },
                 process.env.SECRET
               );
-              // const token = jwt.sign(
-              //   { foo: 'bar' },
-              //   'shhhhh'
-              // );
               res.json({
                 err: false,
                 data: token,
@@ -76,7 +72,7 @@ router.post("/api/login", (req, res) => {
 // TODO: Fix the return password to match. maybe reverse hash to match login password.
 // "Sign Up"
 
-router.post("/api/signup", (req, res) => {
+router.post("/api/signUp", (req, res) => {
   // const { email, password } = req.body;
   // console.log(req.body[0].email);
   // console.log(req.body[0].password)
@@ -85,13 +81,13 @@ router.post("/api/signup", (req, res) => {
   //  const password = req.body[0]?.password;
   //  const email = req.body[0]?.email && req.body[0];
   //  const {test} = req.body;
-   console.log(data.email)
+  //  console.log(data.email)
   const email = data.email
   const password = data.password
   //  const em = email.toString()
 
-   console.log(password)
-   console.log(email)
+  //  console.log(password)
+  //  console.log(email)
   if (!email || !password) {
     res.status(400);
   } else {
@@ -99,16 +95,17 @@ router.post("/api/signup", (req, res) => {
       .hash(password, 10)
       .then((hashedPassword) => {
         // const ema = email[0]
-        console.log(hashedPassword);
+        // console.log(hashedPassword);
         // console.log(ema)
         db.User.create({
           email: email.toString(),
           password: hashedPassword,
         })
           .then((newUser) => {
-            console.log(newUser._id)
+            // console.log(newUser._id)
+            // TODO: Here I Am!
             console.log(newUser)
-            console.log(newUser.email)
+            // console.log(newUser.email)
             const token = jwt.sign(
               {_id: newUser._id,  email: newUser.email, typeOfUser: newUser.typeOfUser },
               process.env.SECRET
@@ -125,7 +122,7 @@ router.post("/api/signup", (req, res) => {
             res.status(500).json({
               error: true,
               data: null,
-              message: "Unable to signup.",
+              message: "Unable to signUp.",
             });
           });
       })

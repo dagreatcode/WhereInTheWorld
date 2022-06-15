@@ -20,11 +20,11 @@ import Alert from "./components/Alert";
 function App() {
   const [jwt, setJwt] = useState("");
 
-  const [isLoggedIn, setisLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   // const logIn = () => {
   // };
   const logOut = () => {
-    setisLoggedIn(false);
+    setIsLoggedIn(false);
   };
   const Protected = ({ isLoggedIn, children }) => {
     if (!isLoggedIn) {
@@ -49,7 +49,7 @@ function App() {
       useEffect(() => {
         if (jwt){
           setAxiosDefault(jwt)
-          setisLoggedIn(true);
+          setIsLoggedIn(true);
           localStorage.setItem("jwt",jwt)
         }
           },[jwt])

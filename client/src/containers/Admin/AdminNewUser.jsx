@@ -21,7 +21,7 @@ const AdminNewUser = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/user", { email, password, typeOfUser })
+      .post("/api/signup", { email, password, typeOfUser })
       .then((response) => {
         // console.log(response.data);
         navigate("/AdminUsers");

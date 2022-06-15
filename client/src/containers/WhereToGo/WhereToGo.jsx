@@ -451,4 +451,6 @@ const WhereToGo = () => {
   );
 };
 
+// WhereToGo.propType = {}
+
 export default WhereToGo;

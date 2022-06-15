@@ -2,7 +2,7 @@ import React from "react";
 // FIXME: Remember. This page is not in use
 const SignUp = () => {
 
-  // /api/signup
+  // /api/signup Close OUT. Not In Use.
 
   return (
     <div>

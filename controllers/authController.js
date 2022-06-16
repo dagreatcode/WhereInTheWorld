@@ -21,13 +21,14 @@ router.post("/api/login", (req, res) => {
   // console.log(data) 
   db.User.findOne({ email: email })
     .then((foundUser) => {
-      console.log(data) 
-      console.log(foundUser);
+      console.log("From Site", data) //Body
+      console.log("From Database", foundUser); //Database
+      
       if (foundUser) {
         // TODO: if too many failed attempts to login.
         bcrypt
         
-          .compare(req.body.password , foundUser.password) // FIXME: Not working in production // TODO: Fix ASAP 
+          .compare(data.password , foundUser.password) // FIXME: Not working in production // TODO: Fix ASAP 
           .then(function (result) {
             console.log("password:", password)
             console.log("Found User Password:", foundUser.password)
@@ -50,7 +51,7 @@ router.post("/api/login", (req, res) => {
               res.status(401).json({
                 err: true,
                 data: null,
-                message: "Failed to sign in 3",
+                message: "Failed to sign in with result",
               });
             }
           })
@@ -59,7 +60,7 @@ router.post("/api/login", (req, res) => {
             res.status(401).json({
               err: true,
               data: null,
-              message: "Failed to sign in 2", // FIXME: Not working in production // TODO: Fix ASAP 
+              message: "Failed to comp pass", // FIXME: Not working in production // TODO: Fix ASAP 
             });
           });
       }
@@ -69,7 +70,7 @@ router.post("/api/login", (req, res) => {
       res.status(500).json({
         err: true,
         data: null,
-        message: "Failed to sign in 1",
+        message: "Failed to find auth email",
       });
     });
 });

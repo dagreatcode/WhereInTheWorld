@@ -27,7 +27,7 @@ router.post("/api/login", (req, res) => {
         // TODO: if too many failed attempts to login.
         bcrypt
         
-          .compare(password, foundUser.password) // FIXME: Not working in production // TODO: Fix ASAP 
+          .compare(`${password}` , foundUser.password) // FIXME: Not working in production // TODO: Fix ASAP 
           .then(function (result) {
             console.log("password:", password)
             console.log("Found User Password:", foundUser.password)

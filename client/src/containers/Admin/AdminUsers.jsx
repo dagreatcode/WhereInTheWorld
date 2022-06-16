@@ -25,7 +25,7 @@ const AdminUsers = () => {
       </div>
       <div className="row">
         <div className="col-sm-12">
-          <table class="table table-success table-striped">
+          <table className="table table-success table-striped">
             <thead>
               <tr>
                 <th scope="col">Email</th>
@@ -53,7 +53,10 @@ const AdminUsers = () => {
                   );
                 })
               ) : (
-                <h1>Not Found</h1>
+                // <h1>Not Found</h1>
+                <tr>
+                  <td>Not Found Unless Your Admin</td>
+                </tr>
               )}
             </tbody>
           </table>

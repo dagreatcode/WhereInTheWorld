@@ -103,7 +103,7 @@ router.post("/api/signUp", (req, res) => {
         // console.log(hashedPassword);
         // console.log(ema)
         db.User.create({
-          email: email.toString(),
+          email: email,
           password: hashedPassword,
         })
           .then((newUser) => {
@@ -112,7 +112,7 @@ router.post("/api/signUp", (req, res) => {
             console.log(newUser)
             // console.log(newUser.email)
             const token = jwt.sign(
-              {_email: newUser.email },
+              {_email: newUser.email},
               process.env.SECRET
             );
             res.json({

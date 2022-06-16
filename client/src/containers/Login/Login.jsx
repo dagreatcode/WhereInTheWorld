@@ -44,6 +44,7 @@ const Login = () => {
         setJwt(response.data.data)
         console.log(response.data.data)
         console.log(response.data);
+        console.log(response);
         navigate("/");
         // history.push("/");
         // window.location = "/home";

@@ -82,17 +82,13 @@ const AdminNewUser = () => {
                   <label htmlFor="floatingPassword">Password</label>
                 </div>
                 <div className="custom-select mb-3">
-                  <select>
-                    <option
+                  <select 
                       selected
                       name="email"
                       value={typeOfUser}
                       onChange={(e) => {
                         setTypeOfUser(e.target.value);
-                      }}
-                    >
-                      User
-                    </option>
+                      }}>
                     <option value="1">User</option>
                     <option value="2">Administrator</option>
                     <option value="3">Coder</option>

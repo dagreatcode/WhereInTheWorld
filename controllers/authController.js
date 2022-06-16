@@ -103,7 +103,7 @@ router.post("/api/signUp", (req, res) => {
         // console.log(hashedPassword);
         // console.log(ema)
         db.User.create({
-          email: email.toString(),
+          email: email,
           password: hashedPassword,
         })
           .then((newUser) => {

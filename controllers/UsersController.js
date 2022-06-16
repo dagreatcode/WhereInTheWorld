@@ -161,6 +161,13 @@ router.get("/:id", (req, res) => {
   });
 });
 
+router.post("/login", authenticateToken, (req, res) => {
+  
+  db.User.create(req.body).then((newUser) => {
+    res.json(newUser);
+  });
+});
+
 router.post("/", (req, res) => {
   db.User.create(req.body).then((newUser) => {
     res.json(newUser);

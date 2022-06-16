@@ -27,7 +27,7 @@ router.post("/api/login", (req, res) => {
         // TODO: if too many failed attempts to login.
         bcrypt
         
-          .compare(password, foundUser.password)
+          .compare(`${password}` , foundUser.password) // FIXME: Not working in production // TODO: Fix ASAP 
           .then(function (result) {
             console.log("password:", password)
             console.log("Found User Password:", foundUser.password)
@@ -59,7 +59,7 @@ router.post("/api/login", (req, res) => {
             res.status(401).json({
               err: true,
               data: null,
-              message: "Failed to sign in 2",
+              message: "Failed to sign in 2", // FIXME: Not working in production // TODO: Fix ASAP 
             });
           });
       }
@@ -106,13 +106,13 @@ router.post("/api/signUp", (req, res) => {
           email: email,
           password: hashedPassword,
         })
-          .then((newUser) => {
+          .then((newUser) => {  // FIXME: Not working in production, But still sends data to database but will not sign in. // TODO: Fix ASAP 
             // console.log(newUser._id)
             // TODO: Here I Am!
             console.log(newUser)
             // console.log(newUser.email)
             const token = jwt.sign(
-              {_email: newUser.email},
+              {email: newUser.email},
               process.env.SECRET
             );
             res.json({
@@ -127,7 +127,7 @@ router.post("/api/signUp", (req, res) => {
             res.status(500).json({
               error: true,
               data: null,
-              message: "Unable to signUp.",
+              message: "Unable to signUp.", // FIXME: Not working in production // TODO: Fix ASAP 
             });
           });
       })

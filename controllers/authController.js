@@ -27,7 +27,7 @@ router.post("/api/login", (req, res) => {
         // TODO: if too many failed attempts to login.
         bcrypt
         
-          .compare(`${password}` , foundUser.password) // FIXME: Not working in production // TODO: Fix ASAP 
+          .compare(req.body.password , foundUser.password) // FIXME: Not working in production // TODO: Fix ASAP 
           .then(function (result) {
             console.log("password:", password)
             console.log("Found User Password:", foundUser.password)
@@ -97,13 +97,13 @@ router.post("/api/signUp", (req, res) => {
     res.status(400);
   } else {
     bcrypt
-      .hash(password, 10)
+      .hash(req.body.password, 10)
       .then((hashedPassword) => {
         // const ema = email[0]
         // console.log(hashedPassword);
         // console.log(ema)
         db.User.create({
-          email: email,
+          email: req.body.email,
           password: hashedPassword,
         })
           .then((newUser) => {  // FIXME: Not working in production, But still sends data to database but will not sign in. // TODO: Fix ASAP 

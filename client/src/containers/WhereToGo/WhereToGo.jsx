@@ -5,9 +5,10 @@ import Button from "react-bootstrap/Button";
 import WTGInput from "./WTGInput";
 import Container from "react-bootstrap/Container";
 import "./WTG.css";
+//import { REACT_APP_API_KEY } from "@env";
+// import { env } from 'process';
 // import { Link } from 'react-router-dom';
 // import WTGSelect from "./WTGSelect";
-
 const WhereToGo = () => {
   const [radiusState] = useState({
     radius: 10000,
@@ -227,6 +228,9 @@ const WhereToGo = () => {
           },
         })
         .then(function (response) {
+          console.log(process.env.REACT_APP_API_KEY) //new webpack.EnvironmentPlugin( { ...process.env } )
+          console.log(process.env) 
+          console.log(process.env.local) 
           // console.log(response.data.results);
           // const info = response.data.results;
           // info.map((place) => console.log(place));

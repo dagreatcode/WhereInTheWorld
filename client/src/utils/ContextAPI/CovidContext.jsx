@@ -1,6 +1,6 @@
 import React from "react";
 const CovidContext = React.createContext({
-    words: ""
+	words: "",
 });
 
 export default CovidContext;

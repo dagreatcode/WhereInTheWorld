@@ -105,7 +105,7 @@ function Covid(props) {
   //   params: {country: covidNewsState.country, day: covidNewsState.day},
   //   headers: {
   //     'X-RapidAPI-Host': 'covid-193.p.rapidapi.com',
-  //     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1'
+  //     'X-RapidAPI-Key': ''
   //   }
   // };
 
@@ -120,11 +120,11 @@ function Covid(props) {
 
   const option = {
     method: "GET",
-    url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/${nextState.country2}`, // FIXME: not taking in information from state.
+    url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/${nextState.country2.toLowerCase().replace(" ", "")}`, // FIXME: not taking in information from state.
     headers: {
       "X-RapidAPI-Host":
         "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com",
-      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+      "X-RapidAPI-Key": "process.env.REACT_APP_API_KEY",
     },
   };
 

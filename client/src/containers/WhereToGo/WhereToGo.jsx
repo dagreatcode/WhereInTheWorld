@@ -5,9 +5,10 @@ import Button from "react-bootstrap/Button";
 import WTGInput from "./WTGInput";
 import Container from "react-bootstrap/Container";
 import "./WTG.css";
+//import { REACT_APP_API_KEY } from "@env";
+// import { env } from 'process';
 // import { Link } from 'react-router-dom';
 // import WTGSelect from "./WTGSelect";
-
 const WhereToGo = () => {
   const [radiusState] = useState({
     radius: 10000,
@@ -223,10 +224,13 @@ const WhereToGo = () => {
           headers: {
             "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
             "X-RapidAPI-Key":
-              "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+            process.env.REACT_APP_API_KEY,
           },
         })
         .then(function (response) {
+          console.log(process.env.REACT_APP_API_KEY) //new webpack.EnvironmentPlugin( { ...process.env } )
+          console.log(process.env) 
+          console.log(`${process.env.REACT_APP_API_KEY}`)
           // console.log(response.data.results);
           // const info = response.data.results;
           // info.map((place) => console.log(place));

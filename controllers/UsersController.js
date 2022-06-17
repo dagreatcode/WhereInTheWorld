@@ -48,6 +48,8 @@ function authenticateToken(req, res, next) {
   })
 }
 
+// TODO: Make a API call with the process.env.REACT_APP_API_KEY api key to push to the front end. (Hiding my api key from users.)
+
 // TODO:  Get this route working as soon as you finish the last thing.. // FIXME: Dont waste time on this anymore. The err is sonWebTokenError: invalid token  // TODO:
 router.get("/test", (req, res) => {
   const authorization = req.headers['authorization'];

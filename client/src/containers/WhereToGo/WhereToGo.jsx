@@ -224,13 +224,13 @@ const WhereToGo = () => {
           headers: {
             "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
             "X-RapidAPI-Key":
-              "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+            process.env.REACT_APP_API_KEY,
           },
         })
         .then(function (response) {
           console.log(process.env.REACT_APP_API_KEY) //new webpack.EnvironmentPlugin( { ...process.env } )
           console.log(process.env) 
-          console.log(process.env.local) 
+          console.log(`${process.env.REACT_APP_API_KEY}`)
           // console.log(response.data.results);
           // const info = response.data.results;
           // info.map((place) => console.log(place));

@@ -13,7 +13,7 @@ class Gas extends Component {
       params: { state: "GA" },
       headers: {
         "X-RapidAPI-Host": "gas-price.p.rapidapi.com",
-        "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
       },
     };
 

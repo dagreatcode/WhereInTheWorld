@@ -75,7 +75,7 @@ function Covid(props) {
 		},
 	};
 
-	const optionss = {
+	const optionss = { 
 		method: "GET",
 		url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/US/`, // TODO: ass from user
 		headers: {

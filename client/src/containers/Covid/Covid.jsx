@@ -92,7 +92,7 @@ function Covid(props) {
     params: { country: countryState.country, day: dayState.day }, //FIXME: Seems like its fixed from using ${}from state //TODO: make sure this works.
     headers: {
       "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
-      "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
     },
   };
 
@@ -114,7 +114,7 @@ function Covid(props) {
     url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/US/`, // TODO: ass from user
     headers: {
       "X-RapidAPI-Host": "coronavirus-smartable.p.rapidapi.com",
-      "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
     },
   };
 
@@ -124,7 +124,7 @@ function Covid(props) {
     headers: {
       "X-RapidAPI-Host":
         "vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com",
-      "X-RapidAPI-Key": "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
     },
   };
 

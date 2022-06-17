@@ -1,14 +1,10 @@
 //rsf
 //rsc
 
-import React from 'react';
+import React from "react";
 
 function GasAPI(props) {
-    return (
-        <div>
-            
-        </div>
-    );
+	return <div></div>;
 }
 
 export default GasAPI;

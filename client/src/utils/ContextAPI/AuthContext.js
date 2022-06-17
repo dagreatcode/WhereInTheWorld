@@ -1,7 +1,7 @@
 import React from "react";
 const AuthContext = React.createContext({
-    jwt: "",
-    setJwt: () => {},
+	jwt: "",
+	setJwt: () => {},
 });
 
 export default AuthContext;

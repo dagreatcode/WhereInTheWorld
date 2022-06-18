@@ -38,7 +38,7 @@ function handleRequest() {
 		])
 		.then(function (response) {
 			figlet.text(response.username, {
-				font: 'Ghost',
+				font: 'poison',
 				horizontalLayout: 'default',
 				verticalLayout: 'default',
 				width: 80,

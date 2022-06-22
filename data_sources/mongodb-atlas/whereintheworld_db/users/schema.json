@@ -1,0 +1,23 @@
+{
+    "properties": {
+        "__v": {
+            "bsonType": "int"
+        },
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "date": {
+            "bsonType": "date"
+        },
+        "email": {
+            "bsonType": "string"
+        },
+        "password": {
+            "bsonType": "string"
+        },
+        "typeOfUser": {
+            "bsonType": "string"
+        }
+    },
+    "title": "user"
+}

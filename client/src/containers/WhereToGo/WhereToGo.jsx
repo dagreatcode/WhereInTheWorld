@@ -302,8 +302,7 @@ const WhereToGo = () => {
           },
           headers: {
             "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
-            "X-RapidAPI-Key":
-              "d45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1",
+            "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
           },
         })
         .then(function (response) {
@@ -405,7 +404,7 @@ const WhereToGo = () => {
                 <option key={place}>{place.replace("_", " ")}</option>
               ))}
             </select>
-			&nbsp;&nbsp; {typeState.replace("_", " ")}
+            &nbsp;&nbsp; {typeState.replace("_", " ")}
             <br />
             {/* <WTGInput
               label="Language"
@@ -417,7 +416,7 @@ const WhereToGo = () => {
                 setLangState(e.target.value);
               }}
             /> */}
-			<label htmlFor="places">Select a language</label>
+            <label htmlFor="places">Select a language</label>
             <br />
             <select
               name="type"

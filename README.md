@@ -134,6 +134,15 @@ SOFTWARE.
 
 [] Maybe match the with some Covid results with webhooks.
 [] find gas prices and compare to see what is the cheapest.
+
+[] StyledComponents update all.
+[] React 18 useEffect() update all.
+[] Node Async Await update all.
+[] State Management update all.
+ * Props (1 page)
+ * Context API (Alerts)
+ * Globel Context API (JWT)
+ * Redux / Recoil (Practice)
 ```
 
 ## Review
@@ -145,6 +154,8 @@ Great Site to get update on the covid tally and also find out where to go.
 ## Project Links
 
 - [The URL](https://whereintheworld34.herokuapp.com/)
+
+- [Serverless URL/ Working on..](https://covid-way-wqpqp.mongodbstitch.com/)
 
 - [The URL of the GitHub repository](https://github.com/dagreatcode/whereintheworld)
 

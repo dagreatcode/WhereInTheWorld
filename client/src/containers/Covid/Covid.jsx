@@ -178,7 +178,7 @@ function Covid(props) {
 						name="country"
 						value={countryState.country}
 						handleInputChange={(e) => {
-							setCounState({ country: e.target.value });
+							setCounState({ country: e.target.value.toLowerCase().replace(" ", "_") });
 						}}
 						placeholder="country"
 					/>

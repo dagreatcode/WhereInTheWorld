@@ -1,7 +1,7 @@
 {
 	"short_name": "Covid-Safe",
 	"name": "Low Gas No Covid",
-	"description": "Covid news, stats, and places to go",
+	"description": "Updated Covid news, stats, and near places to go",
 	"icons": [
 		{
 			"src": "maskable_icon.png",

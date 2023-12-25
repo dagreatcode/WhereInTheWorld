@@ -2,7 +2,7 @@
 // rcc
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Image from "./img10.png";
+// import Image from "./img10.png";
 import Image2 from "./img11.jpg";
 import Image3 from "./img14.jpg";
 

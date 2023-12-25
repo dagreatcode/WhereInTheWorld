@@ -96,6 +96,44 @@ function Covid(props) {
 		},
 	};
 
+	// https://rapidapi.com/popofibo/api/covid-19-global-tracker-with-regional-data/
+// 	const axios = require('axios');
+
+// const options = {
+//   method: 'GET',
+//   url: 'https://covid-19-global-tracker-with-regional-data.p.rapidapi.com/api/covid/countries',
+//   headers: {
+//     'X-Authorization': '6179002e-6646-4852-be37-572758a58cbb',
+//     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1',
+//     'X-RapidAPI-Host': 'covid-19-global-tracker-with-regional-data.p.rapidapi.com'
+//   }
+// };
+
+// try {
+// 	const response = await axios.request(options);
+// 	console.log(response.data);
+// } catch (error) {
+// 	console.error(error);
+// }
+
+// 	const axios = require('axios');
+
+// const options = {
+//   method: 'GET',
+//   url: 'https://coronavirus-smartable.p.rapidapi.com/news/v1/US/',
+//   headers: {
+//     'X-RapidAPI-Key': 'd45bb63eb5mshebc4e0e524334b5p10227ejsn3cb49f17bfa1',
+//     'X-RapidAPI-Host': 'coronavirus-smartable.p.rapidapi.com'
+//   }
+// };
+
+// try {
+// 	const response = await axios.request(options);
+// 	console.log(response.data);
+// } catch (error) {
+// 	console.error(error);
+// }
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios

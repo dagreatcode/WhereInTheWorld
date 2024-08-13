@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 // import WTGInput from "./WTGInput";
 import Container from "react-bootstrap/Container";
 import "./WTG.css";
+// require('dotenv').config()
 
 const WhereToGo = () => {
   const [radiusState] = useState({
